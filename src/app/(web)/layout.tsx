@@ -1,4 +1,3 @@
-import Header from '@/components/Header/Header'
 import './globals.css'
 import { Poppins } from 'next/font/google'
 import Footer from '@/components/Footer/Footer'
@@ -16,8 +15,8 @@ const poppins = Poppins({
 })
 
 export const metadata = {
-  title: 'Hotel Management App',
-  description: 'Discover and book the best hotel rooms in the world.',
+  title: 'Orzel Realty - real estate agency',
+  description: 'Orzel Realty is a real estate agency that helps you find the perfect property for you. We have a wide range of properties for sale and rent. Contact us today to find your dream home',
 }
 
 export default function RootLayout({
