@@ -4,6 +4,7 @@ type CoverImage = {
 
 export type Image = {
   _key: string;
+  _ref: string;
   url: string;
 };
 

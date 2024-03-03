@@ -1,0 +1,85 @@
+.header {
+  background-color: #fcba28;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 20;
+  transition: all ease-in-out 0.2s;
+
+  @media (max-width: 768px) {
+    position: fixed;
+  }
+}
+
+.headerWrapper {
+
+  @media (min-width: 768px) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    height: 80px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+}
+
+.logo {
+  flex: 1;
+}
+
+.logoImage {
+  width: 50px;
+  height: 50px;
+}
+
+.navbar {
+  flex: 2;
+}
+
+.menuItems {
+  
+  @media (min-width: 768px) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 0;
+  }
+
+}
+
+.menuItem {
+  position: relative;
+  cursor: pointer;
+}
+
+.subMenu {
+  position: absolute;
+
+}
+
+.burgerIcon {
+  cursor: pointer;
+  /* Добавьте любые другие стили, такие как размеры и расположение, по вашему усмотрению */
+}
+
+.bar {
+  width: 30px;
+  height: 4px;
+  background-color: #333; /* Цвет полос бургер-меню */
+  margin: 6px 0;
+  transition: 0.4s; /* Анимация для перехода состояния полос */
+}
+
+.rotateBar1 {
+  transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.hideBar {
+  opacity: 0;
+}
+
+.rotateBar2 {
+  transform: rotate(45deg) translate(-5px, -6px);
+}

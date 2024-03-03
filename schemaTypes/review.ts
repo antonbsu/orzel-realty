@@ -5,31 +5,28 @@ const review = {
   title: 'Review',
   type: 'document',
   fields: [
+    {
+      name: 'personPhoto',
+      title: 'Person Photo',
+      type: 'image',
+      options: {
+        hotspot: true,
+      },
+    },
+    {
+      name: 'personName',
+      title: 'Person Name',
+      type: 'string',
+    },
+    {
+      name: 'personPosition',
+      title: 'Person Position',
+      type: 'string',
+    },
     defineField({
-      name: 'user',
-      title: 'User',
-      type: 'reference',
-      to: [{ type: 'user' }],
-      validation: Rule => Rule.required(),
-    }),
-    defineField({
-      name: 'hotelRoom',
-      title: 'Hotel Room',
-      type: 'reference',
-      to: [{ type: 'hotelRoom' }],
-      validation: Rule => Rule.required(),
-    }),
-    defineField({
-      name: 'text',
-      title: 'Review Text',
-      type: 'text',
-      validation: Rule => Rule.required(),
-    }),
-    defineField({
-      name: 'userRating',
-      title: 'User Rating',
-      type: 'number',
-      validation: Rule => Rule.required().min(1).max(5).error('Rating should be between 1 and 5'),
+      name: "body",
+      title: "Body",
+      type: "blockContent",
     }),
   ],
 };

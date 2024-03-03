@@ -1,77 +1,103 @@
 'use client';
 import { useRouter } from "next/navigation";
-import { ChangeEvent, FC } from "react"
+import { ChangeEvent, FC } from "react";
+
+import styles from "./Search.module.scss";
+import Image from "next/image";
 
 interface Props {
-  roomTypeFilter: string;
+  // roomTypeFilter: string;
+  propertyTypeFilter: string;
   searchQuery: string;
-  setRoomTypeFilter: (value: string) => void;
+  // setRoomTypeFilter: (value: string) => void;
+  setPropertyTypeFilter: (value: string) => void;
   setSearchQuery: (value: string) => void;
 }
 
 const Search: FC<Props> = ({
-  roomTypeFilter,
+  // roomTypeFilter,
+  propertyTypeFilter,
   searchQuery,
-  setRoomTypeFilter,
-  setSearchQuery
+  // setRoomTypeFilter,
+  setPropertyTypeFilter,
+  setSearchQuery,
 }) => {
-
   const router = useRouter();
 
-  const handleRoomTypeChange = (event: ChangeEvent<HTMLSelectElement>) => {
-    setRoomTypeFilter(event.target.value)
-  }
+  // const handleRoomTypeChange = (event: ChangeEvent<HTMLSelectElement>) => {
+  //   setRoomTypeFilter(event.target.value);
+  // };
+
+  const handlePropertyTypeChange = (event: ChangeEvent<HTMLSelectElement>) => {
+    setPropertyTypeFilter(event.target.value);
+  };
 
   const handleSearchQueryChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setSearchQuery(event.target.value)
-  }
+    setSearchQuery(event.target.value);
+  };
 
   const handleFilterClick = () => {
-    router.push(`/rooms?roomType=${roomTypeFilter}&searchQuery=${searchQuery}`)
-  }
+    router.push(
+      `/properties?propertyType=${propertyTypeFilter}&propertyType=${propertyTypeFilter}&searchQuery=${searchQuery}`
+    );
+  };
 
   return (
-    <section className="bg-tertiary-light px-4 py-6 rounded-lg">
-      <div className="container mx-auto flex gap4 flex-wrap justify-between items-center">
-        <div className="w-full md:w-1/3 lg:w-auto mb-4 md:mb-0">
-          <label className="block text-sm font-medium mb-2 text-black">
-            Room Type
-          </label>
-          <div className="relative">
-            <select
-              value={roomTypeFilter}
-              onChange={handleRoomTypeChange}
-              className="w-full px-4 py-2 capitalize rounded leading-tight dark:bg-black focus:outline-none">
-              <option value="All">All</option>
-              <option value="Basic">Basic</option>
-              <option value="Luxury">Luxury</option>
-              <option value="Suite">Suite</option>
-            </select>
+    <section className={styles.search}>
+      <Image
+        src="/images/search-bg.jpg" // Устанавливаем путь к изображению
+        alt="Background" // Добавляем альтернативный текст для изображения
+        width={1920} // Устанавливаем ширину изображения
+        height={1080} // Устанавливаем высоту изображения
+        className={styles.imageBg}
+      />
+      <div
+        className={styles.overlay}
+        
+      ></div>
+      <div className={`container ${styles.searchForm}`}>
+        <div className={styles.searchFormWrapper}>
+
+          <div className="w-full md:w-1/3 lg:w-auto mb-4 md:mb-0">
+            <label className="block text-sm font-medium mb-2 text-white">
+              Property Type
+            </label>
+            <div className="relative">
+              <select
+                value={propertyTypeFilter}
+                onChange={handlePropertyTypeChange}
+                className="w-full px-4 py-2 capitalize rounded leading-tight dark:bg-black focus:outline-none"
+              >
+                {/* Опции для Property Type */}
+              </select>
+            </div>
           </div>
-        </div>
 
-        <div className="w-full md:w-1/3 lg:w-auto mb-4 md:mb-0">
-          <label className="block text-sm font-medium mb-2 text-black">
+          <div className="w-full md:w-1/3 lg:w-auto mb-4 md:mb-0">
+            <label className="block text-sm font-medium mb-2 text-white">
+              Name
+            </label>
+            <input
+              type="search"
+              id="search"
+              placeholder="Search..."
+              className="w-full px-4 py-3 rounded leading-tight dark:bg-black focus:outline-none placeholder:text-black dark:placeholder-white"
+              value={searchQuery}
+              onChange={handleSearchQueryChange}
+            />
+          </div>
+
+          <button
+            className="btn-primary"
+            type="button"
+            onClick={handleFilterClick}
+          >
             Search
-          </label>
-          <input
-            type="search"
-            id="search"
-            placeholder="Search..."
-            className="w-full px-4 py-3 rounded leading-tight dark:bg-black focus:outline-none placeholder:text-black dark:placeholder-white"
-            value={searchQuery}
-            onChange={handleSearchQueryChange}
-          />
+          </button>
         </div>
-
-        <button
-          className="btn-primary"
-          type="button"
-          onClick={handleFilterClick}
-        >Search</button>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default Search
+export default Search;

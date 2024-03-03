@@ -4,14 +4,14 @@ import { useState } from "react"
 
 const PageSearch = () => {
 
-  const [roomTypeFilter, setRoomTypeFilter] = useState("");
+  const [propertyTypeFilter, setPropertyTypeFilter] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
 
   return (
     <Search
-      roomTypeFilter={roomTypeFilter}
+      propertyTypeFilter={propertyTypeFilter}
       searchQuery={searchQuery}
-      setRoomTypeFilter={setRoomTypeFilter}
+      setPropertyTypeFilter={setPropertyTypeFilter}
       setSearchQuery={setSearchQuery}
     />
   )

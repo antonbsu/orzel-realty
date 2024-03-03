@@ -72,8 +72,9 @@ const Rooms = () => {
         roomTypeFilter={roomTypeFilter}
         searchQuery={searchQuery}
         setRoomTypeFilter={setRoomTypeFilter}
-        setSearchQuery={setSearchQuery}
-      />
+        setSearchQuery={setSearchQuery} propertyTypeFilter={""} setPropertyTypeFilter={function (value: string): void {
+          throw new Error("Function not implemented.");
+        } }      />
       <div className="flex mt-20 justify-between flex-wrap">
         {filteredRooms.map(room => (
           <RoomsCard key={room._id} room={room} />
