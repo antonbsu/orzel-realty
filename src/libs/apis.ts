@@ -1,21 +1,10 @@
 import axios from 'axios';
 
-import { CreateBookingDto, Room } from '@/models/room';
 import { Property } from '@/models/property';
 import {sanityClient} from './sanity';
 import * as queries from './sanityQueries';
 import { Navbar } from '@/models/navbar';
 import { Review } from '@/models/review';
-
-export async function getFeaturedRoom() {
-  const result = await sanityClient.fetch<Room>(
-    queries.getFeaturedRoomQuery,
-    {},
-    { cache: 'no-cache' }
-  );
-
-  return result;
-}
 
 export async function getNavbar() {
   const result = await sanityClient.fetch<Navbar>(
