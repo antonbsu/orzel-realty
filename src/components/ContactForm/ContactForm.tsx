@@ -163,28 +163,6 @@ const ContactForm: FC<ContactFormProps> = ({ onSubmitSuccess, onMessageVisibilit
             </div>
           </div>
 
-          {/* <div
-            className={styles.inputData}
-            data-aos="fade-up"
-            data-aos-duration="1200"
-          >
-            <Field
-              className={styles.input}
-              type="text"
-              id="phone"
-              name="phone"
-              onFocus={() => setFieldStates({ ...fieldStates, phone: true })}
-              onBlur={(e) => handleFieldChange('phone', e.target.value)}
-            />
-            <label
-              htmlFor="phone"
-              className={`${styles.label} ${fieldStates.phone || initialValues.phone ? styles.focused : ''}`}
-            >
-              Phone
-            </label>
-            <ErrorMessage name="phone" component="div" className={styles.errorMessage} />
-          </div> */}
-
           <div
             className={styles.inputData}
             data-aos="fade-up"
