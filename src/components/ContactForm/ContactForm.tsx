@@ -7,10 +7,10 @@ import axios from 'axios';
 import { motion, AnimatePresence } from 'framer-motion';
 import styles from './ContactForm.module.scss';
 
-type ContactFormProps = {
-  onSubmitSuccess: () => void;
-  onMessageVisibility: (isVisible: boolean) => void;
-}
+// type ContactFormProps = {
+//   onSubmitSuccess: () => void;
+//   onMessageVisibility: (isVisible: boolean) => void;
+// }
 
 type FormValues = {
   name: string;
@@ -40,7 +40,7 @@ const validationSchema = Yup.object({
   message: Yup.string().required('Required'),
 });
 
-const ContactForm: FC<ContactFormProps> = ({ onSubmitSuccess, onMessageVisibility }) => {
+const ContactForm = () => {
 
   const [values, setValues] = useState<FormValues>(initialValues);
 
@@ -73,14 +73,14 @@ const ContactForm: FC<ContactFormProps> = ({ onSubmitSuccess, onMessageVisibilit
       setIsMessageSent(true);
       setIsMessageVisible(true);
 
-      if (isMessageSent) {
-        onSubmitSuccess();
-      }
+      // if (isMessageSent) {
+      //   onSubmitSuccess();
+      // }
 
-      setTimeout(() => {
-        setIsMessageVisible(false);
-        onMessageVisibility(false);
-      }, 5000);
+      // setTimeout(() => {
+      //   setIsMessageVisible(false);
+      //   onMessageVisibility(false);
+      // }, 5000);
     } catch (error) {
       console.error('Error submitting form:', error);
     }
