@@ -1,32 +1,24 @@
 'use client';
 import { useRouter } from "next/navigation";
 import { ChangeEvent, FC } from "react";
-
-import styles from "./Search.module.scss";
 import Image from "next/image";
+import styles from "./Search.module.scss";
+import { propertyTypes } from "../../../schemaTypes/property";
 
-interface Props {
-  // roomTypeFilter: string;
+type Props = {
   propertyTypeFilter: string;
   searchQuery: string;
-  // setRoomTypeFilter: (value: string) => void;
   setPropertyTypeFilter: (value: string) => void;
   setSearchQuery: (value: string) => void;
 }
 
 const Search: FC<Props> = ({
-  // roomTypeFilter,
   propertyTypeFilter,
   searchQuery,
-  // setRoomTypeFilter,
   setPropertyTypeFilter,
   setSearchQuery,
 }) => {
   const router = useRouter();
-
-  // const handleRoomTypeChange = (event: ChangeEvent<HTMLSelectElement>) => {
-  //   setRoomTypeFilter(event.target.value);
-  // };
 
   const handlePropertyTypeChange = (event: ChangeEvent<HTMLSelectElement>) => {
     setPropertyTypeFilter(event.target.value);
@@ -38,7 +30,7 @@ const Search: FC<Props> = ({
 
   const handleFilterClick = () => {
     router.push(
-      `/properties?propertyType=${propertyTypeFilter}&propertyType=${propertyTypeFilter}&searchQuery=${searchQuery}`
+      `/properties?propertyType=${propertyTypeFilter}&searchQuery=${searchQuery}`
     );
   };
 
@@ -68,7 +60,12 @@ const Search: FC<Props> = ({
                 onChange={handlePropertyTypeChange}
                 className="w-full px-4 py-2 capitalize rounded leading-tight dark:bg-black focus:outline-none"
               >
-                {/* Опции для Property Type */}
+                <option value=""></option>
+                  {propertyTypes.map((propertyType) => (
+                    <option key={propertyType.value} value={propertyType.value}>
+                      {propertyType.title}
+                    </option>
+                  ))}
               </select>
             </div>
           </div>

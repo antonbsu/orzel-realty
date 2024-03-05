@@ -1,6 +1,6 @@
 import { defineField } from "sanity";
 
-const propertyTypes = [
+export const propertyTypes = [
   { title: 'Mieszkanie', value: 'Mieszkanie' },
   { title: 'Kawalerka', value: 'Kawalerka' },
   { title: 'Dom', value: 'Dom' },
@@ -14,14 +14,14 @@ const propertyTypes = [
   
 ]
 
-const propertyPurpose = [
+export const propertyPurpose = [
   { title: 'Sprzedaż', value: 'Sprzedaż' },
   { title: 'Wynajem', value: 'Wynajem' },
   { title: 'Dzierżawa', value: 'Dzierżawa' },
   { title: 'Inwestycja', value: 'Inwestycja' },
 ]
 
-const propertyType = [
+export const propertyType = [
   { title: 'Mieszkalny', value: 'Mieszkalny' },
   { title: 'Komercyjny', value: 'Komercyjny' },
 
@@ -94,13 +94,6 @@ const property = {
       type: 'text',
       validation: Rule => Rule.required().min(100).error('Minimum 100 characters'),
     }),
-    // defineField({
-    //   name: 'discount',
-    //   title: 'Discount',
-    //   type: 'number',
-    //   initialValue: 0,
-    //   validation: Rule => Rule.min(0),
-    // }),
     defineField({
       name: 'type',
       title: 'Type',
@@ -190,12 +183,6 @@ const property = {
       title: 'Parking',
       type: 'boolean',
     }),
-    // defineField({
-    //   name: 'isFeatured',
-    //   title: 'Is Featured',
-    //   type: 'boolean',
-    //   initialValue: false,
-    // }),
     // defineField({
     //   name: 'isBooked',
     //   title: 'Zarezerwowany',

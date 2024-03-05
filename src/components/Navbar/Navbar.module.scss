@@ -53,11 +53,58 @@
 .menuItem {
   position: relative;
   cursor: pointer;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.menuItemLabel {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.menuItemLink {
+  font-size: clamp(0.75rem, 0.682rem + 0.34vw, 0.938rem);
+  font-weight: 500;
+  text-transform: uppercase;
+  color: #fff;
+  transition: all ease-in-out 0.2s;
+
+  &::after {
+    content: "";
+    display: block;
+    width: 0;
+    height: 1px;
+    background-color: #fff;
+    transition: all ease-in-out 0.2s;
+  }
+
+    &:hover {
+      @media (min-width: 768px) {
+
+        &::after {
+          width: 100%;
+        }
+      }
+    }
 }
 
 .subMenu {
   position: absolute;
+  top: 50px;
+}
 
+.subLink {
+  display: block;
+  padding: 10px 20px;
+  color: #fff;
+  text-decoration: none;
+  background-color: #351949;
+  transition: all ease-in-out 0.2s;
+
+  &:hover {
+    background-color: #48368d;
+  }
 }
 
 .burgerIcon {

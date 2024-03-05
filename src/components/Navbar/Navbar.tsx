@@ -3,8 +3,10 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { IoIosArrowDown } from "react-icons/io";
 import { getNavbar } from "@/libs/apis";
 import { urlFor } from "@/libs/sanity";
+import { motion, AnimatePresence } from 'framer-motion';
 import { Navbar as NavbarType } from "@/models/navbar";
 import styles from "./Navbar.module.scss";
 
@@ -80,34 +82,61 @@ const Navbar = () => {
 
           {/* Navigation Menu */}
           {(isMobile && isMenuOpen) || !isMobile ? (
-            <nav className={`${styles.navbar} ${isMenuOpen && styles.open}`}>
+            <motion.nav
+              className={`${styles.navbar} ${isMenuOpen && styles.open}`}
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+            >
               <ul className={styles.menuItems}>
                 {navbarData.menuItems.map((menuItem, index) => (
                   <li key={index} className={styles.menuItem} onClick={() => toggleSubMenu(menuItem.label)}>
                     {menuItem.subMenu ? (
-                      <span>{menuItem.label}</span>
+                      <div className={styles.menuItemLabel}>
+                        <span>{menuItem.label}</span>
+                        <IoIosArrowDown size="1.2rem" />
+                      </div>
                     ) : (
-                      <Link href={menuItem.link}>
+                        <Link
+                          href={menuItem.link}
+                          className={styles.menuItemLink}
+                        >
                         {menuItem.label}
                       </Link>
                     )}
 
                     {/* Submenu */}
-                    {menuItem.subMenu && openSubMenu === menuItem.label && (
-                      <ul className={styles.subMenu}>
-                        {menuItem.subMenu.map((subMenuItem, subIndex) => (
-                          <li key={subIndex} className={styles.subMenuItem}>
-                            <Link href={subMenuItem.subLink}>
-                              {subMenuItem.subLabel}
-                            </Link>
-                          </li>
-                        ))}
-                      </ul>
-                    )}
+                    <AnimatePresence>
+                      {menuItem.subMenu && openSubMenu === menuItem.label && (
+                        <motion.ul
+                          className={styles.subMenu}
+                          initial={{ opacity: 0, y: -10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: -10 }}
+                        >
+                          {menuItem.subMenu.map((subMenuItem, subIndex) => (
+                            <motion.li
+                              key={subIndex}
+                              className={styles.subMenuItem}
+                              initial={{ opacity: 0, x: -10 }}
+                              animate={{ opacity: 1, x: 0 }}
+                              exit={{ opacity: 0, x: -10 }}
+                            >
+                              <Link
+                                className={styles.subLink}
+                                href={subMenuItem.subLink}
+                              >
+                                {subMenuItem.subLabel}
+                              </Link>
+                            </motion.li>
+                          ))}
+                        </motion.ul>
+                      )}
+                     </AnimatePresence>
                   </li>
                 ))}
               </ul>
-            </nav>
+            </motion.nav>
           ) : null}
         </div>
 
