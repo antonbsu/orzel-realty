@@ -37,7 +37,7 @@ const Reviews = () => {
   return (
     <section>
       <div className="container">
-        <h2 className="h2">Reviews</h2>
+        <h2 className="h2">Opinie</h2>
         <Swiper
           loop={true}
           modules={[Navigation, EffectCoverflow]}

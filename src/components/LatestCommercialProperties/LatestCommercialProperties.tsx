@@ -25,7 +25,7 @@ const LatestCommercialProperties = () => {
 
   return (
     <section className={styles.latestCommercialProperties}>
-      <h2 className="h2">Commercial Properties</h2>
+      <h2 className="h2">Nieruchomość komercyjna</h2>
       <ul className={styles.latestCommercialPropertiesWrapper}>
         {latestCommercialProperties.map((property) => (
           <li key={property._id}>

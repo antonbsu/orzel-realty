@@ -25,7 +25,7 @@ const LatestProperties = () => {
   return (
     <section className={styles.latestProperties}>
       <div className="container">
-        <h2 className="h2">Latest Properties</h2>
+        <h2 className="h2">Najnowsze oferty</h2>
         <div>
           <ul className={styles.latestPropertiesWrapper}>
             {latestProperties.map((property) => (

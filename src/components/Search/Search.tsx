@@ -52,7 +52,7 @@ const Search: FC<Props> = ({
 
           <div className="w-full md:w-1/3 lg:w-auto mb-4 md:mb-0">
             <label className="block text-sm font-medium mb-2 text-white">
-              Property Type
+              {/* Rodzaj */}
             </label>
             <div className="relative">
               <select
@@ -60,7 +60,7 @@ const Search: FC<Props> = ({
                 onChange={handlePropertyTypeChange}
                 className="w-full px-4 py-2 capitalize rounded leading-tight dark:bg-black focus:outline-none"
               >
-                <option value=""></option>
+                <option value="">Rodzaj</option>
                   {propertyTypes.map((propertyType) => (
                     <option key={propertyType.value} value={propertyType.value}>
                       {propertyType.title}
@@ -72,12 +72,12 @@ const Search: FC<Props> = ({
 
           <div className="w-full md:w-1/3 lg:w-auto mb-4 md:mb-0">
             <label className="block text-sm font-medium mb-2 text-white">
-              Name
+              
             </label>
             <input
               type="search"
               id="search"
-              placeholder="Search..."
+              placeholder="Tytuł..."
               className="w-full px-4 py-3 rounded leading-tight dark:bg-black focus:outline-none placeholder:text-black dark:placeholder-white"
               value={searchQuery}
               onChange={handleSearchQueryChange}
@@ -85,11 +85,11 @@ const Search: FC<Props> = ({
           </div>
 
           <button
-            className="btn-primary"
+            className={styles.searchButton}
             type="button"
             onClick={handleFilterClick}
           >
-            Search
+            Szukaj
           </button>
         </div>
       </div>
