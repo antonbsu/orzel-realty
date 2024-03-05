@@ -25,7 +25,7 @@ const LatestProperty: React.FC<LatestPropertyProps> = ({ property }) => {
       <div className={styles.latestPropertyData}>
         <h3 className={styles.latestPropertyTitle}>{property.name}</h3>
         <p className={styles.latestPropertyLocation}>{property.city}, {property.district}</p>
-        <p className={styles.latestPropertyPrice}>{property.price} zł</p>
+        <p className={styles.latestPropertyPrice}>{property.price.toLocaleString('pl-PL')} zł</p>
       </div>
       {/* Добавьте другие свойства, которые вы хотите отобразить */}
     </Link>

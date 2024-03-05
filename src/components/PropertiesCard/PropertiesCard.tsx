@@ -38,7 +38,7 @@ const PropertiesCard: FC<Props> = (props) => {
         <p className="pt-3 pb-6">{description.slice(0, 100)}...</p>
         <Link
           href={`/properties/${slug.current}`}
-          className="bg-primary inline-block text-center w-full py-4 rounded-xl text-white font-bold hover:-translate-y-2 hover:shadow-lg transition-all duration-500"
+          className={styles.link}
         >
           {/* {isBooked ? "Booked" : "Book Now"} */}
           Pokaż

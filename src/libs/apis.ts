@@ -51,6 +51,46 @@ export async function getLatestCommercial() {
   return result;
 }
 
+export async function getLivingRent() {
+  const result = await sanityClient.fetch<Property[]>(
+    queries.getLivingRentQuery,
+    {},
+    { cache: 'no-cache' }
+  );
+
+  return result;
+}
+
+export async function getLivingSale() {
+  const result = await sanityClient.fetch<Property[]>(
+    queries.getLivingSaleQuery,
+    {},
+    { cache: 'no-cache' }
+  );
+
+  return result;
+}
+
+export async function getCommercialRent() {
+  const result = await sanityClient.fetch<Property[]>(
+    queries.getCommercialRentQuery,
+    {},
+    { cache: 'no-cache' }
+  );
+
+  return result;
+}
+
+export async function getCommercialSale() {
+  const result = await sanityClient.fetch<Property[]>(
+    queries.getCommercialSaleQuery,
+    {},
+    { cache: 'no-cache' }
+  );
+
+  return result;
+}
+
 export async function getReviews() {
   const result = await sanityClient.fetch<Review[]>(
     queries.getReviewsQuery,

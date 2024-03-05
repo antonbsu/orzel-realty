@@ -107,6 +107,50 @@ export const getLatestCommercialQuery = groq`*[_type == "property" && propertyTy
     isBooked
 }`;
 
+export const getLivingRentQuery = groq`*[_type == "property" && propertyType == "Mieszkalny" && purpose == "Wynajem" ]  | order(_createdAt desc) {
+    _id,
+    name,
+    slug,
+    images,
+    city,
+    district,
+    price,
+    isBooked
+}`;
+
+export const getLivingSaleQuery = groq`*[_type == "property" && propertyType == "Mieszkalny" && purpose == "Sprzedaż" ]  | order(_createdAt desc) {
+    _id,
+    name,
+    slug,
+    images,
+    city,
+    district,
+    price,
+    isBooked
+}`;
+
+export const getCommercialRentQuery = groq`*[_type == "property" && propertyType == "Komercyjny" && purpose == "Wynajem" ]  | order(_createdAt desc) {
+    _id,
+    name,
+    slug,
+    images,
+    city,
+    district,
+    price,
+    isBooked
+}`;
+
+export const getCommercialSaleQuery = groq`*[_type == "property" && propertyType == "Komercyjny" && purpose == "Sprzedaż" ]  | order(_createdAt desc) {
+    _id,
+    name,
+    slug,
+    images,
+    city,
+    district,
+    price,
+    isBooked
+}`;
+
 export const getReviewsQuery = groq`*[_type == "review"] {
     _id,
     personName,
@@ -115,40 +159,3 @@ export const getReviewsQuery = groq`*[_type == "review"] {
     content
 
 }`;
-
-// export const getUserBookingsQuery = groq`*[_type == "booking" && user._ref == $userId] {
-//     _id,
-//     hotelRoom -> {
-//         _id,
-//         name,
-//         slug,
-//         price
-//     },
-//     checkinDate,
-//     checkoutDate,
-//     numberOfDays,
-//     adults,
-//     children,
-//     totalPrice,
-//     discount
-// }`;
-
-// export const getUserDataQuery = groq`*[_type == 'user' && _id == $userId][0] {
-//     _id,
-//     name,
-//     email,
-//     isAdmin,
-//     about,
-//     _createdAt,
-//     image,
-// }`;
-
-// export const getRoomReviewsQuery = groq`*[_type == "review" && hotelRoom._ref == $roomId] {
-//     _createdAt,
-//     _id,
-//     text,
-//     user -> {
-//         name
-//     },
-//     userRating
-// }`;
