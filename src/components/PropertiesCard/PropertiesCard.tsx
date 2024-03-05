@@ -12,7 +12,7 @@ interface Props {
 
 const PropertiesCard: FC<Props> = (props) => {
   const {
-    property: { images, name, price, type, description, slug, isBooked },
+    property: { images, name, price, type, description, slug },
   } = props;
 
   // Если у вас есть функция для формирования URL изображения, вы можете использовать ее здесь
@@ -32,7 +32,7 @@ const PropertiesCard: FC<Props> = (props) => {
       <div className="p-4 bg-white">
         <div className="flex justify-between text-xl font-semibold">
           <p>{name}</p>
-          <p>${price}</p>
+          <p>{price.toLocaleString('pl-PL')} zł</p>
         </div>
         <p className="pt-2 text-xs">{type}</p>
         <p className="pt-3 pb-6">{description.slice(0, 100)}...</p>
@@ -40,7 +40,8 @@ const PropertiesCard: FC<Props> = (props) => {
           href={`/properties/${slug.current}`}
           className="bg-primary inline-block text-center w-full py-4 rounded-xl text-white font-bold hover:-translate-y-2 hover:shadow-lg transition-all duration-500"
         >
-          {isBooked ? "Booked" : "Book Now"}
+          {/* {isBooked ? "Booked" : "Book Now"} */}
+          Pokaż
         </Link>
       </div>
     </div>

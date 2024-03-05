@@ -1,27 +1,21 @@
 'use client';
 
 import useSWR from 'swr';
-import { useState } from 'react';
-import axios from 'axios';
-
-import { getProperty } from '@/libs/apis';
-import LoadingSpinner from '../../loading';
+import toast from 'react-hot-toast';
+import { FaArrowsToCircle, FaLocationDot, FaHouseCircleCheck, FaCoins, FaElevator, FaMoneyBill, FaBoxArchive, FaChalkboard, FaSquareParking } from "react-icons/fa6";
 // import PropertyPhotoGallery from '@/components/PropertyPhotoGallery/PropertyPhotoGallery';
 // import BookPropertyCta from '@/components/BookPropertyCta/BookPropertyCta';
 import HotelPhotoGallery from '@/components/HotelPhotoGallery/HotelPhotoGallery';
-import toast from 'react-hot-toast';
+import LoadingSpinner from '../../loading';
+import { getProperty } from '@/libs/apis';
 
 import styles from "../../../PageStyles.module.scss";
+import ContactForm from '@/components/ContactForm/ContactForm';
 
 const PropertyPage = (props: { params: { slug: string } }) => {
   const {
     params: { slug },
   } = props;
-
-  const [checkinDate, setCheckinDate] = useState<Date | null>(null);
-  const [checkoutDate, setCheckoutDate] = useState<Date | null>(null);
-  const [adults, setAdults] = useState(1);
-  const [children, setChildren] = useState(0);
 
   const fetchProperty = async () => getProperty(slug);
 
@@ -33,124 +27,125 @@ const PropertyPage = (props: { params: { slug: string } }) => {
 
   if (!property) return <LoadingSpinner />;
 
-  const calcMinCheckoutDate = () => {
-    if (checkinDate) {
-      const nextDay = new Date(checkinDate);
-      nextDay.setDate(nextDay.getDate() + 1);
-      return nextDay;
-    }
-    return null;
-  };
-
-  const handleBookNowClick = async () => {
-    if (!checkinDate || !checkoutDate)
-      return toast.error('Please provide checkin / checkout date');
-
-    if (checkinDate > checkoutDate)
-      return toast.error('Please choose a valid checkin period');
-
-    const numberOfDays = calcNumDays();
-
-    const propertySlug = property.slug.current;
-
-    try {
-      const { data: bookingDetails } = await axios.post('/api/book-property', {
-        checkinDate,
-        checkoutDate,
-        adults,
-        children,
-        numberOfDays,
-        propertySlug,
+  const scrollToSectionMap = () => {
+    // Найдите элемент с указанным id
+    const sectionElement = document.getElementById('map');
+    if (sectionElement) {
+      // Вычислите позицию элемента относительно верхней части страницы
+      const offset = sectionElement.offsetTop;
+      // Выполните плавный скролл
+      window.scrollTo({
+        top: offset,
+        behavior: 'smooth',
       });
-
-      // Handle booking confirmation or redirection to payment gateway if needed
-
-      toast.success(`Property booked successfully! Booking ID: ${bookingDetails.bookingId}`);
-    } catch (error) {
-      console.error('Error: ', error);
-      toast.error('An error occurred while booking the property');
     }
-  };
-
-  const calcNumDays = () => {
-    if (!checkinDate || !checkoutDate) return;
-    const timeDiff = checkoutDate.getTime() - checkinDate.getTime();
-    const noOfDays = Math.ceil(timeDiff / (24 * 60 * 60 * 1000));
-    return noOfDays;
   };
 
   return (
-    <section className={styles.property}>
-      <HotelPhotoGallery photos={property.images} />
-
-      <div className='container mx-auto mt-20'>
-        <div className='md:grid md:grid-cols-12 gap-10 px-3'>
-          <div className='md:col-span-8 md:w-full'>
-            <div>
-              <h2 className='font-bold text-left text-lg md:text-2xl'>
-                {property.name} ({property.area} sq. m)
-              </h2>
-              <div className='mb-11'>
-                <h2 className='font-bold text-3xl mb-2'>Property Details</h2>
-                <p>City: {property.city}</p>
-                <p>District: {property.district}</p>
-                <p>Price: {property.price}</p>
-                <p>Developer: {property.developer}</p>
-                <p>Short Description: {property.shortDescription}</p>
-                <p>Phone: {property.phone}</p>
-                <p>Type: {property.type}</p>
-                <p>Purpose: {property.purpose}</p>
-                <p>Property Type: {property.propertyType}</p>
-                <p>Area: {property.area} sq. m</p>
-                <p>Rooms: {property.rooms}</p>
-                <p>Floor: {property.floor}</p>
-                <p>Monthly Rent: {property.monthlyRent}</p>
-                <p>Deposit: {property.deposit}</p>
-                <p>Furnished: {property.furnished ? 'Yes' : 'No'}</p>
-                <p>Balcony / Terrace / Garden: {property.balconyOrTerrace}</p>
-                <p>Garden: {property.garden ? 'Yes' : 'No'}</p>
-                <p>Parking: {property.parking ? 'Yes' : 'No'}</p>
-                {/* Add more details as needed */}
-              </div>
-              <div className='mb-11'>
-                <h2 className='font-bold text-3xl mb-2'>Location</h2>
-                <p>{property.address}</p>
-              </div>
-              <div className='mb-11'>
-                <h2 className='font-bold text-3xl mb-2'>Description</h2>
-                <p>{property.description}</p>
-              </div>
-              <div className='w-full h-[400px]'>
-                <iframe
-                  className='w-full h-[400px]'
-                  loading='lazy'
-                  src={`https://maps.google.com/maps?q=${property.location.lat},${property.location.lng}&t=m&z=16&output=embed&iwloc=near`}
-                  title={property.name}
-                  aria-label={property.name}
-                ></iframe>
-    </div>
-            </div>
+    <div className={styles.property}>
+      <div className="container">
+        <div className={styles.wrapper}>
+          <div className={styles.mainContent}>
+            <h1 className={styles.propertyTitle}>
+              {property.name} ({property.area} m. kw.)
+            </h1>
+            <HotelPhotoGallery photos={property.images} />
+            <section className={styles.propertyDetails}>
+                <div className='md:col-span-8 md:w-full'>
+                  <div>
+                    <div className='mb-11'>
+                    <a className={styles.scrollToMap} onClick={() => scrollToSectionMap()}>
+                      <FaLocationDot fontSize="0.8rem" /> {property.address}, {property.district}, {property.city}
+                    </a>
+                    <div className={styles.propertyData}>
+                      <FaArrowsToCircle fontSize="1rem" color="#48368d" />
+                      <p className={styles.propertyDataText}>
+                        Powierzchnia: <span className={styles.data}>{property.area} m²</span>
+                      </p>
+                    </div>
+                    <div className={styles.propertyData}>
+                      <FaHouseCircleCheck fontSize="1rem" color="#48368d" />
+                      <p className={styles.propertyDataText}>
+                        Liczba pokoi: <span className={styles.data}>{property.rooms}</span>
+                      </p>
+                    </div>
+                    <div className={styles.propertyData}>
+                      <FaElevator fontSize="1rem" color="#48368d" />
+                      <p className={styles.propertyDataText}> 
+                        Piętro: <span className={styles.data}>{property.floor}</span>
+                      </p>
+                    </div>
+                    {/* {property.monthlyRent && (
+                      <div className={styles.propertyData}>
+                        <FaCoins fontSize="1rem" color="#48368d" />
+                        <p className={styles.propertyDataText}> 
+                          Miesięczna renta: <span className={styles.data}>{property.monthlyRent}</span>
+                        </p>
+                      </div>
+                    )} */}
+                    
+                    <div className={styles.propertyData}>
+                      <FaMoneyBill fontSize="1rem" color="#48368d" />
+                      <p className={styles.propertyDataText}>
+                        Kaucja: <span className={styles.data}>{property.deposit?.toLocaleString('pl-PL')}</span>
+                      </p>
+                    </div>
+                    <div className={styles.propertyData}>
+                      <FaBoxArchive fontSize="1rem" color="#48368d" />
+                      <p className={styles.propertyDataText}>
+                        Umeblowany: <span className={styles.data}>{property.furnished ? 'tak' : 'nie'}</span>
+                      </p>
+                    </div>
+                    <div className={styles.propertyData}>
+                      <FaChalkboard fontSize="1rem" color="#48368d" />
+                      <p className={styles.propertyDataText}>
+                        Balkon / Taras / Ogród: <span className={styles.data}>{property.balconyOrTerrace}</span>
+                      </p>
+                    </div>
+                    <div className={styles.propertyData}>
+                      <FaSquareParking fontSize="1rem" color="#48368d" />
+                      <p className={styles.propertyDataText}>
+                        Parking: <span className={styles.data}>{property.parking ? 'tak' : 'nie'}</span>
+                      </p>
+                    </div>
+                    </div>
+                    <div className='mb-11'>
+                      <h2 className={styles.propertySubtitle}>Opis</h2>
+                      <p>{property.description}</p>
+                    </div>
+                    <section id='map' className='w-full h-[400px]'>
+                      <iframe
+                        className='w-full h-[400px]'
+                        loading='lazy'
+                        src={`https://maps.google.com/maps?q=${property.location.lat},${property.location.lng}&t=m&z=16&output=embed&iwloc=near`}
+                        title={property.name}
+                        aria-label={property.name}
+                      ></iframe>
+                    </section>
+                  </div>
+                </div>
+            </section>
           </div>
-
-          {/* <div className='md:col-span-4 rounded-xl shadow-lg dark:shadow dark:shadow-white sticky top-10 h-fit overflow-auto'>
-            <BookPropertyCta
-              price={property.price}
-              checkinDate={checkinDate}
-              setCheckinDate={setCheckinDate}
-              checkoutDate={checkoutDate}
-              setCheckoutDate={setCheckoutDate}
-              calcMinCheckoutDate={calcMinCheckoutDate}
-              adults={adults}
-              children={children}
-              setAdults={setAdults}
-              setChildren={setChildren}
-              isBooked={property.isBooked}
-              handleBookNowClick={handleBookNowClick}
-            />
-          </div> */}
-        </div>
+          <div className={styles.order}>
+           <p className={styles.price}>{property.price.toLocaleString('pl-PL')} zł</p>
+            <div className={styles.mb}>
+              <p className={styles.propertyDataText}>
+                Deweloper: <span className={styles.data}>{property.developer}</span>
+              </p>
+            </div>
+            <div className={styles.mb}>
+              <p>{property.shortDescription}</p>
+            </div>
+            <div className={styles.mb}>
+              <p className={styles.propertyDataText}>
+                Zadzwoń teraz: <span className={styles.data}>{property.phone}</span>
+              </p>
+            </div>
+            <ContactForm />
+          </div>
       </div>
-    </section>
+      </div>
+    </div>
   );
 };
 

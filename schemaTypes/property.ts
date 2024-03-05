@@ -1,20 +1,30 @@
 import { defineField } from "sanity";
 
 const propertyTypes = [
-  { title: 'Flat', value: 'flat'},
-  { title: 'House', value: 'house' },
-  { title: 'Room', value: 'room' },
-  { title: 'Office', value: 'office' },
+  { title: 'Mieszkanie', value: 'Mieszkanie' },
+  { title: 'Kawalerka', value: 'Kawalerka' },
+  { title: 'Dom', value: 'Dom' },
+  { title: 'Pokoj', value: 'Pokoj' },
+  { title: 'Działka', value: 'Działka' },
+  { title: 'Garaż', value: 'Garaż' },
+  { title: 'Magazyn', value: 'Magazyn' },
+  { title: 'Biuro', value: 'Biuro' },
+  { title: 'Sklep', value: 'Sklep' },
+  { title: 'Budynek', value: 'Budynek' },
+  
 ]
 
 const propertyPurpose = [
-  { title: 'Rent', value: 'rent'},
-  { title: 'Sale', value: 'sale' },
+  { title: 'Sprzedaż', value: 'Sprzedaż' },
+  { title: 'Wynajem', value: 'Wynajem' },
+  { title: 'Dzierżawa', value: 'Dzierżawa' },
+  { title: 'Inwestycja', value: 'Inwestycja' },
 ]
 
 const propertyType = [
-  { title: 'Living', value: 'living' },
-  { title: 'Commercial', value: 'commercial' },
+  { title: 'Mieszkalny', value: 'Mieszkalny' },
+  { title: 'Komercyjny', value: 'Komercyjny' },
+
 ]
 
 const property = {
@@ -165,38 +175,33 @@ const property = {
     }),
     defineField({
       name: 'balconyOrTerrace',
-      title: 'Balcony / Terrace / Garden',
+      title: 'Balkon / Terrace / Garden',
       type: 'string',
       options: {
         list: [
-          { title: 'Balcony', value: 'balcony' },
-          { title: 'Terrace', value: 'terrace' },
-          { title: 'Garden', value: 'garden' },
+          { title: 'Balkon', value: 'Balkon' },
+          { title: 'Taras', value: 'Taras' },
+          { title: 'Ogród', value: 'Ogród' },
         ],
       },
-    }),
-    defineField({
-      name: 'garden',
-      title: 'Garden',
-      type: 'boolean',
     }),
     defineField({
       name: 'parking',
       title: 'Parking',
       type: 'boolean',
     }),
-    defineField({
-      name: 'isFeatured',
-      title: 'Is Featured',
-      type: 'boolean',
-      initialValue: false,
-    }),
-    defineField({
-      name: 'isBooked',
-      title: 'Is Booked',
-      type: 'boolean',
-      initialValue: false,
-    }),
+    // defineField({
+    //   name: 'isFeatured',
+    //   title: 'Is Featured',
+    //   type: 'boolean',
+    //   initialValue: false,
+    // }),
+    // defineField({
+    //   name: 'isBooked',
+    //   title: 'Zarezerwowany',
+    //   type: 'boolean',
+    //   initialValue: false,
+    // }),
   ],
 }
 

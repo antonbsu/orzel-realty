@@ -26,6 +26,10 @@
   @apply text-sm md:text-base;
 }
 
+body {
+  background-color: #f3f5f7;
+}
+
 .container {
   max-width: 1220px;
   padding: 0 10px;

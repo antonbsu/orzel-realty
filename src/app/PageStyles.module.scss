@@ -15,4 +15,96 @@
 
 .property {
   margin-top: 120px;
+  background-color: #f3f5f7;
+}
+
+.wrapper {
+  
+  @media screen and (min-width: 768px){
+    display: flex;
+    gap: clamp(1.25rem, 0.909rem + 1.7vw, 2.188rem);
+  }
+}
+
+.mainContent {
+  background-color: #fff;
+  padding: clamp(1.25rem, 1.023rem + 1.14vw, 1.875rem);
+  border-radius: 10px;
+  
+  @media screen and (min-width: 768px){
+    flex: 2;
+  }
+}
+
+.propertyTitle {
+  font-size: clamp(1.875rem, 1.648rem + 1.14vw, 2.5rem);
+  font-weight: 700;
+  color: #48368d;
+  margin-bottom: clamp(1.875rem, 1.648rem + 1.14vw, 2.5rem);
+
+}
+
+// 48368d
+
+.order {
+  background-color: #fff;
+  padding: clamp(1.25rem, 1.023rem + 1.14vw, 1.875rem);
+  border-radius: 10px;
+  height: fit-content;
+  
+  @media screen and (min-width: 768px){
+    flex: 1;
+    position: sticky;
+    top: 120px;
+  }
+}
+
+.scrollToMap {
+  color: #48368d;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.3rem;
+  text-decoration: underline;
+  margin-bottom: 1rem;
+}
+
+.propertyData {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.propertyDataText {
+  color: rgb(64, 64, 65);
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+.data {
+  color: rgb(64, 64, 65);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.propertySubtitle {
+  font-size: clamp(1.25rem, 1.023rem + 1.14vw, 1.875rem);
+  font-weight: 700;
+  color: #48368d;
+  margin-bottom: clamp(1.875rem, 1.648rem + 1.14vw, 2.5rem);
+}
+
+.price {
+  font-size: clamp(1.25rem, 1.023rem + 1.14vw, 1.875rem);
+  font-weight: 700;
+  color: #48368d;
+  margin-bottom: clamp(1.875rem, 1.648rem + 1.14vw, 2.5rem);
+}
+
+.mb {
+  margin-bottom: 1rem;
 }

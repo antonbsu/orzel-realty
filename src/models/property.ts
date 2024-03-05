@@ -24,9 +24,9 @@ export type Property = {
   shortDescription?: string;
   phone: string;
   description: string;
-  type: 'flat' | 'house' | 'room' | 'office';
-  purpose: 'rent' | 'sale';
-  propertyType: 'living' | 'commercial';
+  type: 'Mieszkanie' | 'Kawalerka' | 'Dom' | 'Pokoj' | 'Działka' | 'Garaż' | 'Inne' | 'Działka' | 'Garaż' | 'Magazyn' | 'Biuro' | 'Sklep' | 'Budynek';
+  purpose: 'Sprzedaż' | 'Wynajem' | 'Dzierżawa' | 'Inwestycja';
+  propertyType: 'Mieszkalny' | 'Komercyjny';
   location: GeoPoint;
   address: string;
   area: number;
@@ -35,9 +35,9 @@ export type Property = {
   monthlyRent?: number;
   deposit?: number;
   furnished?: boolean;
-  balconyOrTerrace?: 'balcony' | 'terrace' | 'garden';
+  balconyOrTerrace?: 'Balkon' | 'Taras' | 'Ogród';
   garden?: boolean;
   parking?: boolean;
-  isFeatured: boolean;
-  isBooked: boolean;
+  // isFeatured: boolean;
+  // isBooked: boolean;
 };

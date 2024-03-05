@@ -43,10 +43,10 @@ const HotelPhotoGallery: FC<{ photos: ImageType[] }> = ({
 
   return (
     <section className={styles.photoGallery}>
-      <div className="container">
-        <div className="grid md:grid-cols-2 relative gap-5 px-3">
-          <div className="h-[540px] relative rounded-2xl overflow-hidden">
-            <div className="hidden md:flex justify-center items-center w-full h-full">
+      {/* <div className="container"> */}
+        <div className={styles.wrapper}>
+          <div className={styles.mainPhoto}>
+            <div className={styles.hiddenBlock}>
               <Image
                 src={urlFor(photos[0]).url()}
                 alt={`Room photo ${currentPhotoIndex + 1}`}
@@ -56,7 +56,7 @@ const HotelPhotoGallery: FC<{ photos: ImageType[] }> = ({
                 onClick={openModal.bind(this, 0)}
               />
             </div>
-            <div className="md:hidden flex justify-center items-center w-full h-full">
+            <div className={styles.mdHiddenBlock}>
               <Image
                 src={urlFor(photos[currentPhotoIndex]).url()}
                 alt={`Room photo ${currentPhotoIndex + 1}`}
@@ -80,7 +80,7 @@ const HotelPhotoGallery: FC<{ photos: ImageType[] }> = ({
             {displayPhotos.map((photo, index) => (
               <div
                 key={index}
-                className="cursor-pointer h-64 rounded-2xl overflow-hidden"
+                className="cursor-pointer h-[200px] rounded-2xl overflow-hidden"
               >
                 <Image
                   src={urlFor(photo).url()}
@@ -94,7 +94,7 @@ const HotelPhotoGallery: FC<{ photos: ImageType[] }> = ({
             ))}
             {remainingPhotosCount > 0 && (
               <div
-                className="cursor-pointer relative h-64 rounded-2xl overflow-hidden"
+                className="cursor-pointer relative h-[200px] rounded-2xl overflow-hidden"
                 onClick={openModal.bind(this, maximumVisiblePhotos)}
               >
                 <Image
@@ -143,7 +143,7 @@ const HotelPhotoGallery: FC<{ photos: ImageType[] }> = ({
             </div>
           )}
         </div>
-      </div>
+      {/* </div> */}
     </section>
   )
 }

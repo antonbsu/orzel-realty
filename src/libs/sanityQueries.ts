@@ -96,7 +96,7 @@ export const getLatestPropertiesQuery = groq`*[_type == "property"] | order(_cre
     isBooked
 }`
 
-export const getLatestCommercialQuery = groq`*[_type == "property" && propertyType == "commercial" ] | order(_createdAt desc)[0..2] {
+export const getLatestCommercialQuery = groq`*[_type == "property" && propertyType == "Komercyjny" ] | order(_createdAt desc)[0..2] {
     _id,
     name,
     slug,
