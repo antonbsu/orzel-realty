@@ -11,6 +11,7 @@ import { getProperty } from '@/libs/apis';
 
 import styles from "../../../PageStyles.module.scss";
 import ContactForm from '@/components/ContactForm/ContactForm';
+import Contact from '@/components/Contact/Contact';
 
 const PropertyPage = (props: { params: { slug: string } }) => {
   const {
@@ -141,7 +142,7 @@ const PropertyPage = (props: { params: { slug: string } }) => {
                 Zadzwoń teraz: <span className={styles.data}>{property.phone}</span>
               </p>
             </div>
-            <ContactForm />
+            <Contact />
           </div>
       </div>
       </div>
