@@ -48,3 +48,13 @@ body {
   color: #48368d;
   margin-bottom: clamp(1.875rem, 1.648rem + 1.14vw, 2.5rem);
 }
+
+.focused label {
+  transform: translateY(-1.5em);
+  font-size: 0.75em;
+}
+
+.focused-label {
+  transform: translateY(-1.5em);
+  font-size: 0.75em;
+}

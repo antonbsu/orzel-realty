@@ -1,0 +1,36 @@
+.inputWrapper {
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.label {
+  display: block;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  font-weight: 500;
+  // color: #333;
+  color: rgb(55 65 81 / 70%);
+  position: absolute;
+  top: 50%;
+  left: 12px;
+  transform: translateY(-50%);
+  transition: all 0.3s ease;
+  z-index: 1;
+  cursor: text; /* Add this line to make the label cursor text-like */
+}
+
+.inputField {
+  width: 100%;
+  padding: 12px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.inputWrapper:focus-within .label,
+.inputField:not(:placeholder-shown) + .label {
+  top: 5px;
+  font-size: 0.75rem;
+}

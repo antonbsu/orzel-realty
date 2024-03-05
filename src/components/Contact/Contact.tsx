@@ -4,6 +4,8 @@ import { FC } from 'react';
 import { useForm } from 'react-hook-form';
 import { sendEmail } from '@/utils/send-email';
 
+import styles from './Contact.module.scss';
+
 export type FormData = {
   name: string;
   email: string;
@@ -17,19 +19,20 @@ const Contact: FC = () => {
     sendEmail(data);
   }
 
+  const focusInput = (id: string) => {
+    document.getElementById(id)?.focus();
+  };
+
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <div className='mb-5'>
-        <label
-          htmlFor='name'
-          className='mb-3 block text-base font-medium text-black'
-        >
+      <div className={styles.inputWrapper} onClick={() => focusInput('name')}>
+        <label htmlFor='name' className={styles.label}>
           Full Name
         </label>
         <input
+          id='name'
           type='text'
-          placeholder='Full Name'
-          className='w-full rounded-md border border-gray-300 bg-white py-3 px-6 text-base font-medium text-gray-700 outline-none focus:border-purple-500 focus:shadow-md'
+          className={`${styles.inputField} w-full rounded-md`}
           {...register('name', { required: true })}
         />
       </div>

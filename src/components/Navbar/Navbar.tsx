@@ -135,6 +135,14 @@ const Navbar = () => {
                      </AnimatePresence>
                   </li>
                 ))}
+                <li>
+                  <Link
+                    className={styles.menuItemLink}
+                    href="tel:+48517351391"
+                  >
+                    517 351 391
+                  </Link>
+                </li>
               </ul>
             </motion.nav>
           ) : null}
