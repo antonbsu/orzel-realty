@@ -2,6 +2,7 @@ import { useRouter } from "next/navigation";
 import { ChangeEvent, FC, useState } from "react";
 import Image from "next/image";
 import styles from "./Search.module.scss";
+import Select from "react-select"
 import { propertyTypes, propertyPurpose } from "../../../schemaTypes/property";
 
 type Props = {
@@ -49,18 +50,16 @@ const Search: FC<Props> = ({
 }) => {
   const router = useRouter();
 
-  const handlePropertyTypeChange = (event: ChangeEvent<HTMLSelectElement>) => {
-    setPropertyTypeFilter(event.target.value);
+  const handlePropertyTypeChange = (selectedOption: any) => {
+    setPropertyTypeFilter(selectedOption ? selectedOption.value : "");
   };
 
   const handleSearchQueryChange = (event: ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(event.target.value);
   };
 
-  const handlePropertyPurposeChange = (
-    event: ChangeEvent<HTMLSelectElement>
-  ) => {
-    setPropertyPurposeFilter(event.target.value);
+  const handlePropertyPurposeChange = (selectedOption: any) => {
+    setPropertyPurposeFilter(selectedOption ? selectedOption.value : "");
   };
 
   const handlePropertyRoomsChange = (
@@ -112,131 +111,110 @@ const Search: FC<Props> = ({
       <div className={styles.overlay}></div>
       <div className={`container ${styles.searchForm}`}>
         <div className={styles.searchFormWrapper}>
-          <div className="w-full md:w-1/3 lg:w-auto mb-4 md:mb-0">
-            <label className="block text-sm font-medium mb-2 text-white">
-              Rodzaj
-            </label>
-            <div className="relative">
-              <select
-                value={propertyTypeFilter}
-                onChange={handlePropertyTypeChange}
-                className="w-full px-4 py-2 capitalize rounded leading-tight dark:bg-black focus:outline-none"
-              >
-                <option value="">Rodzaj</option>
-                {propertyTypes.map((propertyType) => (
-                  <option key={propertyType.value} value={propertyType.value}>
-                    {propertyType.title}
-                  </option>
-                ))}
-              </select>
+          <div className={styles.topFormPart}>
+            <div className={styles.sort}>
+              <div className="relative">
+                <Select
+                  value={propertyTypeFilter ? { value: propertyTypeFilter, label: propertyTypeFilter } : null}
+                  onChange={handlePropertyTypeChange}
+                  options={[
+                    { value: "", label: "Wybierać" },
+                    ...propertyTypes.map((propertyType) => ({ value: propertyType.value, label: propertyType.title })),
+                  ]}
+                  placeholder="Rodzaj"
+                />
+              </div>
+            </div>
+            <div className={styles.sort}>
+              <div className="relative">
+                <Select
+                  value={propertyPurposeFilter ? { value: propertyPurposeFilter, label: propertyPurposeFilter } : null}
+                  onChange={handlePropertyPurposeChange}
+                  options={[
+                    { value: "", label: "Wybierać" },
+                    ...propertyPurpose.map((purposeOption) => ({ value: purposeOption.value, label: purposeOption.title })),
+                  ]}
+                  placeholder="Cel"
+                />
+              </div>
+            </div>
+            <div className={styles.sort}>
+              <input
+                type="search"
+                id="search"
+                placeholder="Tytuł..."
+                className={styles.input}
+                value={searchQuery}
+                onChange={handleSearchQueryChange}
+              />
+            </div>
+            <button
+              className={styles.searchButton}
+              type="button"
+              onClick={handleFilterClick}
+            >
+              Szukaj
+            </button>
+          </div>
+          <div className={styles.bottomFormPart}>
+              <div className={styles.checkbox}>
+                <label className="block text-sm font-medium mb-2 text-white">
+                  Umeblowany
+                </label>
+                <input
+                  type="checkbox"
+                  checked={propertyFurnished || false}
+                  onChange={handlePropertyFurnishedChange}
+                />
+              </div>
+              <div className={styles.checkbox}>
+                <label className="block text-sm font-medium mb-2 text-white">
+                  Parking
+                </label>
+                <input
+                  type="checkbox"
+                  checked={propertyParking || false}
+                  onChange={handlePropertyParkingChange}
+                />
+              </div>
+            <div className={styles.sort}>
+              {/* <label className="block text-sm font-medium mb-2 text-white">
+                Комнаты
+              </label> */}
+              <input
+                type="number"
+                placeholder="Pokoje"
+                className={styles.input}
+                value={propertyRooms}
+                onChange={handlePropertyRoomsChange}
+              />
+            </div>
+            <div className={styles.sort}>
+              {/* <label className="block text-sm font-medium mb-2 text-white">
+                Price From
+              </label> */}
+              <input
+                type="number"
+                placeholder="Cena od"
+                className={styles.input}
+                value={priceFrom}
+                onChange={handlePriceFromChange}
+              />
+            </div>
+
+            <div className={styles.sort}>
+              {/* <label className="block text-sm font-medium mb-2 text-white">
+                Price To
+              </label> */}
+              <input
+                type="number"
+                placeholder="Cena do"
+                className={styles.input}
+                value={priceTo}
+                onChange={handlePriceToChange}
+              />
             </div>
           </div>
-
-          <div className="w-full md:w-1/3 lg:w-auto mb-4 md:mb-0">
-            <label className="block text-sm font-medium mb-2 text-white">
-              Tytuł
-            </label>
-            <input
-              type="search"
-              id="search"
-              placeholder="Tytuł..."
-              className="w-full px-4 py-3 rounded leading-tight dark:bg-black focus:outline-none placeholder:text-black dark:placeholder-white"
-              value={searchQuery}
-              onChange={handleSearchQueryChange}
-            />
-          </div>
-
-          <div className="w-full md:w-1/3 lg:w-auto mb-4 md:mb-0">
-            <label className="block text-sm font-medium mb-2 text-white">
-              Cel
-            </label>
-            <div className="relative">
-              <select
-                value={propertyPurposeFilter}
-                onChange={handlePropertyPurposeChange}
-                className="w-full px-4 py-2 capitalize rounded leading-tight dark:bg-black focus:outline-none"
-              >
-                <option value="">Wybierz cel</option>
-                {propertyPurpose.map((purposeOption) => (
-                  <option
-                    key={purposeOption.value}
-                    value={purposeOption.value}
-                  >
-                    {purposeOption.title}
-                  </option>
-                ))}
-              </select>
-            </div>
-          </div>
-
-          <div className="w-full md:w-1/3 lg:w-auto mb-4 md:mb-0">
-            <label className="block text-sm font-medium mb-2 text-white">
-              Комнаты
-            </label>
-            <input
-              type="number"
-              placeholder="Введите количество комнат"
-              className="w-full px-4 py-3 rounded leading-tight dark:bg-black focus:outline-none placeholder:text-black dark:placeholder-white"
-              value={propertyRooms}
-              onChange={handlePropertyRoomsChange}
-            />
-          </div>
-
-          <div className="w-full md:w-1/3 lg:w-auto mb-4 md:mb-0">
-            <label className="block text-sm font-medium mb-2 text-white">
-              Меблировано
-            </label>
-            <input
-              type="checkbox"
-              checked={propertyFurnished || false}
-              onChange={handlePropertyFurnishedChange}
-            />
-          </div>
-
-          <div className="w-full md:w-1/3 lg:w-auto mb-4 md:mb-0">
-            <label className="block text-sm font-medium mb-2 text-white">
-              Парковка
-            </label>
-            <input
-              type="checkbox"
-              checked={propertyParking || false}
-              onChange={handlePropertyParkingChange}
-            />
-          </div>
-
-          <div className="w-full md:w-1/3 lg:w-auto mb-4 md:mb-0">
-            <label className="block text-sm font-medium mb-2 text-white">
-              Price From
-            </label>
-            <input
-              type="number"
-              placeholder="Enter minimum price"
-              className="w-full px-4 py-3 rounded leading-tight dark:bg-black focus:outline-none placeholder:text-black dark:placeholder-white"
-              value={priceFrom}
-              onChange={handlePriceFromChange}
-            />
-          </div>
-
-          <div className="w-full md:w-1/3 lg:w-auto mb-4 md:mb-0">
-            <label className="block text-sm font-medium mb-2 text-white">
-              Price To
-            </label>
-            <input
-              type="number"
-              placeholder="Enter maximum price"
-              className="w-full px-4 py-3 rounded leading-tight dark:bg-black focus:outline-none placeholder:text-black dark:placeholder-white"
-              value={priceTo}
-              onChange={handlePriceToChange}
-            />
-          </div>
-
-          <button
-            className={styles.searchButton}
-            type="button"
-            onClick={handleFilterClick}
-          >
-            Szukaj
-          </button>
         </div>
       </div>
     </section>
