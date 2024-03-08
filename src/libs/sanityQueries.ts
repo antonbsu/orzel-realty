@@ -81,6 +81,7 @@ export const getPropertyQuery = groq`*[_type == "property" && slug.current == $s
     balconyOrTerrace,
     garden,
     parking,
+    body,
     isFeatured,
     isBooked
 }`;

@@ -78,6 +78,11 @@ const property = {
       validation: Rule => Rule.required().max(50).error('Developer should be less than 50 characters'),
     }),
     defineField({
+      name: "body",
+      title: "Body",
+      type: "blockContent",
+    }),
+    defineField({
       name: 'shortDescription',
       title: 'Short Description',
       type: 'text',
