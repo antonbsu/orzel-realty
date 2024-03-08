@@ -1,19 +1,17 @@
 import Link from "next/link"
 import { BsFillSendFill, BsTelephoneOutbound } from "react-icons/bs"
 import { BiMessageDetail } from "react-icons/bi"
+import styles from './Footer.module.scss';
+import Image from "next/image";
+import { urlFor } from "@/libs/sanity";
 
 const Footer = () => {
   return (
-    <footer className='mt-16'>
+    <footer className={styles.footer}>
       <div className='container mx-auto px-4'>
-        <Link href='/' className='font-black text-tertiary-dark'>
-          Orzel Realty
-        </Link>
 
-        <h4 className='font-semibold text-[40px] py-6'>Contact</h4>
-
-        <div className='flex flex-wrap gap-16 items-center justify-between'>
-          <div className='flex-1'>
+        <div className={styles.footerColumns}>
+          <div className={styles.footerColumn}>
             <p>123 Road</p>
             <div className='flex items-center py-4'>
               <BsFillSendFill />
@@ -29,21 +27,43 @@ const Footer = () => {
             </div>
           </div>
 
-          <div className='flex-1 md:text-right'>
-            <p className='pb-4'>Our Story</p>
-            <p className='pb-4'>Get in Touch</p>
-            <p className='pb-4'>Our Privacy Commitment</p>
-            <p className='pb-4'>Terms of service</p>
-            <p>Customer Assistance</p>
+          <div className={`text-right ${styles.footerColumn}`}>
+            <div className={styles.footerLinks}>
+              <Link 
+                href='/wynajem-lokali-mieszkalnych'
+                className={styles.footerLink}
+                >
+                Mieszkania na wynajem
+              </Link>
+              <Link 
+                href='/sprzedaz-lokali-mieszkalnych'
+                className={styles.footerLink}
+                >
+                Mieszkania na sprzedaż
+              </Link>
+              <Link 
+                href='/properties'
+                className={styles.footerLink}
+                >
+                Wszystkie oferty
+              </Link>
+            </div>
           </div>
 
-          <div className='flex-1 md:text-right'>
-            <p className='pb-4'>Dining Experience</p>
-            <p className='pb-4'>Wellness</p>
-            <p className='pb-4'>Fitness</p>
-            <p className='pb-4'>Sports</p>
-            <p>Events</p>
+          <div className={`text-right ${styles.footerColumn}`}>
+            <div className={styles.logoLink}>
+                <Image
+                  alt="Orzel-Realty Logo"
+                  src="/images/logo.webp"
+                  width={100}
+                  height={100}
+                  className={styles.logoImage}
+                />
+              </div>
           </div>
+        </div>
+        <div className={styles.copyrigth}>
+          <p>&copy; 2024 Orzel Realty. All rights reserved</p>
         </div>
       </div>
 

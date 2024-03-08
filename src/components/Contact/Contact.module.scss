@@ -8,7 +8,6 @@
   font-size: 1rem;
   line-height: 1.5rem;
   font-weight: 500;
-  // color: #333;
   color: rgb(55 65 81 / 70%);
   position: absolute;
   top: 50%;
@@ -33,4 +32,21 @@
 .inputField:not(:placeholder-shown) + .label {
   top: 5px;
   font-size: 0.75rem;
+}
+
+.sentBtn {
+  width: 100%;
+  padding: 12px;
+  font-size: 1rem;
+  border: 1px solid #25064D;
+  border-radius: 4px;
+  background-color: #25064D;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #fff;
+    color: #25064D;
+  }
 }

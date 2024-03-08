@@ -3,8 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { IoArrowRedoOutline } from "react-icons/io5";
-import urlBuilder from '@sanity/image-url'
-import {getImageDimensions} from '@sanity/asset-utils'
+import { FaCheck } from "react-icons/fa";
 
 export const RichText = {
   type: {
@@ -12,7 +11,7 @@ export const RichText = {
       return (
         <div className="flex items-center justify-center">
           <Image
-            src={urlBuilder().image(value).width(800).fit('max').auto('format').url()}
+            src={urlFor(value).url()}
             alt="Post image"
             width={700}
             height={700}
@@ -27,7 +26,7 @@ export const RichText = {
       <div className="ml-10 py-5 space-y-5">
         {React.Children.map(children, (child, index) => (
           <ul className="flex items-start" key={index}>
-            <IoArrowRedoOutline className="mr-2 w-6 mt-1 text-yellow-600" />
+            <FaCheck className="mr-2 w-6 mt-1 text-[#25064D]" />
             {child}
           </ul>
         ))}

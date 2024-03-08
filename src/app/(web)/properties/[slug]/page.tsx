@@ -8,11 +8,12 @@ import { FaArrowsToCircle, FaLocationDot, FaHouseCircleCheck, FaCoins, FaElevato
 import HotelPhotoGallery from '@/components/HotelPhotoGallery/HotelPhotoGallery';
 import LoadingSpinner from '../../loading';
 import { getProperty } from '@/libs/apis';
-import { PortableText } from '@portabletext/react'
 
 import styles from "../../../PageStyles.module.scss";
+import ContactForm from '@/components/ContactForm/ContactForm';
 import Contact from '@/components/Contact/Contact';
 import { RichText } from '@/components/RichText/RichText';
+import { PortableText } from '@portabletext/react'
 
 const PropertyPage = (props: { params: { slug: string } }) => {
   const {
@@ -77,6 +78,15 @@ const PropertyPage = (props: { params: { slug: string } }) => {
                         Piętro: <span className={styles.data}>{property.floor}</span>
                       </p>
                     </div>
+                    {/* {property.monthlyRent && (
+                      <div className={styles.propertyData}>
+                        <FaCoins fontSize="1rem" color="#48368d" />
+                        <p className={styles.propertyDataText}> 
+                          Miesięczna renta: <span className={styles.data}>{property.monthlyRent}</span>
+                        </p>
+                      </div>
+                    )} */}
+                    
                     <div className={styles.propertyData}>
                       <FaMoneyBill fontSize="1rem" color="#48368d" />
                       <p className={styles.propertyDataText}>

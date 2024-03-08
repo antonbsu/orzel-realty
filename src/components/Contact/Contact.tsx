@@ -45,7 +45,7 @@ const Contact: FC = () => {
         </label>
         <input
           type='phone'
-          className='w-full rounded-md border border-gray-300 bg-white py-3 px-6 text-base font-medium text-gray-700 outline-none focus:border-purple-500 focus:shadow-md'
+          className={`${styles.inputField} w-full rounded-md`}
           {...register('phone', { required: true })}
         />
       </div>
@@ -58,12 +58,12 @@ const Contact: FC = () => {
         </label>
         <input
           type='email'
-          className='w-full rounded-md border border-gray-300 bg-white py-3 px-6 text-base font-medium text-gray-700 outline-none focus:border-purple-500 focus:shadow-md'
+          className={`${styles.inputField} w-full rounded-md`}
           {...register('email', { required: true })}
         />
       </div>
       <div>
-        <button className='hover:shadow-form rounded-md bg-purple-500 py-3 px-8 text-base font-semibold text-white outline-none'>
+        <button className={styles.sentBtn}>
           Wyślij wiadomość
         </button>
       </div>
