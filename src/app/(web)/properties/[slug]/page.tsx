@@ -44,6 +44,10 @@ const PropertyPage = (props: { params: { slug: string } }) => {
     }
   };
 
+  const formatPhoneNumber = (phoneNumber: string) => {
+    return phoneNumber.replace(/(\d{3})(\d{3})(\d{2})(\d{2})/, '+48 $1 $2 $3 $4');
+  }
+
   return (
     <div className={styles.property}>
       <div className="container">
@@ -78,15 +82,6 @@ const PropertyPage = (props: { params: { slug: string } }) => {
                         Piętro: <span className={styles.data}>{property.floor}</span>
                       </p>
                     </div>
-                    {/* {property.monthlyRent && (
-                      <div className={styles.propertyData}>
-                        <FaCoins fontSize="1rem" color="#48368d" />
-                        <p className={styles.propertyDataText}> 
-                          Miesięczna renta: <span className={styles.data}>{property.monthlyRent}</span>
-                        </p>
-                      </div>
-                    )} */}
-                    
                     <div className={styles.propertyData}>
                       <FaMoneyBill fontSize="1rem" color="#48368d" />
                       <p className={styles.propertyDataText}>
@@ -144,8 +139,11 @@ const PropertyPage = (props: { params: { slug: string } }) => {
             </div>
             <div className={styles.mb}>
               <p className={styles.propertyDataText}>
-                Zadzwoń teraz: <span className={styles.data}>{property.phone}</span>
+                Zadzwoń teraz: <span className={styles.data}>{formatPhoneNumber(property.phone)}</span>
               </p>
+              {/* <p className={styles.propertyDataText}>
+                Zadzwoń teraz: <span className={styles.data}>+48667240191</span>
+              </p> */}
             </div>
             <Contact />
           </div>

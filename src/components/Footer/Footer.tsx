@@ -9,25 +9,25 @@ const Footer = () => {
   return (
     <footer className={styles.footer}>
       <div className='container mx-auto px-4'>
-
         <div className={styles.footerColumns}>
           <div className={styles.footerColumn}>
-            <p>123 Road</p>
-            <div className='flex items-center py-4'>
-              <BsFillSendFill />
-              <p className='ml-2'>codewithlari</p>
+            <div className={styles.footerData}>
+              <p>01-234, Warszawa,</p>
+              <p>ul. Kaspszaka 31, l. 126</p>
             </div>
-            <div className='flex items-center'>
-              <BsTelephoneOutbound />
-              <p className='ml-2'>000-000-00</p>
+            <div className={styles.footerData}>
+              <p>NIP: 5223275251</p>
+              <p>REGON: 526756570</p>
             </div>
-            <div className='flex items-center pt-4'>
-              <BiMessageDetail />
-              <p className='ml-2'>codewithlari</p>
+            <div className={styles.footerData}>
+              <div className={styles.footerDataWrapper}>
+                <BsTelephoneOutbound />
+                <p className='ml-2'>+48 667 240 191</p>
+              </div>
             </div>
           </div>
 
-          <div className={`text-right ${styles.footerColumn}`}>
+          <div className={`${styles.textRight} ${styles.footerColumn}`}>
             <div className={styles.footerLinks}>
               <Link 
                 href='/wynajem-lokali-mieszkalnych'

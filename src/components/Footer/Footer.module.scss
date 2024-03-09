@@ -12,10 +12,35 @@
   gap: 4rem;
   justify-content: space-between;
   align-items: flex-start;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px;
+  }
 }
 
 .footerColumn {
   flex: 1;
+}
+
+.textRight {
+  text-align: right;
+
+  @media screen and (max-width: 768px) {
+    text-align: center;
+  }
+}
+
+.footerData {
+  margin-bottom: 20px;
+}
+
+.footerDataWrapper {
+  display: flex;
+  // gap: 5px;
+  align-items: center;
 }
 
 .footerLinks {
@@ -39,6 +64,10 @@
 .logoLink {
   display: flex;
   justify-content: right;
+
+  @media screen and (max-width: 768px) {
+    justify-content: center;
+  }
 }
 
 .copyrigth {

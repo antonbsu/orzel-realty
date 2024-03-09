@@ -138,9 +138,9 @@ const Navbar = () => {
                 <li>
                   <Link
                     className={styles.menuItemLink}
-                    href="tel:+48517351391"
+                    href="tel:+48667240191"
                   >
-                    517 351 391
+                    +48 667 240 191
                   </Link>
                 </li>
               </ul>
