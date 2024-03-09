@@ -13,7 +13,7 @@ const Home = async () => {
       <NewsComponent />
       <LatestProperties />
       <LatestCommercialProperties />
-      <Reviews />
+      {/* <Reviews /> */}
     </>
   )
 }
