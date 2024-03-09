@@ -56,7 +56,7 @@ const Navbar = () => {
   return (
     <header className={styles.header}>
       <div className="container">
-        <div className={styles.headerWrapper}>
+        <div className={`${styles.headerWrapper} ${isMenuOpen ? styles.menuOpen : ''}`}>
           <div className={styles.logo}>
             <Link href="/">
               <div className={styles.logoLink}>

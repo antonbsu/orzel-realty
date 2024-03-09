@@ -41,6 +41,7 @@
   font-weight: 700;
   color: #48368d;
   margin-bottom: clamp(1.875rem, 1.648rem + 1.14vw, 2.5rem);
+  line-height: 1.2;
 }
 
 .order {
@@ -131,6 +132,12 @@
 
 .blogPostsMainPage {
   padding: 50px 0;
+}
+
+.postsBlock {
+  padding: 15px;
+  border: 1px solid #25064D;
+  border-radius: 10px;
 }
 
 .blogPost {

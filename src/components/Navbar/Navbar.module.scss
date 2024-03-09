@@ -1,12 +1,13 @@
 .header {
-  // background-color: #fcba28;
-  background: linear-gradient(90deg,#48368d,#351949);
+  background-color: #25064D;
+  // background: linear-gradient(90deg,#48368d,#351949);
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 20;
   transition: all ease-in-out 0.2s;
+  padding: 10px 0;
 
   @media (max-width: 768px) {
     position: fixed;
@@ -14,14 +15,24 @@
 }
 
 .headerWrapper {
+  position: relative;
+  transition: height 0.3s ease;
+  height: 60px;
 
   @media (min-width: 768px) {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 80px;
+    height: 60px;
     max-width: 1200px;
     margin: 0 auto;
+    position: static;
+  }
+}
+
+.menuOpen {
+  @media (max-width: 768px) {
+    height: 100vh;
   }
 }
 
@@ -44,7 +55,6 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 20px 0;
   }
 
 }
@@ -108,13 +118,15 @@
 
 .burgerIcon {
   cursor: pointer;
-  /* Добавьте любые другие стили, такие как размеры и расположение, по вашему усмотрению */
+  position: absolute;
+  top: 15px;
+  right: 0;
 }
 
 .bar {
   width: 30px;
-  height: 4px;
-  background-color: #333; /* Цвет полос бургер-меню */
+  height: 2px;
+  background-color: #fff; /* Цвет полос бургер-меню */
   margin: 6px 0;
   transition: 0.4s; /* Анимация для перехода состояния полос */
 }

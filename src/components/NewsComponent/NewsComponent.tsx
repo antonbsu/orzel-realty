@@ -27,7 +27,7 @@ const NewsComponent = () => {
     <section className={styles.blogPostsMainPage}>
       <div className="container">
         <h2 className="h2">Aktualności</h2>
-        <div>
+        <div className={styles.postsBlock}>
           <ul className={styles.blogPostsWrapper}>
             {blogPosts.map((post) => (
               <li key={post._id}>
