@@ -5,6 +5,7 @@ import {sanityClient} from './sanity';
 import * as queries from './sanityQueries';
 import { Navbar } from '@/models/navbar';
 import { Review } from '@/models/review';
+import { BlogPost } from '@/models/blogPost';
 
 export async function getNavbar() {
   const result = await sanityClient.fetch<Navbar>(
@@ -24,6 +25,26 @@ export async function getProperties() {
 export async function getProperty(slug: string) {
   const result = await sanityClient.fetch<Property>(
     queries.getPropertyQuery,
+    { slug },
+    { cache: 'no-cache' }
+  );
+
+  return result;
+}
+
+export async function getBlogPosts() {
+  const result = await sanityClient.fetch<BlogPost[]>(
+    queries.getBlogPostsQuery,
+    {},
+    { cache: 'no-cache' }
+  );
+
+  return result;
+}
+
+export async function getBlogPost(slug: string) {
+  const result = await sanityClient.fetch<BlogPost>(
+    queries.getBlogPostQuery,
     { slug },
     { cache: 'no-cache' }
   );

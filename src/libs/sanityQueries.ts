@@ -55,6 +55,25 @@ export const getPropertiesQuery = groq`*[_type == "property"] {
     isBooked
 }`;
 
+export const getBlogPostsQuery = groq`*[_type == "blogNew"] {
+    _id,
+    title,
+    slug,
+    mainImage,
+    publishedAt,
+    excerpt,
+}`;
+
+export const getBlogPostQuery = groq`*[_type == "blogNew" && slug.current == $slug][0] {
+    _id,
+    title,
+    slug,
+    mainImage,
+    publishedAt,
+    excerpt,
+    body
+}`;
+
 export const getPropertyQuery = groq`*[_type == "property" && slug.current == $slug][0] {
     _id,
     name,

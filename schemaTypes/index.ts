@@ -1,4 +1,5 @@
 import blockContent from "./blockContent";
+import blogPost from "./blogPost";
 import navbar from "./navbar";
 import property from "./property";
 import review from "./review";
@@ -9,5 +10,6 @@ export const schemaTypes = [
   property,
   review,
   blockContent,
+  blogPost,
   verificationToken
 ];
