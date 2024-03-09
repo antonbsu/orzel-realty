@@ -28,6 +28,11 @@
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
+.labelFocused {
+  top: 5px;
+  font-size: 0.75rem;
+}
+
 .inputWrapper:focus-within .label,
 .inputField:not(:placeholder-shown) + .label {
   top: 5px;

@@ -19,15 +19,21 @@ const Contact: FC = () => {
     sendEmail(data);
   }
 
-  const focusInput = (id: string) => {
-    document.getElementById(id)?.focus();
+  const focusInputAndLabel = (id: string) => {
+    const input = document.getElementById(id) as HTMLInputElement;
+    if (input) {
+      input.focus();
+    }
   };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <div className={styles.inputWrapper} onClick={() => focusInput('name')}>
-        <label htmlFor='name' className={styles.label}>
-          Imię
+      <div
+        className={styles.inputWrapper}
+        onClick={() => focusInputAndLabel('name')}
+      >
+        <label htmlFor='name' className={styles.label} onClick={(e) => e.stopPropagation()}>
+          Имя
         </label>
         <input
           id='name'
@@ -36,27 +42,29 @@ const Contact: FC = () => {
           {...register('name', { required: true })}
         />
       </div>
-      <div className={styles.inputWrapper} onClick={() => focusInput('phone')}>
-        <label
-          htmlFor='phone'
-          className={styles.label}
-        >
-          Telefon
+      <div
+        className={styles.inputWrapper}
+        onClick={() => focusInputAndLabel('phone')}
+      >
+        <label htmlFor='phone' className={styles.label} onClick={(e) => e.stopPropagation()}>
+          Телефон
         </label>
         <input
+          id='phone'
           type='phone'
           className={`${styles.inputField} w-full rounded-md`}
           {...register('phone', { required: true })}
         />
       </div>
-      <div className={styles.inputWrapper} onClick={() => focusInput('email')}>
-        <label
-          htmlFor='email'
-          className={styles.label}
-        >
+      <div
+        className={styles.inputWrapper}
+        onClick={() => focusInputAndLabel('email')}
+      >
+        <label htmlFor='email' className={styles.label} onClick={(e) => e.stopPropagation()}>
           Email
         </label>
         <input
+          id='email'
           type='email'
           className={`${styles.inputField} w-full rounded-md`}
           {...register('email', { required: true })}

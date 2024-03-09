@@ -2,8 +2,6 @@ import { urlFor } from "@/libs/sanity";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import { IoArrowRedoOutline } from "react-icons/io5";
-import { FaCheck } from "react-icons/fa";
 
 export const RichText = {
   type: {
@@ -23,14 +21,13 @@ export const RichText = {
   },
   list: {
     bullet: ({ children }: any) => (
-      <div className="ml-10 py-5 space-y-5">
+      <ul className="ml-10 py-5 space-y-5">
         {React.Children.map(children, (child, index) => (
-          <ul className="flex items-start" key={index}>
-            <FaCheck className="mr-2 w-6 mt-1 text-[#25064D]" />
+          <li className="flex items-start list-disc" key={index}>
             {child}
-          </ul>
+          </li>
         ))}
-      </div>
+      </ul>
     ),
   },
   number: ({ children }: any) => (
@@ -38,10 +35,10 @@ export const RichText = {
   ),
   block: {
     h1: ({ children }: any) => (
-      <h1 className="text-4xl mt-10 mb-2 font-bold ">{children}</h1>
+      <h1 className="text-4xl mt-10 mb-2 font-bold">{children}</h1>
     ),
     h2: ({ children }: any) => (
-      <h2 className="text-3xl mt-10 mb-2 font-bold text-yellow-600">
+      <h2 className="text-3xl mt-10 mb-2 font-bold text-[#25064D]">
         {children}
       </h2>
     ),
@@ -52,14 +49,14 @@ export const RichText = {
       <h4 className="text-2xl mt-10 mb-2 font-bold">{children}</h4>
     ),
     blockquote: ({ children }: any) => (
-      <blockquote className="border-l-yellow-600 border-l-4 pl-5 py-5 my-5">
+      <blockquote className="border-l-[#25064D] border-l-4 pl-5 py-5 my-5">
         {children}
       </blockquote>
     ),
   },
   marks: {
     link: ({ children, value }: any) => {
-      const rel = !value.href.startWith("/")
+      const rel = !value.href
         ? "noreferrer noopener"
         : undefined;
       return (
