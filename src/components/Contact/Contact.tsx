@@ -1,6 +1,6 @@
 'use client';
 
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { sendEmail } from '@/utils/send-email';
 
@@ -14,25 +14,27 @@ export type FormData = {
 
 const Contact: FC = () => {
   const { register, handleSubmit } = useForm<FormData>();
+  const [nameFilled, setNameFilled] = useState(false);
+  const [phoneFilled, setPhoneFilled] = useState(false);
+  const [emailFilled, setEmailFilled] = useState(false);
 
   function onSubmit(data: FormData) {
     sendEmail(data);
   }
 
-  const focusInputAndLabel = (id: string) => {
-    const input = document.getElementById(id) as HTMLInputElement;
-    if (input) {
-      input.focus();
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>, setState: React.Dispatch<React.SetStateAction<boolean>>) => {
+    const value = event.target.value;
+    if (value.trim() !== '') {
+      setState(true);
+    } else {
+      setState(false);
     }
   };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <div
-        className={styles.inputWrapper}
-        onClick={() => focusInputAndLabel('name')}
-      >
-        <label htmlFor='name' className={styles.label} onClick={(e) => e.stopPropagation()}>
+      <div className={styles.inputWrapper}>
+        <label htmlFor='name' className={`${styles.label} ${nameFilled ? styles.filled : ''}`}>
           Имя
         </label>
         <input
@@ -40,13 +42,11 @@ const Contact: FC = () => {
           type='text'
           className={`${styles.inputField} w-full rounded-md`}
           {...register('name', { required: true })}
+          onChange={(e) => handleInputChange(e, setNameFilled)}
         />
       </div>
-      <div
-        className={styles.inputWrapper}
-        onClick={() => focusInputAndLabel('phone')}
-      >
-        <label htmlFor='phone' className={styles.label} onClick={(e) => e.stopPropagation()}>
+      <div className={styles.inputWrapper}>
+        <label htmlFor='phone' className={`${styles.label} ${phoneFilled ? styles.filled : ''}`}>
           Телефон
         </label>
         <input
@@ -54,13 +54,11 @@ const Contact: FC = () => {
           type='phone'
           className={`${styles.inputField} w-full rounded-md`}
           {...register('phone', { required: true })}
+          onChange={(e) => handleInputChange(e, setPhoneFilled)}
         />
       </div>
-      <div
-        className={styles.inputWrapper}
-        onClick={() => focusInputAndLabel('email')}
-      >
-        <label htmlFor='email' className={styles.label} onClick={(e) => e.stopPropagation()}>
+      <div className={styles.inputWrapper}>
+        <label htmlFor='email' className={`${styles.label} ${emailFilled ? styles.filled : ''}`}>
           Email
         </label>
         <input
@@ -68,6 +66,7 @@ const Contact: FC = () => {
           type='email'
           className={`${styles.inputField} w-full rounded-md`}
           {...register('email', { required: true })}
+          onChange={(e) => handleInputChange(e, setEmailFilled)}
         />
       </div>
       <div>

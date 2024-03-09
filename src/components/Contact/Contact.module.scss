@@ -55,3 +55,9 @@
     color: #25064D;
   }
 }
+
+.inputField:not(:placeholder-shown) + .label,
+.inputWrapper .label.filled {
+  top: 5px;
+  font-size: 0.75rem;
+}
