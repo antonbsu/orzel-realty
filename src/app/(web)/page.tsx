@@ -12,7 +12,7 @@ const Home = async () => {
       <PageSearch />
       <NewsComponent />
       <LatestProperties />
-      <LatestCommercialProperties />
+      {/* <LatestCommercialProperties /> */}
       {/* <Reviews /> */}
     </>
   )

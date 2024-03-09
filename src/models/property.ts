@@ -38,6 +38,7 @@ export type Property = {
   balconyOrTerrace?: 'Balkon' | 'Taras' | 'Ogród';
   garden?: boolean;
   parking?: boolean;
+  iframeUrl?: string;
   body: any;
   // isFeatured: boolean;
   // isBooked: boolean;

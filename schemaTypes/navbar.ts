@@ -1,7 +1,7 @@
 // schema.js
 export default {
   name: 'navbar',
-  title: 'Navbar',
+  title: 'Хедер',
   type: 'document',
   fields: [
     {

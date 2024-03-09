@@ -10,7 +10,6 @@ import LoadingSpinner from '../../loading';
 import { getProperty } from '@/libs/apis';
 
 import styles from "../../../PageStyles.module.scss";
-import ContactForm from '@/components/ContactForm/ContactForm';
 import Contact from '@/components/Contact/Contact';
 import { RichText } from '@/components/RichText/RichText';
 import { PortableText } from '@portabletext/react'
@@ -44,9 +43,7 @@ const PropertyPage = (props: { params: { slug: string } }) => {
     }
   };
 
-  const formatPhoneNumber = (phoneNumber: string) => {
-    return phoneNumber.replace(/(\d{3})(\d{3})(\d{2})(\d{2})/, '+48 $1 $2 $3 $4');
-  }
+  const enhancedPhotos = property.iframeUrl ? [{ _type: 'iframe', url: property.iframeUrl }, ...property.images] : property.images;
 
   return (
     <div className={styles.property}>
@@ -54,9 +51,9 @@ const PropertyPage = (props: { params: { slug: string } }) => {
         <div className={styles.wrapper}>
           <div className={styles.mainContent}>
             <h1 className={styles.propertyTitle}>
-              {property.name} ({property.area} m. kw.)
+              {property.name}
             </h1>
-            <HotelPhotoGallery photos={property.images} />
+            <HotelPhotoGallery photos={property.images} iframeUrl={property.iframeUrl} />
             <section className={styles.propertyDetails}>
                 <div className='md:col-span-8 md:w-full'>
                   <div>
@@ -139,10 +136,10 @@ const PropertyPage = (props: { params: { slug: string } }) => {
             </div>
             <div className={styles.mb}>
               <p className={styles.propertyDataText}>
-                Zadzwoń teraz: <span className={styles.data}>{formatPhoneNumber(property.phone)}</span>
+                Zadzwoń teraz: <span className={styles.data}>{property.phone}</span>
               </p>
               {/* <p className={styles.propertyDataText}>
-                Zadzwoń teraz: <span className={styles.data}>+48667240191</span>
+                Zadzwoń teraz: <span className={styles.data}>+48517351391</span>
               </p> */}
             </div>
             <Contact />

@@ -101,6 +101,7 @@ export const getPropertyQuery = groq`*[_type == "property" && slug.current == $s
     garden,
     parking,
     body,
+    iframeUrl,
     isFeatured,
     isBooked
 }`;

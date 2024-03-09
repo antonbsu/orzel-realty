@@ -29,7 +29,7 @@ export const propertyType = [
 
 const property = {
   name: 'property',
-  title: 'Property',
+  title: 'Недвижимость',
   type: 'document',
   fields: [
     defineField({
@@ -45,6 +45,12 @@ const property = {
         source: 'name',
       },
       validation: Rule => Rule.required(),
+    }),
+    defineField({
+      name: 'iframeUrl',
+      title: 'Ссылка на 3D-тур',
+      type: 'url',
+      description: 'URL для встраиваемого IFrame, например, виртуального тура',
     }),
     defineField({
       name: 'images',
