@@ -6,17 +6,17 @@ export default {
   fields: [
     {
       name: 'title',
-      title: 'Title',
+      title: 'Название',
       type: 'string',
     },
     {
       name: 'logo',
-      title: 'Logo',
+      title: 'Лагацып',
       type: 'image',
     },
     {
       name: 'menuItems',
-      title: 'Menu Items',
+      title: 'Пункты меню',
       type: 'array',
       of: [
         {
@@ -24,17 +24,17 @@ export default {
           fields: [
             {
               name: 'label',
-              title: 'Label',
+              title: 'Название пункта меню',
               type: 'string',
             },
             {
               name: 'link',
-              title: 'Link',
+              title: 'Ссылка на пункт меню',
               type: 'string',
             },
             {
               name: 'subMenu',
-              title: 'Sub Menu',
+              title: 'Пункты подменю',
               type: 'array',
               of: [
                 {
@@ -42,12 +42,12 @@ export default {
                   fields: [
                     {
                       name: 'subLabel',
-                      title: 'Sub Label',
+                      title: 'Название пункта подменю',
                       type: 'string',
                     },
                     {
                       name: 'subLink',
-                      title: 'Sub Link',
+                      title: 'Ссылка на пункт подменю',
                       type: 'string',
                     },
                   ],

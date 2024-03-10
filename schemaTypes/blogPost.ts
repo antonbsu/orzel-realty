@@ -7,42 +7,46 @@ const blogPost = {
   fields: [
     defineField({
       name: 'title',
-      title: 'Title',
+      title: 'Название новости',
       type: 'string',
       validation: Rule => Rule.required(),
     }),
     defineField({
       name: 'slug',
-      title: 'Slug',
+      title: 'Ссылка на страницу',
       type: 'slug',
       options: {
         source: 'title',
       },
       validation: Rule => Rule.required(),
+      description: 'Нажмите для генерации ссылки',
     }),
     defineField({
       name: 'mainImage',
-      title: 'Main Image',
+      title: 'Превью новости',
       type: 'image',
       validation: Rule => Rule.required(),
     }),
     defineField({
       name: 'publishedAt',
-      title: 'Published At',
+      title: 'Дата публикации',
       type: 'datetime',
       validation: Rule => Rule.required(),
+      description: 'Дату можно менять',
     }),
     defineField({
       name: 'excerpt',
-      title: 'Excerpt',
+      title: 'Краткое содержание',
       type: 'text',
       validation: Rule => Rule.required(),
+      description: '1-2 предложения',
     }),
     defineField({
       name: 'body',
-      title: 'Body',
+      title: 'Текст новости',
       type: 'blockContent',
       validation: Rule => Rule.required(),
+      description: 'Сюда пишем текст, тут его форматируем',
     }),
   ],
 }
