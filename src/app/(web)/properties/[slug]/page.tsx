@@ -13,11 +13,14 @@ import styles from "../../../PageStyles.module.scss";
 import Contact from '@/components/Contact/Contact';
 import { RichText } from '@/components/RichText/RichText';
 import { PortableText } from '@portabletext/react'
+import { useState } from 'react';
 
 const PropertyPage = (props: { params: { slug: string } }) => {
   const {
     params: { slug },
   } = props;
+
+  const [isTextExpanded, setTextExpanded] = useState(false);
 
   const fetchProperty = async () => getProperty(slug);
 
@@ -106,10 +109,19 @@ const PropertyPage = (props: { params: { slug: string } }) => {
                     </div>
                     <div className='mb-11'>
                       <h2 className={styles.propertySubtitle}>Opis</h2>
-                      <PortableText
-                        value={property?.body}
-                        components={RichText}
-                      />
+                      <div style={{ maxHeight: isTextExpanded ? 'none' : '200px', overflow: 'hidden' }}>
+                        <PortableText
+                          value={property?.body}
+                          components={RichText}
+                        />
+                      </div>
+                      {/* Кнопка для раскрытия текста */}
+                        <button
+                          className={styles.showMoreButton} // Добавьте соответствующие стили для кнопки
+                          onClick={() => setTextExpanded(!isTextExpanded)}
+                        >
+                          {isTextExpanded ? 'Pokaż mniej' : 'Pokaż więcej'}
+                        </button>
                     </div>
                     <section id='map' className='w-full h-[400px]'>
                       <iframe
@@ -138,9 +150,6 @@ const PropertyPage = (props: { params: { slug: string } }) => {
               <p className={styles.propertyDataText}>
                 Zadzwoń teraz: <span className={styles.data}>{property.phone}</span>
               </p>
-              {/* <p className={styles.propertyDataText}>
-                Zadzwoń teraz: <span className={styles.data}>+48517351391</span>
-              </p> */}
             </div>
             <Contact />
           </div>

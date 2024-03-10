@@ -103,6 +103,23 @@
   margin-bottom: clamp(1.875rem, 1.648rem + 1.14vw, 2.5rem);
 }
 
+.showMoreButton {
+  margin-top: 10px;
+  background-color: #25064D;
+  color: #fff;
+  padding: 5px;
+  border: 1px solid #25064D;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #fff;
+    color: #25064D;
+  }
+
+}
+
 .price {
   font-size: clamp(1.25rem, 1.023rem + 1.14vw, 1.875rem);
   font-weight: 700;
