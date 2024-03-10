@@ -264,6 +264,19 @@
   font-weight: 600;
 }
 
+.itemNoValue {
+  display: flex;
+  position: relative;
+  min-width: 0;
+  opacity: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  // white-space: nowrap;
+  font-weight: 500;
+  color: #cccaca;
+
+}
+
 .propertyMap {
   margin-top: 20px;
   height: 400px;

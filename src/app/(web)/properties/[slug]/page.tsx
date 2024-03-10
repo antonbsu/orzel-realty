@@ -84,7 +84,11 @@ const PropertyPage = (props: { params: { slug: string } }) => {
                               <p>Powierzchnia:</p>
                             </div>
                           </div>
-                          <div className={styles.itemValue}>{property.area} m²</div>
+                          {property.area ? (
+                            <div className={styles.itemValue}>{property.area} m²</div>
+                          ) : (
+                            <div className={styles.itemNoValue}>Brak danych</div>
+                          )}
                         </div>
                         <div className={styles.infoItem}>
                           <div className={styles.itemKey}>
@@ -93,7 +97,11 @@ const PropertyPage = (props: { params: { slug: string } }) => {
                               <p>Liczba pokoi:</p>
                             </div>
                           </div>
-                          <div className={styles.itemValue}>{property.rooms} m²</div>
+                          {property.rooms ? (
+                            <div className={styles.itemValue}>{property.rooms}</div>
+                          ) : (
+                            <div className={styles.itemNoValue}>Brak danych</div>
+                          )}
                         </div>
                         <div className={styles.infoItem}>
                           <div className={styles.itemKey}>
@@ -102,7 +110,11 @@ const PropertyPage = (props: { params: { slug: string } }) => {
                               <p>Piętro:</p>
                             </div>
                           </div>
-                          <div className={styles.itemValue}>{property.floor}</div>
+                          {property.floor ? (
+                            <div className={styles.itemValue}>{property.floor}</div>
+                          ) : (
+                            <div className={styles.itemNoValue}>Brak danych</div>
+                          )}
                         </div>
                         <div className={styles.infoItem}>
                           <div className={styles.itemKey}>
@@ -111,7 +123,11 @@ const PropertyPage = (props: { params: { slug: string } }) => {
                               <p>Czynsz:</p>
                             </div>
                           </div>
-                          <div className={styles.itemValue}>{property.monthlyRent?.toLocaleString('pl-PL')} zł</div>
+                          {property.monthlyRent ? (
+                            <div className={styles.itemValue}>{property.monthlyRent.toLocaleString('pl-PL')} zł</div>
+                          ) : (
+                            <div className={styles.itemNoValue}>Brak danych</div>
+                          )}
                         </div>
                         <div className={styles.infoItem}>
                           <div className={styles.itemKey}>
@@ -120,7 +136,11 @@ const PropertyPage = (props: { params: { slug: string } }) => {
                               <p>Forma własności:</p>
                             </div>
                           </div>
-                          <div className={styles.itemValue}>{property.buildingOwnership}</div>
+                          {property.buildingOwnership ? (
+                            <div className={styles.itemValue}>{property.buildingOwnership}</div>
+                          ) : (
+                            <div className={styles.itemNoValue}>Brak danych</div>
+                          )}
                         </div>
                       </div>
                       <div className={styles.infoBlock}>
@@ -131,7 +151,11 @@ const PropertyPage = (props: { params: { slug: string } }) => {
                               <p>Stan wykończenia:</p>
                             </div>
                           </div>
-                          <div className={styles.itemValue}>{property.finishCondition}</div>
+                          {property.finishCondition ? (
+                            <div className={styles.itemValue}>{property.finishCondition}</div>
+                          ) : (
+                            <div className={styles.itemNoValue}>Brak danych</div>
+                          )}
                         </div>
                         <div className={styles.infoItem}>
                           <div className={styles.itemKey}>
@@ -140,7 +164,11 @@ const PropertyPage = (props: { params: { slug: string } }) => {
                               <p>Umeblowany:</p>
                             </div>
                           </div>
-                          <div className={styles.itemValue}>{property.furnished ? 'tak' : 'nie'}</div>
+                          {property.furnished ? (
+                            <div className={styles.itemValue}>{property.furnished ? 'tak' : 'nie'}</div>
+                          ) : (
+                            <div className={styles.itemNoValue}>Brak danych</div>
+                          )}                          
                         </div>
                         <div className={styles.infoItem}>
                           <div className={styles.itemKey}>
@@ -149,7 +177,11 @@ const PropertyPage = (props: { params: { slug: string } }) => {
                               <p>Balkon / Taras / Ogród:</p>
                             </div>
                           </div>
-                          <div className={styles.itemValue}>{property.balconyOrTerrace}</div>
+                          {property.balconyOrTerrace ? (
+                            <div className={styles.itemValue}>{property.balconyOrTerrace}</div>
+                          ) : (
+                            <div className={styles.itemNoValue}>Brak danych</div>
+                          )}
                         </div>
                         <div className={styles.infoItem}>
                           <div className={styles.itemKey}>
@@ -194,15 +226,27 @@ const PropertyPage = (props: { params: { slug: string } }) => {
                     <div className={styles.infoBlock}>
                       <div className={styles.infoItem}>
                         <div className={styles.itemKey}>Rynek</div>
-                        <div className={styles.itemValue}>{property.marketType}</div>
+                        {property.marketType ? (
+                          <div className={styles.itemValue}>{property.marketType}</div>
+                        ) : (
+                          <div className={styles.itemNoValue}>Brak danych</div>
+                        )}
                       </div>
                       <div className={styles.infoItem}>
                         <div className={styles.itemKey}>Materiał budynku</div>
-                        <div className={styles.itemValue}>{property.buildingMaterial}</div>
+                        {property.buildingMaterial ? (
+                          <div className={styles.itemValue}>{property.buildingMaterial}</div>
+                        ) : (
+                          <div className={styles.itemNoValue}>Brak danych</div>
+                        )}
                       </div>
                       <div className={styles.infoItem}>
                         <div className={styles.itemKey}>Rok budowy</div>
-                        <div className={styles.itemValue}>{property.buildingYear}</div>
+                        {property.buildingYear ? (
+                          <div className={styles.itemValue}>{property.buildingYear}</div>
+                        ) : (
+                          <div className={styles.itemNoValue}>Brak danych</div>
+                        )}
                       </div>
                       <div className={styles.infoItem}>
                         <div className={styles.itemKey}>Winda</div>
@@ -210,23 +254,43 @@ const PropertyPage = (props: { params: { slug: string } }) => {
                       </div>
                       <div className={styles.infoItem}>
                         <div className={styles.itemKey}>Wyposażenie</div>
-                        <div className={styles.itemValue}>{property.furnitureList}</div>
+                        {property.furnitureList ? (
+                          <div className={styles.itemValue}>{property.furnitureList}</div>
+                        ) : (
+                          <div className={styles.itemNoValue}>Brak danych</div>
+                        )}
                       </div>
                       <div className={styles.infoItem}>
                         <div className={styles.itemKey}>Ogrzewanie</div>
-                        <div className={styles.itemValue}>{property.heating}</div>
+                        {property.heating ? (
+                          <div className={styles.itemValue}>{property.heating}</div>
+                        ) : (
+                          <div className={styles.itemNoValue}>Brak danych</div>
+                        )}
                       </div>
                       <div className={styles.infoItem}>
                         <div className={styles.itemKey}>Media</div>
-                        <div className={styles.itemValue}>{property.mediaPayment}</div>
+                        {property.mediaPayment ? (
+                          <div className={styles.itemValue}>{property.mediaPayment}</div>
+                        ) : (
+                          <div className={styles.itemNoValue}>Brak danych</div>
+                        )}
                       </div>
                       <div className={styles.infoItem}>
                         <div className={styles.itemKey}>Bezpieczeństwo</div>
-                        <div className={styles.itemValue}>{property.security}</div>
+                        {property.security ? (
+                          <div className={styles.itemValue}>{property.security}</div>
+                        ) : (
+                          <div className={styles.itemNoValue}>Brak danych</div>
+                        )}
                       </div>
                       <div className={styles.infoItem}>
                         <div className={styles.itemKey}>Informacje dodatkowe</div>
-                        <div className={styles.itemValue}><p>{property.additionalInfo}</p></div>
+                        {property.additionalInfo ? (
+                          <div className={styles.itemValue}>{property.additionalInfo}</div>
+                        ) : (
+                          <div className={styles.itemNoValue}>Brak danych</div>
+                        )}
                       </div>
                     </div>
                     </div>
