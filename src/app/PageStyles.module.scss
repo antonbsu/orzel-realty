@@ -30,13 +30,9 @@
   background-color: #fff;
   padding: clamp(1.25rem, 1.023rem + 1.14vw, 1.875rem);
   border-radius: 10px;
-  
-  @media screen and (min-width: 768px){
-    flex: 1;
-  }
 
   @media screen and (min-width: 1110px){
-    flex: 2;    
+    flex: 3;    
   }
 }
 
@@ -55,7 +51,7 @@
   height: fit-content;
   
   @media screen and (min-width: 768px){
-    flex: 1;
+    flex: 2;
     position: sticky;
     top: 120px;
   }

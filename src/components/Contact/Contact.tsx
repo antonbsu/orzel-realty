@@ -35,7 +35,7 @@ const Contact: FC = () => {
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className={styles.inputWrapper}>
         <label htmlFor='name' className={`${styles.label} ${nameFilled ? styles.filled : ''}`}>
-          Имя
+          Imię
         </label>
         <input
           id='name'
@@ -47,7 +47,7 @@ const Contact: FC = () => {
       </div>
       <div className={styles.inputWrapper}>
         <label htmlFor='phone' className={`${styles.label} ${phoneFilled ? styles.filled : ''}`}>
-          Телефон
+          Telefon
         </label>
         <input
           id='phone'
@@ -59,7 +59,7 @@ const Contact: FC = () => {
       </div>
       <div className={styles.inputWrapper}>
         <label htmlFor='email' className={`${styles.label} ${emailFilled ? styles.filled : ''}`}>
-          Email
+          E-mail
         </label>
         <input
           id='email'
