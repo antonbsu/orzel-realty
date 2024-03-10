@@ -3,7 +3,8 @@
   position: relative;
   overflow: hidden;
   border-radius: 10px;
-  display: inline-block;
+  display: block;
+  margin-bottom: 20px;
 
   &:hover {
     img {
