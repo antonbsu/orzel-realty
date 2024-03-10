@@ -17,14 +17,53 @@ export const propertyTypes = [
 export const propertyPurpose = [
   { title: 'Sprzedaż', value: 'Sprzedaż' },
   { title: 'Wynajem', value: 'Wynajem' },
-  { title: 'Dzierżawa', value: 'Dzierżawa' },
   { title: 'Inwestycja', value: 'Inwestycja' },
 ]
 
 export const propertyType = [
   { title: 'Mieszkalny', value: 'Mieszkalny' },
   { title: 'Komercyjny', value: 'Komercyjny' },
+]
 
+export const market = [
+  { title: 'Pierwotny', value: 'Pierwotny' },
+  { title: 'Wtórny', value: 'Wtórny' },
+]
+
+export const buildingMaterial = [
+  { title: 'Panelowy', value: 'Panelowy' },
+  { title: 'Cegła', value: 'Cegła' },
+  { title: 'Monolit', value: 'Monolit' },
+  { title: 'Drewno', value: 'Drewno' },
+]
+
+export const buildingOwnership = [
+  { title: 'Własność', value: 'Własność' },
+  { title: 'Spółdzielcze', value: 'Spółdzielcze' },
+  { title: 'Mieszkaniowe', value: 'Mieszkaniowe' },
+  { title: 'Najem', value: 'Najem' },
+]
+
+export const finishCondition = [
+  { title: 'Do remontu', value: 'Do remontu' },
+  { title: 'Do zamieszkania', value: 'Do zamieszkania' },
+  { title: 'Stan deweloperski', value: 'Stan deweloperski' },
+]
+
+export const heating = [
+  { title: 'Gazowe', value: 'Gazowe' },
+  { title: 'Elektryczne', value: 'Elektryczne' },
+  { title: 'Miejskie', value: 'Miejskie' },
+  { title: 'Węglowe', value: 'Węglowe' },
+  { title: 'Kotłownia', value: 'Kotłownia' },
+  { title: 'Klimatyzacja', value: 'Klimatyzacja' },
+  { title: 'Inne', value: 'Inne' },
+]
+
+export const security = [
+  { title: 'Ochrona', value: 'Ochrona' },
+  { title: 'Monitoring', value: 'Monitoring' },
+  { title: 'Brak', value: 'Brak' },
 ]
 
 const property = {
@@ -152,34 +191,40 @@ const property = {
     }),
     defineField({
       name: 'rooms',
-      title: 'Rooms',
+      title: 'Количество комнат',
       type: 'number',
       validation: Rule => Rule.required(),
     }),
     defineField({
       name: 'floor',
-      title: 'Floor',
+      title: 'Этаж',
       type: 'string',
       validation: Rule => Rule.required(),
     }),
     defineField({
       name: 'monthlyRent',
-      title: 'Monthly Rent',
+      title: 'Чынш',
       type: 'number',
     }),
     defineField({
       name: 'deposit',
-      title: 'Deposit',
+      title: 'Депозит',
       type: 'number',
     }),
     defineField({
       name: 'furnished',
-      title: 'Furnished',
+      title: 'Мебель есть/нет',
       type: 'boolean',
     }),
     defineField({
+      name: 'furnitureList',
+      title: 'Список мебели',
+      type: 'string',
+      hidden: ({ document }) => !document?.furnished, // Показывать поле только если `furnished` равно true
+    }),
+    defineField({
       name: 'balconyOrTerrace',
-      title: 'Balkon / Terrace / Garden',
+      title: 'Балкон / Терраса / Огруд',
       type: 'string',
       options: {
         list: [
@@ -191,15 +236,85 @@ const property = {
     }),
     defineField({
       name: 'parking',
-      title: 'Parking',
+      title: 'Парковка есть/нет',
       type: 'boolean',
     }),
-    // defineField({
-    //   name: 'isBooked',
-    //   title: 'Zarezerwowany',
-    //   type: 'boolean',
-    //   initialValue: false,
-    // }),
+    defineField({
+      name: 'marketType',
+      title: 'Рынок',
+      type: 'string',
+      options: {
+        list: market,
+      },
+    }),
+    defineField({
+      name: 'buildingMaterial',
+      title: 'Материал здания',
+      type: 'string',
+      options: {
+        list: buildingMaterial,
+      },
+    }),
+    defineField({
+      name: 'buildingYear',
+      title: 'Год постройки',
+      type: 'number',
+    }),
+    defineField({
+      name: 'buildingElevator',
+      title: 'Лифт есть/нет',
+      type: 'string',
+    }),
+    defineField({
+      name: 'buildingOwnership',
+      title: 'Форма собственности',
+      type: 'string',
+      options: {
+        list: buildingOwnership,
+      },
+    }),
+    defineField({
+      name: 'finishCondition',
+      title: 'Состояние отделки',
+      type: 'string',
+      options: {
+        list: finishCondition,
+      },
+    }),
+    defineField({
+      name: 'heating',
+      title: 'Отопление',
+      type: 'string',
+      options: {
+        list: heating,
+      },
+    }),
+    defineField({
+      name: 'mediaPayment',
+      title: 'Коммуналка (media)',
+      type: 'number',
+    }),
+    defineField({
+      name: 'security',
+      title: 'Безопасность',
+      type: 'string',
+      options: {
+        list: security,
+      },
+    }),
+    defineField({
+      name: 'additionalInfo',
+      title: 'Дополнительная информация',
+      type: 'string',
+      description: 'Любая дополнительная информация о недвижимости',
+    }),
+    defineField({
+      name: 'isActual',
+      title: 'Актуальность',
+      type: 'boolean',
+      initialValue: true,
+      description: 'Выключить, если объект больше не актуален',
+    }),
   ],
 }
 

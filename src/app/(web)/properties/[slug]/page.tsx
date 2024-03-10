@@ -1,13 +1,23 @@
 'use client';
 
 import useSWR from 'swr';
-import toast from 'react-hot-toast';
-import { FaArrowsToCircle, FaLocationDot, FaHouseCircleCheck, FaCoins, FaElevator, FaMoneyBill, FaBoxArchive, FaChalkboard, FaSquareParking } from "react-icons/fa6";
-// import PropertyPhotoGallery from '@/components/PropertyPhotoGallery/PropertyPhotoGallery';
-// import BookPropertyCta from '@/components/BookPropertyCta/BookPropertyCta';
+import {
+  FaArrowsToCircle,
+  FaLocationDot,
+  FaHouseCircleCheck,
+  FaBuilding,
+  FaElevator,
+  FaMoneyBill,
+  FaBoxArchive,
+  FaChalkboard,
+  FaSquareParking,
+  FaPeopleRoof,
+  FaHouseFlag,
+} from "react-icons/fa6";
 import HotelPhotoGallery from '@/components/HotelPhotoGallery/HotelPhotoGallery';
 import LoadingSpinner from '../../loading';
 import { getProperty } from '@/libs/apis';
+import { motion } from 'framer-motion';
 
 import styles from "../../../PageStyles.module.scss";
 import Contact from '@/components/Contact/Contact';
@@ -64,48 +74,104 @@ const PropertyPage = (props: { params: { slug: string } }) => {
                     <a className={styles.scrollToMap} onClick={() => scrollToSectionMap()}>
                       <FaLocationDot fontSize="0.8rem" /> {property.address}, {property.district}, {property.city}
                     </a>
-                    <div className={styles.propertyData}>
-                      <FaArrowsToCircle fontSize="1rem" color="#48368d" />
-                      <p className={styles.propertyDataText}>
-                        Powierzchnia: <span className={styles.data}>{property.area} m²</span>
-                      </p>
+
+                    <div className={styles.infoBlockWrapper}>
+                      <div className={styles.infoBlock}>
+                        <div className={styles.infoItem}>
+                          <div className={styles.itemKey}>
+                            <div className={styles.itemKeyFlex}>
+                              <FaArrowsToCircle fontSize="1rem" color="#48368d" />
+                              <p>Powierzchnia:</p>
+                            </div>
+                          </div>
+                          <div className={styles.itemValue}>{property.area} m²</div>
+                        </div>
+                        <div className={styles.infoItem}>
+                          <div className={styles.itemKey}>
+                            <div className={styles.itemKeyFlex}>
+                              <FaHouseCircleCheck fontSize="1rem" color="#48368d" />
+                              <p>Liczba pokoi:</p>
+                            </div>
+                          </div>
+                          <div className={styles.itemValue}>{property.rooms} m²</div>
+                        </div>
+                        <div className={styles.infoItem}>
+                          <div className={styles.itemKey}>
+                            <div className={styles.itemKeyFlex}>
+                              <FaBuilding fontSize="1rem" color="#48368d" />
+                              <p>Piętro:</p>
+                            </div>
+                          </div>
+                          <div className={styles.itemValue}>{property.floor}</div>
+                        </div>
+                        <div className={styles.infoItem}>
+                          <div className={styles.itemKey}>
+                            <div className={styles.itemKeyFlex}>
+                              <FaMoneyBill fontSize="1rem" color="#48368d" />
+                              <p>Czynsz:</p>
+                            </div>
+                          </div>
+                          <div className={styles.itemValue}>{property.monthlyRent?.toLocaleString('pl-PL')} zł</div>
+                        </div>
+                        <div className={styles.infoItem}>
+                          <div className={styles.itemKey}>
+                            <div className={styles.itemKeyFlex}>
+                              <FaPeopleRoof fontSize="1rem" color="#48368d" />
+                              <p>Forma własności:</p>
+                            </div>
+                          </div>
+                          <div className={styles.itemValue}>{property.buildingOwnership}</div>
+                        </div>
+                      </div>
+                      <div className={styles.infoBlock}>
+                        <div className={styles.infoItem}>
+                          <div className={styles.itemKey}>
+                            <div className={styles.itemKeyFlex}>
+                              <FaHouseFlag fontSize="1rem" color="#48368d" />
+                              <p>Stan wykończenia:</p>
+                            </div>
+                          </div>
+                          <div className={styles.itemValue}>{property.finishCondition}</div>
+                        </div>
+                        <div className={styles.infoItem}>
+                          <div className={styles.itemKey}>
+                            <div className={styles.itemKeyFlex}>
+                              <FaBoxArchive fontSize="1rem" color="#48368d" />
+                              <p>Umeblowany:</p>
+                            </div>
+                          </div>
+                          <div className={styles.itemValue}>{property.furnished ? 'tak' : 'nie'}</div>
+                        </div>
+                        <div className={styles.infoItem}>
+                          <div className={styles.itemKey}>
+                            <div className={styles.itemKeyFlex}>
+                              <FaChalkboard fontSize="1rem" color="#48368d" />
+                              <p>Balkon / Taras / Ogród:</p>
+                            </div>
+                          </div>
+                          <div className={styles.itemValue}>{property.balconyOrTerrace}</div>
+                        </div>
+                        <div className={styles.infoItem}>
+                          <div className={styles.itemKey}>
+                            <div className={styles.itemKeyFlex}>
+                              <FaSquareParking fontSize="1rem" color="#48368d" />
+                              <p>Parking:</p>
+                            </div>
+                          </div>
+                          <div className={styles.itemValue}>{property.parking ? 'tak' : 'nie'}</div>
+                        </div>
+                        <div className={styles.infoItem}>
+                          <div className={styles.itemKey}>
+                            <div className={styles.itemKeyFlex}>
+                              <FaElevator fontSize="1rem" color="#48368d" />
+                              <p>Winda:</p>
+                            </div>
+                          </div>
+                          <div className={styles.itemValue}>{property.buildingElevator ? 'tak' : 'nie'}</div>
+                        </div>
+                      </div>
                     </div>
-                    <div className={styles.propertyData}>
-                      <FaHouseCircleCheck fontSize="1rem" color="#48368d" />
-                      <p className={styles.propertyDataText}>
-                        Liczba pokoi: <span className={styles.data}>{property.rooms}</span>
-                      </p>
-                    </div>
-                    <div className={styles.propertyData}>
-                      <FaElevator fontSize="1rem" color="#48368d" />
-                      <p className={styles.propertyDataText}> 
-                        Piętro: <span className={styles.data}>{property.floor}</span>
-                      </p>
-                    </div>
-                    <div className={styles.propertyData}>
-                      <FaMoneyBill fontSize="1rem" color="#48368d" />
-                      <p className={styles.propertyDataText}>
-                        Kaucja: <span className={styles.data}>{property.deposit?.toLocaleString('pl-PL')}</span>
-                      </p>
-                    </div>
-                    <div className={styles.propertyData}>
-                      <FaBoxArchive fontSize="1rem" color="#48368d" />
-                      <p className={styles.propertyDataText}>
-                        Umeblowany: <span className={styles.data}>{property.furnished ? 'tak' : 'nie'}</span>
-                      </p>
-                    </div>
-                    <div className={styles.propertyData}>
-                      <FaChalkboard fontSize="1rem" color="#48368d" />
-                      <p className={styles.propertyDataText}>
-                        Balkon / Taras / Ogród: <span className={styles.data}>{property.balconyOrTerrace}</span>
-                      </p>
-                    </div>
-                    <div className={styles.propertyData}>
-                      <FaSquareParking fontSize="1rem" color="#48368d" />
-                      <p className={styles.propertyDataText}>
-                        Parking: <span className={styles.data}>{property.parking ? 'tak' : 'nie'}</span>
-                      </p>
-                    </div>
+
                     </div>
                     <div className='mb-11'>
                       <h2 className={styles.propertySubtitle}>Opis</h2>
@@ -123,7 +189,48 @@ const PropertyPage = (props: { params: { slug: string } }) => {
                           {isTextExpanded ? 'Pokaż mniej' : 'Pokaż więcej'}
                         </button>
                     </div>
-                    <section id='map' className='w-full h-[400px]'>
+                    <div className={styles.additionalInfo}>
+                    <h2 className={styles.propertySubtitle}>Informacje dodatkowe</h2>
+                    <div className={styles.infoBlock}>
+                      <div className={styles.infoItem}>
+                        <div className={styles.itemKey}>Rynek</div>
+                        <div className={styles.itemValue}>{property.marketType}</div>
+                      </div>
+                      <div className={styles.infoItem}>
+                        <div className={styles.itemKey}>Materiał budynku</div>
+                        <div className={styles.itemValue}>{property.buildingMaterial}</div>
+                      </div>
+                      <div className={styles.infoItem}>
+                        <div className={styles.itemKey}>Rok budowy</div>
+                        <div className={styles.itemValue}>{property.buildingYear}</div>
+                      </div>
+                      <div className={styles.infoItem}>
+                        <div className={styles.itemKey}>Winda</div>
+                        <div className={styles.itemValue}>{property.buildingElevator}</div>
+                      </div>
+                      <div className={styles.infoItem}>
+                        <div className={styles.itemKey}>Wyposażenie</div>
+                        <div className={styles.itemValue}>{property.furnitureList}</div>
+                      </div>
+                      <div className={styles.infoItem}>
+                        <div className={styles.itemKey}>Ogrzewanie</div>
+                        <div className={styles.itemValue}>{property.heating}</div>
+                      </div>
+                      <div className={styles.infoItem}>
+                        <div className={styles.itemKey}>Media</div>
+                        <div className={styles.itemValue}>{property.mediaPayment}</div>
+                      </div>
+                      <div className={styles.infoItem}>
+                        <div className={styles.itemKey}>Bezpieczeństwo</div>
+                        <div className={styles.itemValue}>{property.security}</div>
+                      </div>
+                      <div className={styles.infoItem}>
+                        <div className={styles.itemKey}>Informacje dodatkowe</div>
+                        <div className={styles.itemValue}>{property.additionalInfo}</div>
+                      </div>
+                    </div>
+                    </div>
+                    <section id='map' className={styles.propertyMap}>
                       <iframe
                         className='w-full h-[400px]'
                         loading='lazy'

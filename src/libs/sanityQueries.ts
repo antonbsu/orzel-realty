@@ -26,7 +26,7 @@ export const getFeaturedRoomQuery = groq`*[_type == "hotelRoom" && isFeatured ==
 }`;
 
 export const getPropertiesQuery = groq`*[_type == "property"] {
-     _id,
+    _id,
     name,
     slug,
     images,
@@ -51,27 +51,16 @@ export const getPropertiesQuery = groq`*[_type == "property"] {
     balconyOrTerrace,
     garden,
     parking,
-    isFeatured,
-    isBooked
-}`;
-
-export const getBlogPostsQuery = groq`*[_type == "blogPost"] | order(_createdAt desc)[0..2] {
-    _id,
-    title,
-    slug,
-    mainImage,
-    publishedAt,
-    excerpt,
-}`;
-
-export const getBlogPostQuery = groq`*[_type == "blogPost" && slug.current == $slug][0] {
-    _id,
-    title,
-    slug,
-    mainImage,
-    publishedAt,
-    excerpt,
-    body
+    marketType,
+    buildingMaterial,
+    buildingYear,
+    buildingElevator,
+    buildingOwnership,
+    finishCondition,
+    heating,
+    mediaPayment,
+    security,
+    isActual
 }`;
 
 export const getPropertyQuery = groq`*[_type == "property" && slug.current == $slug][0] {
@@ -97,13 +86,42 @@ export const getPropertyQuery = groq`*[_type == "property" && slug.current == $s
     monthlyRent,
     deposit,
     furnished,
+    furnitureList,
     balconyOrTerrace,
     garden,
     parking,
     body,
     iframeUrl,
-    isFeatured,
-    isBooked
+    marketType,
+    buildingMaterial,
+    buildingYear,
+    buildingElevator,
+    buildingOwnership,
+    finishCondition,
+    heating,
+    mediaPayment,
+    security,
+    additionalInfo,
+    isActual
+}`;
+
+export const getBlogPostsQuery = groq`*[_type == "blogPost"] | order(_createdAt desc)[0..2] {
+    _id,
+    title,
+    slug,
+    mainImage,
+    publishedAt,
+    excerpt,
+}`;
+
+export const getBlogPostQuery = groq`*[_type == "blogPost" && slug.current == $slug][0] {
+    _id,
+    title,
+    slug,
+    mainImage,
+    publishedAt,
+    excerpt,
+    body
 }`;
 
 export const getLatestPropertiesQuery = groq`*[_type == "property"] | order(_createdAt desc)[0..5] {

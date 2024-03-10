@@ -15,6 +15,7 @@
 
 .property {
   margin-top: 120px;
+  margin-bottom: 80px;
   background-color: #f3f5f7;
 }
 
@@ -191,4 +192,80 @@
   border-radius: 10px;
   aspect-ratio: 16/8;
   margin-bottom: 1.5rem;
+}
+
+.infoBlockWrapper {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  gap: 0;
+
+  @media screen and (min-width: 768px){
+    flex-direction: row;
+    gap: 1.5rem;
+  }
+}
+
+.infoBlock {
+  display: grid;
+
+  @media screen and (min-width: 768px){
+    grid-gap: 0 16px;
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.infoItem {
+  border-top: 1px solid #e0e0e0;
+  display: grid;
+  grid-column-gap: 16px;
+  grid-template-columns: 1fr 1fr;
+  height: auto;
+  padding: 8px 0;
+  color: #404041;
+  font-size: 16px;
+  line-height: 1.4;
+
+  &:last-child {
+    border-bottom: 1px solid #e0e0e0;
+  }
+
+  @media (min-width: 768px) {
+    grid-template-columns: 230px 1fr;
+    height: auto;
+    white-space: normal;
+  }
+}
+
+.itemKey {
+  display: flex;
+  position: relative;
+  min-width: 0;
+  opacity: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.itemKeyFlex {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.itemValue {
+  display: flex;
+  position: relative;
+  min-width: 0;
+  opacity: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-weight: 600;
+}
+
+.propertyMap {
+  margin-top: 20px;
+  height: 400px;
+  width: 100%;
 }
