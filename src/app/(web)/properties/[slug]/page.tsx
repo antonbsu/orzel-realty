@@ -226,7 +226,7 @@ const PropertyPage = (props: { params: { slug: string } }) => {
                       </div>
                       <div className={styles.infoItem}>
                         <div className={styles.itemKey}>Informacje dodatkowe</div>
-                        <div className={styles.itemValue}>{property.additionalInfo}</div>
+                        <div className={styles.itemValue}><p>{property.additionalInfo}</p></div>
                       </div>
                     </div>
                     </div>
