@@ -73,17 +73,25 @@ const property = {
   fields: [
     defineField({
       name: 'name',
-      title: 'Name',
+      title: 'Название объекта',
       type: 'string',
       validation: Rule => Rule.required().max(50).error('Name should be less than 50 characters'),
     }),
     defineField({
       name: 'slug',
+      title: 'Ссылка на страницу',
       type: 'slug',
       options: {
         source: 'name',
       },
       validation: Rule => Rule.required(),
+      description: 'Нажмите для генерации ссылки',
+    }),
+    defineField({
+      name: 'price',
+      title: 'Цена',
+      type: 'number',
+      validation: Rule => Rule.required().min(100).error('Minimum 100 characters'),
     }),
     defineField({
       name: 'iframeUrl',
@@ -93,60 +101,57 @@ const property = {
     }),
     defineField({
       name: 'images',
-      title: 'Images',
+      title: 'Изображения хаты',
       type: 'array',
       of: [{ type: 'image' }],
       validation: Rule => Rule.required().min(3).error('Minimum 3 images'),
     }),
     defineField({
+      name: 'address',
+      title: 'Улица, дом, квартира',
+      type: 'string',
+      validation: Rule => Rule.required(),
+    }),
+    defineField({
       name: 'city',
-      title: 'City',
+      title: 'Город',
       type: 'string',
       validation: Rule => Rule.required(),
     }),
     defineField({
       name: 'district',
-      title: 'District',
+      title: 'Район',
       type: 'string',
       validation: Rule => Rule.required(),
     }),
     defineField({
-      name: 'price',
-      title: 'Price',
-      type: 'number',
-      validation: Rule => Rule.required().min(100).error('Minimum 100 characters'),
-    }),
-    defineField({
       name: 'developer',
-      title: 'Developer',
+      title: 'Застройщик',
       type: 'string',
       validation: Rule => Rule.required().max(50).error('Developer should be less than 50 characters'),
+      description: 'Если нет застройщика, то пишем Orzel Realty',
     }),
     defineField({
       name: "body",
-      title: "Body",
+      title: "Подробное описание",
       type: "blockContent",
     }),
     defineField({
       name: 'shortDescription',
-      title: 'Short Description',
+      title: 'Краткое описание',
       type: 'text',
+      description: 'Улица, дом, квартира, количество комнат, цена за квадрат',
     }),
     defineField({
       name: 'phone',
-      title: 'Phone',
+      title: 'Телефон',
       type: 'string',
       validation: Rule => Rule.required(),
-    }),
-    defineField({
-      name: 'description',
-      title: 'Description',
-      type: 'text',
-      validation: Rule => Rule.required().min(100).error('Minimum 100 characters'),
+      description: 'Контактный телефон агента',
     }),
     defineField({
       name: 'type',
-      title: 'Type',
+      title: 'Тип недвижимости',
       type: 'string',
       options: {
         list: propertyTypes,
@@ -155,7 +160,7 @@ const property = {
     }),
     defineField({
       name: 'purpose',
-      title: 'Purpose',
+      title: 'Аренда/Продажа/Инвестиция',
       type: 'string',
       options: {
         list: propertyPurpose,
@@ -164,7 +169,7 @@ const property = {
     }),
     defineField({
       name: 'propertyType',
-      title: 'Property Type',
+      title: 'Вариант недвижимости',
       type: 'string',
       options: {
         list: propertyType,
@@ -173,27 +178,23 @@ const property = {
     }),
     defineField({
       name: 'location',
-      title: 'Location',
+      title: 'Координаты',
       type: 'geopoint',
       validation: Rule => Rule.required(),
     }),
     defineField({
-      name: 'address',
-      title: 'Address',
-      type: 'string',
-      validation: Rule => Rule.required(),
-    }),
-    defineField({
       name: 'area',
-      title: 'Area',
+      title: 'Площадь',
       type: 'number',
       validation: Rule => Rule.required(),
+      description: 'Впишите только цифры',
     }),
     defineField({
       name: 'rooms',
       title: 'Количество комнат',
       type: 'number',
       validation: Rule => Rule.required(),
+      description: 'Впишите только цифры',
     }),
     defineField({
       name: 'floor',
@@ -205,11 +206,13 @@ const property = {
       name: 'monthlyRent',
       title: 'Чынш',
       type: 'number',
+      description: 'Впишите только цифры',
     }),
     defineField({
       name: 'deposit',
       title: 'Депозит',
       type: 'number',
+      description: 'Впишите только цифры',
     }),
     defineField({
       name: 'furnished',
@@ -246,6 +249,7 @@ const property = {
       options: {
         list: market,
       },
+      description: 'Первичка/Вторичка',
     }),
     defineField({
       name: 'buildingMaterial',
