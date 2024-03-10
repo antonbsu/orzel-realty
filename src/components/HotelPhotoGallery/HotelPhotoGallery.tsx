@@ -79,7 +79,7 @@ const HotelPhotoGallery: FC<HotelPhotoGalleryProps> = ({
           {remainingPhotosCount > 0 && (
             <div className={styles.remainingCount} onClick={() => openModal(maximumVisiblePhotos)}>
               <div className={styles.remainingOverlay}>
-                +{remainingPhotosCount} more
+                +{remainingPhotosCount} więcej
               </div>
             </div>
           )}
