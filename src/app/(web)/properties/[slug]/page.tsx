@@ -132,7 +132,7 @@ const PropertyPage = (props: { params: { slug: string } }) => {
               </p>
             </div>
             <div className={styles.mb}>
-              <p>{property.shortDescription}</p>
+              <p className={styles.shortDescription}>{property.shortDescription}</p>
             </div>
             <div className={styles.mb}>
               <p className={styles.propertyDataText}>
