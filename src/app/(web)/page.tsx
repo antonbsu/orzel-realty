@@ -11,8 +11,8 @@ const Home = async () => {
   return (
     <>
       <PageSearch />
-      <NewsComponent />
       <LatestSalesProperties />
+      <NewsComponent />
       {/* <LatestProperties /> */}
       {/* <LatestCommercialProperties /> */}
       {/* <Reviews /> */}

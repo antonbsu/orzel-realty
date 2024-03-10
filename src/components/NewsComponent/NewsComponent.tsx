@@ -3,8 +3,17 @@ import { getBlogPosts } from "@/libs/apis";
 import { BlogPost } from "@/models/blogPost";
 import { useEffect, useState } from "react";
 
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper/modules";
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
+import "swiper/css/effect-coverflow";
+
 import styles from "../../app/PageStyles.module.scss";
 import Post from "@/components/Post/BlogPost";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa6";
 
 const NewsComponent = () => {
 
@@ -27,14 +36,41 @@ const NewsComponent = () => {
     <section className={styles.blogPostsMainPage}>
       <div className="container">
         <h2 className="h2">Aktualności</h2>
-        <div className={styles.postsBlock}>
-          <ul className={styles.blogPostsWrapper}>
-            {blogPosts.map((post) => (
-              <li key={post._id}>
-                <Post post={post} />
-              </li>
-            ))}
-          </ul>
+        <Swiper
+          modules={[Navigation]}
+          navigation={{
+            nextEl: '.nextBtnNews',
+            prevEl: '.prevBtnNews',
+          }}
+          grabCursor={true}
+          draggable={true}
+          // centeredSlides={true}
+          spaceBetween={20}
+          breakpoints={{
+            576: {
+              slidesPerView: 1, // Override slidesPerView for screens >= 576px
+            },
+            768: {
+              slidesPerView: 2,
+            },
+            980: {
+              slidesPerView: 3,
+            },
+          }}
+        >
+          {blogPosts.map((post) => (
+            <SwiperSlide key={post._id}>
+              <Post post={post} />
+            </SwiperSlide>
+          ))}
+        </Swiper>
+        <div className="navButtons">
+          <button className="prevBtnNews">
+            <FaChevronLeft color="#351949" fontSize="1.5em" />
+          </button>
+          <button className="nextBtnNews">
+            <FaChevronRight color="#351949" fontSize="1.5em" />
+          </button>
         </div>
       </div>
     </section>

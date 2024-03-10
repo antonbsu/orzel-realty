@@ -13,7 +13,7 @@ const Footer = () => {
           <div className={styles.footerColumn}>
             <div className={styles.footerData}>
               <p>01-234, Warszawa,</p>
-              <p>ul. Kaspszaka 31, l. 126</p>
+              <p>ul. Marcina Kasprzaka 31/126</p>
             </div>
             <div className={styles.footerData}>
               <p>NIP: 5223275251</p>

@@ -30,7 +30,7 @@ const Post: React.FC<PostProps> = ({ post }) => {
         className={styles.blogPostImage}
       />
       <div className={styles.blogPostData}>
-        <h2 className={styles.blogPostTitle}>{post.title}</h2>
+        <h2 className={styles.blogPostTitle}>{post.title.slice(0, 30)}...</h2>
         <p className={styles.blogPostDate}>{formattedDate}</p>
         <p className={styles.blogPostExcerpt}>{post.excerpt.slice(0, 50)}...</p>
         <Link className={styles.blogPostLink} href={`/news/${post.slug.current}`}>Czytać →</Link>

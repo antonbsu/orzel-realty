@@ -105,7 +105,7 @@ export const getPropertyQuery = groq`*[_type == "property" && slug.current == $s
     isActual
 }`;
 
-export const getBlogPostsQuery = groq`*[_type == "blogPost"] | order(_createdAt desc)[0..2] {
+export const getBlogPostsQuery = groq`*[_type == "blogPost"] | order(publishedAt desc)[0..4] {
     _id,
     title,
     slug,
