@@ -19,32 +19,36 @@ const PropertiesCard: FC<Props> = (props) => {
   // const imageUrl = images.length > 0 ? images[0].url : "/placeholder-image.jpg";
 
   return (
-    <div className={styles.card}>
-      <div className="h-60 overflow-hidden">
-        <Image
-          src={urlFor(images[0]).url()}
-          alt={name}
-          width={250}
-          height={250}
-          className="img scale-animation"
-        />
-      </div>
-      <div className="p-4 bg-white">
-        <div className="flex justify-between text-xl font-semibold">
-          <p>{name}</p>
-          <p>{price.toLocaleString('pl-PL')} zł</p>
+    <Link
+      href={`/properties/${slug.current}`}
+    >
+      <div className={styles.card}>
+        <div className="h-60 overflow-hidden">
+          <Image
+            src={urlFor(images[0]).url()}
+            alt={name}
+            width={250}
+            height={250}
+            className="img scale-animation"
+          />
         </div>
-        <p className="pt-2 text-xs">{type}</p>
-        {/* <p className="pt-3 pb-6">{description}</p> */}
-        <Link
-          href={`/properties/${slug.current}`}
-          className={styles.link}
-        >
-          {/* {isBooked ? "Booked" : "Book Now"} */}
-          Pokaż
-        </Link>
+        <div className="p-4 bg-white">
+          <div className={styles.cartContent}>
+            <p className={styles.cardName}>{name.slice(0, 45)}...</p>
+            {/* <p>{price.toLocaleString('pl-PL')} zł</p> */}
+          </div>
+          {/* <p className="pt-2 text-xs">{type}</p> */}
+          {/* <p className="pt-3 pb-6">{description}</p> */}
+          <Link
+            href={`/properties/${slug.current}`}
+            className={styles.link}
+          >
+            {/* {isBooked ? "Booked" : "Book Now"} */}
+            {price.toLocaleString('pl-PL')} zł
+          </Link>
+        </div>
       </div>
-    </div>
+    </Link>
   );
 };
 
