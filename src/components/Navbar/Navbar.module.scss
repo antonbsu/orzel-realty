@@ -47,14 +47,41 @@
 
 .navbar {
   flex: 2;
+
+  @media (max-width: 768px) {
+    position: fixed;
+    top: 50%; // Центрирование по вертикали
+    left: 50%; // Центрирование по горизонтали
+    transform: translate(-50%, -50%); // Смещение для точного центрирования
+    width: 90%; // Можете адаптировать под свои нужды
+    height: 70%; // Авто-высота или фиксированная, в зависимости от содержимого
+    // background-color: #fff; // Фон, если требуется
+    // border-radius: 8px; // Скругление углов, если требуется
+    // box-shadow: 0 4px 6px rgba(0,0,0,0.1); // Тень для лучшего выделения на фоне страницы
+    display: flex; // Для включения flexbox и центрирования содержимого
+    flex-direction: column; // Элементы меню вертикально
+    justify-content: center; // Вертикальное центрирование содержимого
+    align-items: center; // Горизонтальное центрирование содержимого
+    overflow: auto; // Добавьте прокрутку, если содержимое выходит за пределы экрана
+    padding: 20px; // Внутренний отступ для содержимого
+    z-index: 25; // Убедитесь, что меню находится поверх других элементов
+  }
+}
+
+.navbar.open {
+  transform: translate(-50%, -50%) !important;
 }
 
 .menuItems {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
   
   @media (min-width: 768px) {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    flex-direction: row;
   }
 
 }
@@ -67,13 +94,15 @@
 }
 
 .menuItemLabel {
+  font-size: 16px;
+  font-weight: 500;
   display: flex;
   align-items: center;
   gap: 5px;
 }
 
 .menuItemLink {
-  font-size: clamp(0.75rem, 0.682rem + 0.34vw, 0.938rem);
+  font-size: 16px;
   font-weight: 500;
   text-transform: uppercase;
   color: #fff;
@@ -99,8 +128,11 @@
 }
 
 .subMenu {
-  position: absolute;
-  top: 50px;
+  
+  @media (min-width: 768px) {
+    position: absolute;
+    top: 50px;
+  }
 }
 
 .subLink {
