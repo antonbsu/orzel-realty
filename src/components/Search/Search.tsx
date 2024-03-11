@@ -157,7 +157,7 @@ const Search: FC<Props> = ({
             </button>
           </div>
           <div className={styles.bottomFormPart}>
-              {/* <div className={styles.checkbox}>
+              <div className={styles.checkbox}>
                 <label className="block text-sm font-medium mb-2 text-white">
                   Umeblowany
                 </label>
@@ -166,8 +166,8 @@ const Search: FC<Props> = ({
                   checked={propertyFurnished || false}
                   onChange={handlePropertyFurnishedChange}
                 />
-              </div> */}
-              {/* <div className={styles.checkbox}>
+              </div>
+              <div className={styles.checkbox}>
                 <label className="block text-sm font-medium mb-2 text-white">
                   Parking
                 </label>
@@ -176,7 +176,7 @@ const Search: FC<Props> = ({
                   checked={propertyParking || false}
                   onChange={handlePropertyParkingChange}
                 />
-              </div> */}
+              </div>
             <div className={styles.sort}>
               {/* <label className="block text-sm font-medium mb-2 text-white">
                 Комнаты

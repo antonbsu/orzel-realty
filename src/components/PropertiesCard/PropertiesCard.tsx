@@ -35,7 +35,7 @@ const PropertiesCard: FC<Props> = (props) => {
           <p>{price.toLocaleString('pl-PL')} zł</p>
         </div>
         <p className="pt-2 text-xs">{type}</p>
-        <p className="pt-3 pb-6">{description.slice(0, 100)}...</p>
+        {/* <p className="pt-3 pb-6">{description}</p> */}
         <Link
           href={`/properties/${slug.current}`}
           className={styles.link}
