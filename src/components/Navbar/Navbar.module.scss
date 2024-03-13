@@ -17,7 +17,7 @@
 .headerWrapper {
   position: relative;
   transition: height 0.3s ease;
-  height: 60px;
+  // height: 60px;
 
   @media (min-width: 768px) {
     display: flex;
@@ -39,6 +39,10 @@
 .logo {
   flex: 1;
   width: fit-content;
+
+  @media (max-width: 768px) {
+    margin-top: 2px;
+  }
 }
 
 .logoLink {
@@ -225,7 +229,7 @@
 .burgerIcon {
   cursor: pointer;
   position: absolute;
-  top: 15px;
+  top: 12px;
   right: 0;
 }
 
