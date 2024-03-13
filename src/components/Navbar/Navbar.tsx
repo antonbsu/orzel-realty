@@ -1,3 +1,4 @@
+// Navbar.tsx
 'use client';
 
 import { useEffect, useState } from "react";
@@ -29,14 +30,38 @@ const Navbar = () => {
     fetchData();
 
     const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768); // Или любое другое значение, подходящее для ваших потребностей
+      setIsMobile(window.innerWidth <= 768);
     };
 
-    handleResize(); // Установка начального значения
+    handleResize(); 
     window.addEventListener('resize', handleResize);
 
     return () => {
       window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setOpenSubMenu(null);
+      }
+    };
+
+    const handleClickOutside = (event: MouseEvent) => {
+      // Приведение event.target к типу Element, чтобы использовать метод closest
+      const target = event.target as Element;
+      if (!target.closest(`.${styles.menuItem}`)) {
+        setOpenSubMenu(null);
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    document.addEventListener('mousedown', handleClickOutside);
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+      document.removeEventListener('mousedown', handleClickOutside);
     };
   }, []);
 
@@ -58,32 +83,28 @@ const Navbar = () => {
       <div className="container">
         <div className={`${styles.headerWrapper} ${isMenuOpen ? styles.menuOpen : ''}`}>
           <div className={styles.logo}>
-            <Link href="/">
-              <div className={styles.logoLink}>
-                <Image
-                  alt="Orzel-Realty Logo"
-                  src={urlFor(navbarData.logo).url()}
-                  width={100}
-                  height={100}
-                  className={styles.logoImage}
-                />
-              </div>
+            <Link className={styles.logoLink} href="/">
+              <Image
+                alt="Logo"
+                src={urlFor(navbarData.logo).url()}
+                width={100}
+                height={100}
+                className={styles.logoImage}
+              />
             </Link>
           </div>
 
-          {/* Burger Icon for Mobile */}
           {isMobile && (
             <div className={styles.burgerIcon} onClick={toggleMenu}>
-              <div className={`${styles.bar} ${isMenuOpen && styles.rotateBar1}`} />
-              <div className={`${styles.bar} ${isMenuOpen && styles.hideBar}`} />
-              <div className={`${styles.bar} ${isMenuOpen && styles.rotateBar2}`} />
+              <div className={`${styles.bar} ${isMenuOpen ? styles.rotateBar1 : ''}`} />
+              <div className={`${styles.bar} ${isMenuOpen ? styles.hideBar : ''}`} />
+              <div className={`${styles.bar} ${isMenuOpen ? styles.rotateBar2 : ''}`} />
             </div>
           )}
 
-          {/* Navigation Menu */}
           {(isMobile && isMenuOpen) || !isMobile ? (
             <motion.nav
-              className={`${styles.navbar} ${isMenuOpen && styles.open}`}
+              className={`${styles.navbar} ${isMenuOpen ? styles.open : ''}`}
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
@@ -94,48 +115,35 @@ const Navbar = () => {
                     {menuItem.subMenu ? (
                       <div className={styles.menuItemLabel}>
                         <span>{menuItem.label}</span>
-                        <IoIosArrowDown size="1.2rem" />
+                        <IoIosArrowDown className={openSubMenu === menuItem.label ? styles.rotateIcon : ''} size="1.2rem" />
                       </div>
                     ) : (
-                        <Link
-                          href={menuItem.link}
-                          className={styles.menuItemLink}
-                        >
+                      <Link className={styles.menuItemLink} href={menuItem.link}>
                         {menuItem.label}
                       </Link>
                     )}
-
-                    {/* Submenu */}
                     <AnimatePresence>
                       {menuItem.subMenu && openSubMenu === menuItem.label && (
                         <motion.ul
                           className={styles.subMenu}
-                          initial={{ opacity: 0, y: -10 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          exit={{ opacity: 0, y: -10 }}
+                          initial={{ maxHeight: 0, overflow: 'hidden' }}
+                          animate={{ maxHeight: 500, overflow: 'hidden' }}
+                          exit={{ maxHeight: 0, overflow: 'hidden' }}
+                          transition={{ duration: 0.5 }}
                         >
                           {menuItem.subMenu.map((subMenuItem, subIndex) => (
-                            <motion.li
-                              key={subIndex}
-                              className={styles.subMenuItem}
-                              initial={{ opacity: 0, x: -10 }}
-                              animate={{ opacity: 1, x: 0 }}
-                              exit={{ opacity: 0, x: -10 }}
-                            >
-                              <Link
-                                className={styles.subLink}
-                                href={subMenuItem.subLink}
-                              >
+                            <li key={subIndex} className={styles.subMenuItem}>
+                              <Link className={styles.subLink} onClick={() => setOpenSubMenu(null)} href={subMenuItem.subLink}>
                                 {subMenuItem.subLabel}
                               </Link>
-                            </motion.li>
+                            </li>
                           ))}
                         </motion.ul>
                       )}
-                     </AnimatePresence>
+                    </AnimatePresence>
                   </li>
                 ))}
-                <li>
+                <li className={styles.menuItem}>
                   <Link
                     className={styles.menuItemLink}
                     href="tel:+48667240191"
@@ -147,7 +155,6 @@ const Navbar = () => {
             </motion.nav>
           ) : null}
         </div>
-
       </div>
     </header>
   );

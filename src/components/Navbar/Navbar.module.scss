@@ -38,6 +38,12 @@
 
 .logo {
   flex: 1;
+  width: fit-content;
+}
+
+.logoLink {
+  display: block;
+  width: fit-content;
 }
 
 .logoImage {
@@ -60,7 +66,7 @@
     // box-shadow: 0 4px 6px rgba(0,0,0,0.1); // Тень для лучшего выделения на фоне страницы
     display: flex; // Для включения flexbox и центрирования содержимого
     flex-direction: column; // Элементы меню вертикально
-    justify-content: center; // Вертикальное центрирование содержимого
+    // justify-content: center; // Вертикальное центрирование содержимого
     align-items: center; // Горизонтальное центрирование содержимого
     overflow: auto; // Добавьте прокрутку, если содержимое выходит за пределы экрана
     padding: 20px; // Внутренний отступ для содержимого
@@ -76,12 +82,14 @@
   display: flex;
   flex-direction: column;
   gap: 25px;
+  width: 100%;
   
   @media (min-width: 768px) {
     display: flex;
     align-items: center;
     justify-content: space-between;
     flex-direction: row;
+    // width: fit-content;
   }
 
 }
@@ -90,23 +98,77 @@
   position: relative;
   cursor: pointer;
   color: #fff;
-  text-transform: uppercase;
+  font-size: 30px;
+  font-weight: 500;
+  border-bottom: 1px solid #fff;
+  padding: 20px 0;
+  width: 100%;
+
+  @media (min-width: 768px) {
+    font-size: 20px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    border-bottom: none;
+    padding: 0;
+    width: fit-content;
+  }
+
 }
 
 .menuItemLabel {
-  font-size: 16px;
-  font-weight: 500;
-  display: flex;
-  align-items: center;
-  gap: 5px;
+    font-size: 30px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 5px;
+    width: 100%;
+    
+
+  @media (min-width: 768px) {
+    font-size: 20px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
 }
 
 .menuItemLink {
-  font-size: 16px;
+  font-size: 30px;
   font-weight: 500;
-  text-transform: uppercase;
+  // text-transform: uppercase;
   color: #fff;
-  transition: all ease-in-out 0.2s;
+  width: 100%;
+
+  @media screen and (min-width: 768px) {
+    font-size: 20px;
+    font-weight: 500;
+    // text-transform: uppercase;
+    color: #fff;
+    transition: all ease-in-out 0.2s;
+
+    &::after {
+      content: "";
+      display: block;
+      width: 0;
+      height: 1px;
+      background-color: #fff;
+      transition: all ease-in-out 0.2s;
+    }
+
+    &:hover {
+      @media (min-width: 768px) {
+
+        &::after {
+          width: 100%;
+        }
+      }
+    }
+    
+  }
 
   &::after {
     content: "";
@@ -127,24 +189,36 @@
     }
 }
 
+.rotateIcon {
+  transform: rotate(180deg);
+  transition: transform 0.2s ease-in-out; // Плавная анимация поворота
+}
+
 .subMenu {
+  overflow: hidden;
+  margin-top: 20px;
   
   @media (min-width: 768px) {
     position: absolute;
     top: 50px;
+    margin-top: 0;
   }
 }
 
 .subLink {
   display: block;
-  padding: 10px 20px;
+  padding: 20px;
   color: #fff;
   text-decoration: none;
-  background-color: #351949;
   transition: all ease-in-out 0.2s;
 
   &:hover {
     background-color: #48368d;
+  }
+
+  @media (min-width: 768px) {
+    padding: 10px 20px;
+    background-color: #351949;
   }
 }
 
