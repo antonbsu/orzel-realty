@@ -35,12 +35,19 @@
 
 .footerData {
   margin-bottom: 20px;
+
+  @media screen and (max-width: 768px) {
+    text-align: center;
+  }
 }
 
 .footerDataWrapper {
   display: flex;
-  // gap: 5px;
   align-items: center;
+
+  @media screen and (max-width: 768px) {
+    justify-content: center;
+  }
 }
 
 .footerLinks {
@@ -73,7 +80,7 @@
 .copyrigth {
   margin-top: 14px;
   text-align: center;
-  font-size: 1.2rem;
+  font-size: 14px;
   font-weight: 300;
-  text-transform: uppercase;
+  // text-transform: uppercase;
 }

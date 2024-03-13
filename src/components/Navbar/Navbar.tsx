@@ -49,7 +49,6 @@ const Navbar = () => {
     };
 
     const handleClickOutside = (event: MouseEvent) => {
-      // Приведение event.target к типу Element, чтобы использовать метод closest
       const target = event.target as Element;
       if (!target.closest(`.${styles.menuItem}`)) {
         setOpenSubMenu(null);
@@ -74,6 +73,14 @@ const Navbar = () => {
     setOpenSubMenu(openSubMenu === label ? null : label);
   };
 
+  // Функция закрытия меню при клике на ссылку
+  const handleLinkClick = () => {
+    if (isMobile) {
+      setIsMenuOpen(false);
+      setOpenSubMenu(null);
+    }
+  };
+
   if (!navbarData) {
     return null;
   }
@@ -83,9 +90,9 @@ const Navbar = () => {
       <div className="container">
         <div className={`${styles.headerWrapper} ${isMenuOpen ? styles.menuOpen : ''}`}>
           <div className={styles.logo}>
-            <Link className={styles.logoLink} href="/">
+            <Link  className={styles.logoLink} onClick={handleLinkClick} href="/">
               <Image
-                alt="Logo"
+                alt="Orzel Realty Logo"
                 src={urlFor(navbarData.logo).url()}
                 width={100}
                 height={100}
@@ -118,7 +125,7 @@ const Navbar = () => {
                         <IoIosArrowDown className={openSubMenu === menuItem.label ? styles.rotateIcon : ''} size="1.2rem" />
                       </div>
                     ) : (
-                      <Link className={styles.menuItemLink} href={menuItem.link}>
+                      <Link className={styles.menuItemLink} onClick={handleLinkClick} href={menuItem.link}>
                         {menuItem.label}
                       </Link>
                     )}
@@ -133,7 +140,7 @@ const Navbar = () => {
                         >
                           {menuItem.subMenu.map((subMenuItem, subIndex) => (
                             <li key={subIndex} className={styles.subMenuItem}>
-                              <Link className={styles.subLink} onClick={() => setOpenSubMenu(null)} href={subMenuItem.subLink}>
+                              <Link className={styles.subLink} onClick={handleLinkClick} href={subMenuItem.subLink}>
                                 {subMenuItem.subLabel}
                               </Link>
                             </li>
@@ -144,10 +151,7 @@ const Navbar = () => {
                   </li>
                 ))}
                 <li className={styles.menuItem}>
-                  <Link
-                    className={styles.menuItemLink}
-                    href="tel:+48667240191"
-                  >
+                  <Link className={styles.menuItemLink} onClick={handleLinkClick} href="tel:+48667240191">
                     +48 667 240 191
                   </Link>
                 </li>
