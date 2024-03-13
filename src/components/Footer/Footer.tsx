@@ -30,16 +30,16 @@ const Footer = () => {
           <div className={`${styles.textRight} ${styles.footerColumn}`}>
             <div className={styles.footerLinks}>
               <Link 
-                href='/wynajem-lokali-mieszkalnych'
-                className={styles.footerLink}
-                >
-                Mieszkania na wynajem
-              </Link>
-              <Link 
                 href='/sprzedaz-lokali-mieszkalnych'
                 className={styles.footerLink}
                 >
                 Mieszkania na sprzedaż
+              </Link>
+              <Link 
+                href='/wynajem-lokali-mieszkalnych'
+                className={styles.footerLink}
+                >
+                Mieszkania na wynajem
               </Link>
               <Link 
                 href='/properties'
