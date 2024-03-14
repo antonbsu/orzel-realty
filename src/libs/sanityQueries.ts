@@ -70,6 +70,8 @@ export const getPropertyQuery = groq`*[_type == "property" && slug.current == $s
     images,
     city,
     district,
+    pageTitle,
+    metaDescription,
     price,
     developer,
     shortDescription,

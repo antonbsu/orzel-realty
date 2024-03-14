@@ -88,10 +88,22 @@ const property = {
       description: 'Нажмите для генерации ссылки',
     }),
     defineField({
+      name: 'pageTitle',
+      title: 'Заголовок страницы',
+      type: 'string',
+      validation: Rule => Rule.required(),
+    }),
+    defineField({
+      name: 'metaDescription',
+      title: 'Мета-описание',
+      type: 'text',
+      validation: Rule => Rule.required(),
+    }),
+    defineField({
       name: 'price',
       title: 'Цена',
       type: 'number',
-      validation: Rule => Rule.required().min(100).error('Minimum 100 characters'),
+      validation: Rule => Rule.required(),
     }),
     defineField({
       name: 'iframeUrl',

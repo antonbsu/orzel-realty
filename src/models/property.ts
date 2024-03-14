@@ -26,6 +26,8 @@ export type Property = {
   _id: string;
   name: string;
   slug: { _type: 'slug'; current: string };
+  pageTitle: string;
+  metaDescription: string;
   images: Image[];
   city: string;
   district: string;
