@@ -54,9 +54,9 @@ const Footer = () => {
             <div className={styles.logoLink}>
                 <Image
                   alt="Orzel-Realty Logo"
-                  src="/images/orzel-realty-logo-2.png"
-                  width={250}
-                  height={250}
+                  src="/images/orzel.png"
+                  width={150}
+                  height={150}
                   className={styles.logoImage}
                 />
               </div>
