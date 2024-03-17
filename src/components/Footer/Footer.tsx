@@ -14,6 +14,14 @@ const Footer = () => {
             <div className={styles.footerData}>
               <p>01-234, Warszawa,</p>
               <p>ul. Marcina Kasprzaka 31/126</p>
+              <Link
+                href='https://www.google.com/maps/dir/?api=1&destination=52.22754346421469,20.954164690451872'
+                className={styles.footerLink}
+                style={{textDecoration: 'underline'}}
+                target='_blank'
+              >
+                Uzyskaj wskazówki
+              </Link>
             </div>
             <div className={styles.footerData}>
               <p>NIP: 5223275251</p>
@@ -27,7 +35,7 @@ const Footer = () => {
             </div>
           </div>
 
-          <div className={`${styles.textRight} ${styles.footerColumn}`}>
+          <div className={`${styles.textCenter} ${styles.footerColumn}`}>
             <div className={styles.footerLinks}>
               <Link 
                 href='/sprzedaz-lokali-mieszkalnych'
