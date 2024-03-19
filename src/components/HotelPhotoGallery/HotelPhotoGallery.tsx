@@ -19,8 +19,8 @@ type HotelPhotoGalleryProps = {
 const HotelPhotoGallery: FC<HotelPhotoGalleryProps> = ({
   photos: initialPhotos, iframeUrl
 }) => {
-  const iframeSrc = "https://my.matterport.com/show/?m=i6uCTNPjBeq";
-  const iframe: ExtendedImageType = { _type: 'iframe', url: iframeSrc };
+  // const iframeSrc = "https://my.matterport.com/show/?m=i6uCTNPjBeq";
+  const iframe: ExtendedImageType = { _type: 'iframe', url: iframeUrl || "" };
 
   // Вставляем iframe в начало массива фотографий
   const photos = [iframe, ...initialPhotos] as ExtendedImageType[];
