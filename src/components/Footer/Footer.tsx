@@ -36,6 +36,32 @@ const Footer = () => {
           </div>
 
           <div className={`${styles.textCenter} ${styles.footerColumn}`}>
+            <div className={styles.copyrigth}>
+              <p>&copy; 2024 Orzel Realty. All rights reserved</p>
+            </div>
+            {/* <div className={styles.footerLinks}>
+              <Link 
+                href='/sprzedaz-lokali-mieszkalnych'
+                className={styles.footerLink}
+                >
+                Mieszkania na sprzedaż
+              </Link>
+              <Link 
+                href='/wynajem-lokali-mieszkalnych'
+                className={styles.footerLink}
+                >
+                Mieszkania na wynajem
+              </Link>
+              <Link 
+                href='/properties'
+                className={styles.footerLink}
+                >
+                Wszystkie oferty
+              </Link>
+            </div> */}
+          </div>
+
+          <div className={`text-right ${styles.footerColumn}`}>
             <div className={styles.footerLinks}>
               <Link 
                 href='/sprzedaz-lokali-mieszkalnych'
@@ -56,9 +82,6 @@ const Footer = () => {
                 Wszystkie oferty
               </Link>
             </div>
-          </div>
-
-          <div className={`text-right ${styles.footerColumn}`}>
             <div className={styles.logoLink}>
                 <Image
                   alt="Orzel-Realty Logo"
@@ -70,9 +93,9 @@ const Footer = () => {
               </div>
           </div>
         </div>
-        <div className={styles.copyrigth}>
+        {/* <div className={styles.copyrigth}>
           <p>&copy; 2024 Orzel Realty. All rights reserved</p>
-        </div>
+        </div> */}
       </div>
 
       {/* <div className='bg-tertiary-light h-10 md:h-[70px] mt-16 w-full bottom-0 left-0' /> */}
