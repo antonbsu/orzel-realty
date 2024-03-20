@@ -1,5 +1,5 @@
 import './globals.css'
-import { Poppins } from 'next/font/google'
+import { Poppins, Manrope } from 'next/font/google'
 import Footer from '@/components/Footer/Footer'
 import Toast from '@/components/Toast/Toast'
 import Navbar from '@/components/Navbar/Navbar'
@@ -10,6 +10,13 @@ const poppins = Poppins({
   weight: ["400", "500", "700", "900"],
   style: ["italic", "normal"],
   variable: '--font-poppins',
+})
+
+const manrope = Manrope({
+  subsets: ['latin'],
+  weight: ["400", "500", "700"],
+  style: ["normal"],
+  variable: '--font-manrope',
 })
 
 // export const metadata = {
@@ -31,7 +38,7 @@ export default function RootLayout({
           crossOrigin='anonymous'
         />
       </head>
-      <body className={poppins.className}>
+      <body className={manrope.className}>
             <Toast />
             <main className='font-normal'>
               {/* <Header /> */}
