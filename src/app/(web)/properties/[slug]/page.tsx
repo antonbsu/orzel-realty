@@ -1,6 +1,4 @@
-'use client';
-
-import useSWR from 'swr';
+import { Metadata } from "next";
 import {
   FaArrowsToCircle,
   FaLocationDot,
@@ -17,44 +15,36 @@ import {
 import HotelPhotoGallery from '@/components/HotelPhotoGallery/HotelPhotoGallery';
 import LoadingSpinner from '../../loading';
 import { getProperty } from '@/libs/apis';
-import { motion } from 'framer-motion';
 
 import styles from "../../../PageStyles.module.scss";
 import Contact from '@/components/Contact/Contact';
-import { RichText } from '@/components/RichText/RichText';
-import { PortableText } from '@portabletext/react'
-import { useState } from 'react';
+import { Property } from "@/models/property";
+import PropertyContentBlock from "@/components/PropertyContentBlock/PropertyContentBlock";
 
-const PropertyPage = (props: { params: { slug: string } }) => {
-  const {
-    params: { slug },
-  } = props;
+import dynamic from "next/dynamic";
 
-  const [isTextExpanded, setTextExpanded] = useState(false);
+const ScrollToMapLink = dynamic(() => import('@/components/ScrollToMapLink/ScrollToMapLink'), { ssr: false });
 
-  const fetchProperty = async () => getProperty(slug);
-
-  const { data: property, error, isLoading } = useSWR('/api/property', fetchProperty);
-
-  if (error) throw new Error('Cannot fetch data');
-  if (typeof property === 'undefined' && !isLoading)
-    throw new Error('Cannot fetch data');
-
-  if (!property) return <LoadingSpinner />;
-
-  const scrollToSectionMap = () => {
-    // Найдите элемент с указанным id
-    const sectionElement = document.getElementById('map');
-    if (sectionElement) {
-      // Вычислите позицию элемента относительно верхней части страницы
-      const offset = sectionElement.offsetTop;
-      // Выполните плавный скролл
-      window.scrollTo({
-        top: offset,
-        behavior: 'smooth',
-      });
-    }
+type Props = {
+  params: {
+    slug: string;
   };
+};
+
+// Dynamic metadata for SEO
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const slug = params.slug;
+  const project: Property = await getProperty(slug);
+
+  return {
+    title: `${project.pageTitle} | Orzeł Realty`,
+    description: project.metaDescription,
+  };
+}
+
+const PropertyPage = async ({ params }: Props) => {
+  const slug = params.slug;
+  const property: Property = await getProperty(slug);
 
   const enhancedPhotos = property.iframeUrl ? [{ _type: 'iframe', url: property.iframeUrl }, ...property.images] : property.images;
 
@@ -71,10 +61,11 @@ const PropertyPage = (props: { params: { slug: string } }) => {
                 <div className='md:col-span-8 md:w-full'>
                   <div>
                     <div className='mb-11'>
-                    <a className={styles.scrollToMap} onClick={() => scrollToSectionMap()}>
-                      <FaLocationDot fontSize="0.8rem" /> {property.address}, {property.district}, {property.city}
-                    </a>
-
+                      <div className="flex items-center gap-1">
+                        <FaLocationDot fontSize="0.8rem" /> {property.address}, {property.district}, {property.city}&nbsp;
+                        |
+                        <ScrollToMapLink />
+                      </div>
                     <div className={styles.infoBlockWrapper}>
                       <div className={styles.infoBlock}>
                         <div className={styles.infoItem}>
@@ -206,20 +197,8 @@ const PropertyPage = (props: { params: { slug: string } }) => {
 
                     </div>
                     <div className='mb-11'>
-                      <h2 className={styles.propertySubtitle}>Opis</h2>
-                      <div style={{ maxHeight: isTextExpanded ? 'none' : '200px', overflow: 'hidden' }}>
-                        <PortableText
-                          value={property?.body}
-                          components={RichText}
-                        />
-                      </div>
-                      {/* Кнопка для раскрытия текста */}
-                        <button
-                          className={styles.showMoreButton} // Добавьте соответствующие стили для кнопки
-                          onClick={() => setTextExpanded(!isTextExpanded)}
-                        >
-                          {isTextExpanded ? 'Pokaż mniej' : 'Pokaż więcej'}
-                        </button>
+                    <h2 className={styles.propertySubtitle}>Opis</h2>
+                    <PropertyContentBlock property={property} />
                     </div>
                     <div className={styles.additionalInfo}>
                     <h2 className={styles.propertySubtitle}>Informacje dodatkowe</h2>

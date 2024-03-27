@@ -170,7 +170,18 @@ export const getLivingSaleQuery = groq`*[_type == "property" && propertyType == 
     isBooked
 }`;
 
-export const getSalesBlockQuery = groq`*[_type == "property" && purpose == "Sprzedaż" ][0..4]  | order(_createdAt desc) {
+export const getSalesBlockQuery = groq`*[_type == "property" && purpose == "Sprzedaż" ]  | order(_createdAt desc) {
+    _id,
+    name,
+    slug,
+    images,
+    city,
+    district,
+    price,
+    isBooked
+}`;
+
+export const getAllSalesQuery = groq`*[_type == "property" && purpose == "Sprzedaż" ]  | order(_createdAt desc) {
     _id,
     name,
     slug,

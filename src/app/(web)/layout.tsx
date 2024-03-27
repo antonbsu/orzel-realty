@@ -19,10 +19,10 @@ const manrope = Manrope({
   variable: '--font-manrope',
 })
 
-// export const metadata = {
-//   title: 'Orzel Realty - real estate agency',
-//   description: 'Orzel Realty is a real estate agency that helps you find the perfect property for you. We have a wide range of properties for sale and rent. Contact us today to find your dream home',
-// }
+export const metadata = {
+  title: 'Orzel Realty - real estate agency',
+  description: 'Orzel Realty is a real estate agency that helps you find the perfect property for you. We have a wide range of properties for sale and rent. Contact us today to find your dream home',
+}
 
 export default function RootLayout({
   children,

@@ -103,6 +103,17 @@ export async function getSalesBlock() {
 
 }
 
+export async function getAllSalesPage() {
+  const result = await sanityClient.fetch<Property[]>(
+    queries.getAllSalesQuery,
+    {},
+    { cache: 'no-cache' }
+  );
+
+  return result;
+
+}
+
 export async function getCommercialRent() {
   const result = await sanityClient.fetch<Property[]>(
     queries.getCommercialRentQuery,

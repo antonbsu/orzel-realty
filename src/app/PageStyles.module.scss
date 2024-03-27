@@ -282,3 +282,20 @@
   height: 400px;
   width: 100%;
 }
+
+.salesPropertiesList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0 auto;
+  gap: 20px;
+}
+
+.salesPropertyItem {
+  flex: 0 1 100%;
+
+  @media (min-width: 768px) {
+    flex: 0 1 calc(33.3333% - 20px);
+    // flex: 0 1 calc(50% - 10px);
+  }
+}

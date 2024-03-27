@@ -1,5 +1,4 @@
 'use client';
-
 import PropertiesCard from "@/components/PropertiesCard/PropertiesCard"; // Подставьте свой путь к компоненту карточки свойства
 import Search from "@/components/Search/Search";
 import { getProperties } from "@/libs/apis"; // Используйте вашу функцию для получения данных о свойствах
