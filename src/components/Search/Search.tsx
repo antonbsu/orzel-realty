@@ -103,13 +103,14 @@ const Search: FC<Props> = ({
     <section className={styles.search}>
       <Image
         src="/images/search-bg.jpg"
-        alt="Background"
+        alt="Agencja Nieruchomości Orzel Realty"
         width={1920}
         height={1080}
         className={styles.imageBg}
       />
       <div className={styles.overlay}></div>
       <div className={`container ${styles.searchForm}`}>
+        <h2 className={styles.searchHeading}>Znajdź nieruchomość swoich marzeń</h2>
         <div className={styles.searchFormWrapper}>
           <div className={styles.topFormPart}>
             <div className={styles.sort}>
@@ -121,7 +122,7 @@ const Search: FC<Props> = ({
                     { value: "", label: "Wybierać" },
                     ...propertyTypes.map((propertyType) => ({ value: propertyType.value, label: propertyType.title })),
                   ]}
-                  placeholder="Rodzaj"
+                  placeholder="Mieszkanie"
                 />
               </div>
             </div>
@@ -134,7 +135,7 @@ const Search: FC<Props> = ({
                     { value: "", label: "Wybierać" },
                     ...propertyPurpose.map((purposeOption) => ({ value: purposeOption.value, label: purposeOption.title })),
                   ]}
-                  placeholder="Cel"
+                  placeholder="Sprzedaż"
                 />
               </div>
             </div>

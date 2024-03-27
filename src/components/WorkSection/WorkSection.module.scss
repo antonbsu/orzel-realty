@@ -1,0 +1,73 @@
+.workSection {
+  padding-top: clamp(2.5rem, 1.136rem + 6.82vw, 6.25rem);
+  padding-bottom: clamp(2.5rem, 1.136rem + 6.82vw, 6.25rem);
+  background-color: #800080;
+  color: #fff;
+}
+
+.workSectionWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+  }
+
+}
+
+.workSectionText {
+  flex: 1;
+}
+
+.workSectionImage {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+
+  @media screen and (max-width: 768px) {
+    justify-content: flex-start;
+
+    img {
+    width: 100%;
+    max-width: 200px;
+    }
+    
+  }
+}
+
+.workSectionTitle {
+  font-size: clamp(1.375rem, 1.102rem + 1.36vw, 2.125rem);
+  font-size: clamp(1.875rem, 1.648rem + 1.14vw, 2.5rem);
+  margin-bottom: clamp(1.875rem, 1.648rem + 1.14vw, 2.5rem);
+}
+
+.typingText {
+  height: 1em;
+  font-size: clamp(1.375rem, 1.102rem + 1.36vw, 2.125rem);
+  font-weight: 700;
+}
+
+.cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  background-color: currentColor;
+  margin-left: 2px;
+  animation: blink 1s step-end infinite;
+
+  @keyframes blink {
+    from, to {
+      background-color: transparent;
+    }
+    50% {
+      background-color: currentColor;
+    }
+  }
+}

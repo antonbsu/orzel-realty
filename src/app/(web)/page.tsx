@@ -1,10 +1,10 @@
 
-import LatestCommercialProperties from "@/components/LatestCommercialProperties/LatestCommercialProperties";
-import LatestProperties from "@/components/LatestProperties/LatestProperties";
+import AboutSection from "@/components/AboutSection/AboutSection";
+import ContactSection from "@/components/ContactSection/ContactSection";
 import LatestSalesProperties from "@/components/LatestSalesProperties/LatestSalesProperties";
 import NewsComponent from "@/components/NewsComponent/NewsComponent";
 import PageSearch from "@/components/PageSearch/PageSearch";
-import Reviews from "@/components/Reviews/Reviews";
+import WorkSection from "@/components/WorkSection/WorkSection";
 
 const Home = async () => {
 
@@ -13,9 +13,9 @@ const Home = async () => {
       <PageSearch />
       <LatestSalesProperties />
       <NewsComponent />
-      {/* <LatestProperties /> */}
-      {/* <LatestCommercialProperties /> */}
-      {/* <Reviews /> */}
+      <AboutSection />
+      <WorkSection />
+      <ContactSection />
     </>
   )
 }

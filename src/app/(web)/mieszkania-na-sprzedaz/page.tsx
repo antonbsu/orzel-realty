@@ -24,15 +24,6 @@ const AllSalePage = async () => {
             </div>
           ))}
         </div>
-        {/* <div>
-          <ul className={styles.propertiesWrapper}>
-            {salesProperty.map((property) => (
-              <li key={property._id}>
-                <LatestProperty property={property} />
-              </li>
-            ))}
-          </ul>
-        </div> */}
       </div>
     </section>
   );

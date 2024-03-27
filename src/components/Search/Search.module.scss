@@ -1,12 +1,16 @@
 .search {
-  margin-top: 72px;
+  margin-top: 60px;
   background-color: #fcba28;
   position: relative;
-  height: 85vh;
+  height: 70vh;
   display: flex;
   justify-content: center;
   align-items: center;
   overflow: hidden;
+
+  @media screen and (max-width: 900px){
+    height: 90vh;
+  }
 }
 
 .imageBg {
@@ -34,6 +38,18 @@
   background: rgba(29, 33, 38, 0.6);
   padding: 20px;
   border-radius: 10px;
+
+  @media screen and (min-width: 900px){
+    max-width: 900px;
+  }
+}
+
+.searchHeading {
+  color: #fff;
+  font-size: clamp(1.375rem, 1.102rem + 1.36vw, 2.125rem);
+  font-weight: 700;
+  margin-bottom: 50px;
+  text-align: center;
 }
 
 .searchFormWrapper {

@@ -20,8 +20,8 @@ const manrope = Manrope({
 })
 
 export const metadata = {
-  title: 'Orzel Realty - real estate agency',
-  description: 'Orzel Realty is a real estate agency that helps you find the perfect property for you. We have a wide range of properties for sale and rent. Contact us today to find your dream home',
+  title: 'Orzeł Realty - Agencja Nieruchomości',
+  description: 'Orzeł Realty to agencja nieruchomości, która pomoże Ci znaleźć idealną nieruchomość dla Ciebie. Posiadamy szeroką gamę nieruchomości na sprzedaż i wynajem.',
 }
 
 export default function RootLayout({

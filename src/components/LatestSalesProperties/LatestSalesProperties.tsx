@@ -27,7 +27,7 @@ const LatestSalesProperties = () => {
   return (
     <section className={styles.latestSalesProperties}>
       <div className="container">
-        <h2 className="h2">Mieszkania na sprzedaż</h2>
+        <h1 className="h2">Mieszkania na sprzedaż</h1>
         <div className={styles.propertiesList}>
           {latestSalesProperties.map((property) => (
             <div key={property._id} className={styles.propertyItem}>
