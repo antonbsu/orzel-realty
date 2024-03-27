@@ -20,7 +20,7 @@ const Footer = () => {
                 style={{textDecoration: 'underline'}}
                 target='_blank'
               >
-                Uzyskaj wskazówki
+                Gdzie nas znaleźć
               </Link>
             </div>
             <div className={styles.footerData}>
