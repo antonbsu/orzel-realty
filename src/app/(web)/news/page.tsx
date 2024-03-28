@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 
 import styles from "../../PageStyles.module.scss";
 import Post from "@/components/Post/BlogPost";
+import ContactSectionProperties from "@/components/ContactSectionProperties/ContactSectionProperties";
 
 const PageNews = () => {
 
@@ -24,20 +25,23 @@ const PageNews = () => {
   }, []);
 
   return (
-    <section className={styles.blogPosts}>
-      <div className="container">
-        <h2 className="h2">Aktualności</h2>
-        <div>
-          <ul className={styles.blogPostsWrapper}>
-            {blogPosts.map((post) => (
-              <li key={post._id}>
-                <Post post={post} />
-              </li>
-            ))}
-          </ul>
+    <>
+      <section className={styles.blogPosts}>
+        <div className="container">
+          <h2 className="h2">Aktualności</h2>
+          <div>
+            <ul className={styles.blogPostsWrapper}>
+              {blogPosts.map((post) => (
+                <li key={post._id}>
+                  <Post post={post} />
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+      <ContactSectionProperties />
+    </>
   )
 }
 

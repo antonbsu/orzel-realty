@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 
 import styles from "../../PageStyles.module.scss";
 import LatestProperty from "@/components/LatestProperty/LatestProperty";
+import ContactSectionProperties from "@/components/ContactSectionProperties/ContactSectionProperties";
 
 const LivingRentPage = () => {
 
@@ -25,20 +26,23 @@ const LivingRentPage = () => {
   }, []);
 
   return (
-    <section className={styles.propertiesSection}>
-      <div className="container">
-        <h2 className="h2">Wynajem lokali komercyjnych</h2>
-        <div>
-          <ul className={styles.propertiesWrapper}>
-            {comRentProperties.map((property) => (
-              <li key={property._id}>
-                <LatestProperty property={property} />
-              </li>
-            ))}
-          </ul>
+    <>
+      <section className={styles.propertiesSection}>
+        <div className="container">
+          <h2 className="h2">Wynajem lokali komercyjnych</h2>
+          <div>
+            <ul className={styles.propertiesWrapper}>
+              {comRentProperties.map((property) => (
+                <li key={property._id}>
+                  <LatestProperty property={property} />
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+      <ContactSectionProperties />
+    </>
   );
 }
 
