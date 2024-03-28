@@ -123,6 +123,14 @@ const Search: FC<Props> = ({
                     ...propertyTypes.map((propertyType) => ({ value: propertyType.value, label: propertyType.title })),
                   ]}
                   placeholder="Mieszkanie"
+                  styles={{
+                    placeholder: (defaultStyles) => {
+                      return {
+                        ...defaultStyles,
+                        color: '#766363'
+                      }
+                    }
+                  }}
                 />
               </div>
             </div>
@@ -136,6 +144,14 @@ const Search: FC<Props> = ({
                     ...propertyPurpose.map((purposeOption) => ({ value: purposeOption.value, label: purposeOption.title })),
                   ]}
                   placeholder="Sprzedaż"
+                  styles={{
+                    placeholder: (defaultStyles) => {
+                      return {
+                        ...defaultStyles,
+                        color: '#766363'
+                      }
+                    }
+                  }}
                 />
               </div>
             </div>

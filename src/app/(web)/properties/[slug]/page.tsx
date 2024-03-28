@@ -61,9 +61,12 @@ const PropertyPage = async ({ params }: Props) => {
                 <div className='md:col-span-8 md:w-full'>
                   <div>
                     <div className='mb-11'>
-                      <div className="flex items-center gap-1">
-                        <FaLocationDot fontSize="0.8rem" /> {property.address}, {property.district}, {property.city}&nbsp;
-                        |
+                      <div className={styles.propertyFlexBlock}>
+                        <div className={styles.adressBlock}>
+                        <FaLocationDot fontSize="0.8rem" />
+                        <p className={styles.adressText}>{property.address}, {property.district}, {property.city}&nbsp;</p>
+                        </div>
+                        <span>|</span>
                         <ScrollToMapLink />
                       </div>
                     <div className={styles.infoBlockWrapper}>

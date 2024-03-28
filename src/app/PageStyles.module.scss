@@ -20,10 +20,12 @@
 }
 
 .wrapper {
+  display: flex;
+  gap: clamp(1.25rem, 0.909rem + 1.7vw, 2.188rem);
+  flex-direction: column;
   
   @media screen and (min-width: 768px){
-    display: flex;
-    gap: clamp(1.25rem, 0.909rem + 1.7vw, 2.188rem);
+    flex-direction: row;
   }
 }
 
@@ -35,6 +37,36 @@
   @media screen and (min-width: 1110px){
     flex: 3;    
   }
+}
+
+.propertyFlexBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  span {
+    display: none;
+  }
+
+  @media screen and (min-width: 768px){
+    flex-direction: row;
+    align-items: center;
+
+    span {
+      display: block;
+    }
+  }
+}
+
+.adressBlock {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.adressText {
+  color: #404041;
+  font-size: 16px;
 }
 
 .propertyTitle {
