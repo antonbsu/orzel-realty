@@ -20,7 +20,7 @@ const PropertiesCard: FC<Props> = (props) => {
 
   return (
     <Link
-      href={`/properties/${slug.current}`}
+      href={`/nieruchomosci/${slug.current}`}
     >
       <div className={styles.card}>
         <div className="h-60 overflow-hidden">

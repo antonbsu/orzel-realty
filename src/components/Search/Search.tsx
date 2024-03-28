@@ -95,7 +95,7 @@ const Search: FC<Props> = ({
     const priceToQueryParam = priceTo !== "" ? `&priceTo=${priceTo}` : '';
 
     router.push(
-      `/properties?propertyType=${propertyTypeFilter}&searchQuery=${searchQuery}&propertyPurpose=${propertyPurposeFilter}&propertyCity=${propertyCity}&propertyDistrict=${propertyDistrict}&propertyRooms=${propertyRooms}${furnishedQueryParam}${propertyParkingParam}${priceFromQueryParam}${priceToQueryParam}`
+      `/nieruchomosci?propertyType=${propertyTypeFilter}&searchQuery=${searchQuery}&propertyPurpose=${propertyPurposeFilter}&propertyCity=${propertyCity}&propertyDistrict=${propertyDistrict}&propertyRooms=${propertyRooms}${furnishedQueryParam}${propertyParkingParam}${priceFromQueryParam}${priceToQueryParam}`
     );
   };
 

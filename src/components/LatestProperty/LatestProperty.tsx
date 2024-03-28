@@ -12,7 +12,7 @@ type LatestPropertyProps = {
 const LatestProperty: React.FC<LatestPropertyProps> = ({ property }) => {
   return (
     <Link
-      href={`/properties/${property.slug.current}`}
+      href={`/nieruchomosci/${property.slug.current}`}
       className={styles.latestProperty}
     >
       <Image
