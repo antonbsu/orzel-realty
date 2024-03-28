@@ -7,7 +7,7 @@
   flex-wrap: wrap;
   justify-content: center;
   margin-inline: auto;
-  margin-bottom: 20px;
+  margin-bottom: 50px;
   gap: 20px;
 }
 
@@ -23,17 +23,20 @@
 .seeAllBtn {
   display: block;
   margin: 0 auto;
-  padding: 10px 20px;
-  background-color: #800080;
-  color: #fff;
-  border: 1px solid #800080;
-  border-radius: 5px;
+  padding: 16px 22px;
+  // background-color: #800080;
+  color: #800080;
+  // border: 1px solid #800080;
+  border-radius: 45px;
   text-align: center;
   text-transform: uppercase;
   font-weight: 700;
   width: fit-content;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
+  -webkit-box-shadow: 0px 6px 20px -5px rgba(0,0,0,0.28);
+  -moz-box-shadow: 0px 6px 20px -5px rgba(0, 0, 0, 0.28);
+  box-shadow: 0px 6px 20px -5px rgba(0,0,0,0.28);
 
   &:hover {
     background-color: #fff;
