@@ -61,7 +61,7 @@ const Footer = () => {
             </div> */}
           </div>
 
-          <div className={`text-right ${styles.footerColumn}`}>
+          <div className={`${styles.footerColumn} ${styles.textRight}`}>
             <div className={styles.footerLinks}>
               <Link 
                 href='/sprzedaz-lokali-mieszkalnych'
