@@ -1,3 +1,4 @@
+import { GoogleAnalytics } from '@next/third-parties/google'
 import './globals.css'
 import { Poppins, Manrope } from 'next/font/google'
 import Footer from '@/components/Footer/Footer'
@@ -47,6 +48,7 @@ export default function RootLayout({
               <Footer />
             </main>
       </body>
+      <GoogleAnalytics gaId='G-XNBSTEJQFG' />
     </html>
   )
 }

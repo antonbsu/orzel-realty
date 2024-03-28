@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@next/third-parties": "^14.1.4",
     "@portabletext/react": "^3.0.11",
     "@sanity/vision": "^3.29.1",
     "@stripe/stripe-js": "^3.0.5",
