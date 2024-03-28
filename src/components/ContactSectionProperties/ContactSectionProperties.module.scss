@@ -1,0 +1,64 @@
+.contactSectionProperties {
+  padding-top: clamp(2.5rem, 1.136rem + 6.82vw, 6.25rem);
+  padding-bottom: clamp(2.5rem, 1.136rem + 6.82vw, 6.25rem);
+  background-color: #f9f9f9;
+  background-image: linear-gradient(
+    to bottom,
+    rgba(12, 12, 11, 0.8),
+    rgba(12, 12, 11, 50%)
+  ), url("../../images/bg-contact.jpg");
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 50px;
+  
+  @media screen and (max-width: 768px) {
+    flex-direction: column-reverse;
+  }
+}
+
+.content {
+  width: 50%;
+
+  @media screen and (max-width: 768px) {
+    width: 100%;
+  }
+}
+
+.form {
+  width: 50%;
+
+  @media screen and (max-width: 768px) {
+    width: 100%;
+  }
+}
+
+.formWrapper {
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #000;
+}
+
+.description {
+  font-size: 1.125rem;
+  margin-bottom: 20px;
+  color: #fff;
+}

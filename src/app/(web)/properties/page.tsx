@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import useSWR from "swr";
 
 import styles from "../../PageStyles.module.scss";
+import ContactSectionProperties from "@/components/ContactSectionProperties/ContactSectionProperties";
 
 const PropertiesPage = () => {
   const [propertyTypeFilter, setPropertyTypeFilter] = useState("");
@@ -142,37 +143,40 @@ const PropertiesPage = () => {
   const filteredProperties = filterProperties(data || []);
 
   return (
-    <section className="mx-auto">
-      <Search
-        propertyTypeFilter={propertyTypeFilter}
-        searchQuery={searchQuery}
-        propertyPurposeFilter={propertyPurpose}
-        propertyCity={propertyCity}
-        propertyDistrict={propertyDistrict}
-        propertyRooms={propertyRooms}
-        propertyFurnished={propertyFurnished}
-        propertyParking={propertyParking}
-        priceFrom={priceFrom}
-        priceTo={priceTo}
-        setPropertyTypeFilter={setPropertyTypeFilter}
-        setSearchQuery={setSearchQuery}
-        setPropertyPurposeFilter={setPropertyPurposeFilter}
-        setPropertyCity={setPropertyCity}
-        setPropertyDistrict={setPropertyDistrict}
-        setPropertyRooms={setPropertyRooms}
-        setPropertyFurnished={setPropertyFurnished}
-        setPropertyParking={setPropertyParking}
-        setPriceFrom={setPriceFrom}
-        setPriceTo={setPriceTo}
-      />
-      <div className="container">
-        <div className={styles.propertiesList}>
-          {filteredProperties.map(property => (
-            <PropertiesCard key={property._id} property={property} />
-          ))}
+    <>
+      <section className="mx-auto">
+        <Search
+          propertyTypeFilter={propertyTypeFilter}
+          searchQuery={searchQuery}
+          propertyPurposeFilter={propertyPurpose}
+          propertyCity={propertyCity}
+          propertyDistrict={propertyDistrict}
+          propertyRooms={propertyRooms}
+          propertyFurnished={propertyFurnished}
+          propertyParking={propertyParking}
+          priceFrom={priceFrom}
+          priceTo={priceTo}
+          setPropertyTypeFilter={setPropertyTypeFilter}
+          setSearchQuery={setSearchQuery}
+          setPropertyPurposeFilter={setPropertyPurposeFilter}
+          setPropertyCity={setPropertyCity}
+          setPropertyDistrict={setPropertyDistrict}
+          setPropertyRooms={setPropertyRooms}
+          setPropertyFurnished={setPropertyFurnished}
+          setPropertyParking={setPropertyParking}
+          setPriceFrom={setPriceFrom}
+          setPriceTo={setPriceTo}
+        />
+        <div className="container">
+          <div className={styles.propertiesList}>
+            {filteredProperties.map(property => (
+              <PropertiesCard key={property._id} property={property} />
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+      <ContactSectionProperties />
+    </>
   );
 };
 
