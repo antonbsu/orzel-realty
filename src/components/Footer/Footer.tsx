@@ -53,7 +53,7 @@ const Footer = () => {
                 Mieszkania na wynajem
               </Link>
               <Link 
-                href='/properties'
+                href='/nieruchomosci'
                 className={styles.footerLink}
                 >
                 Wszystkie oferty

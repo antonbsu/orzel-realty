@@ -40,7 +40,7 @@ const PropertiesCard: FC<Props> = (props) => {
           {/* <p className="pt-2 text-xs">{type}</p> */}
           {/* <p className="pt-3 pb-6">{description}</p> */}
           <Link
-            href={`/properties/${slug.current}`}
+            href={`/nieruchomosci/${slug.current}`}
             className={styles.link}
           >
             {/* {isBooked ? "Booked" : "Book Now"} */}
