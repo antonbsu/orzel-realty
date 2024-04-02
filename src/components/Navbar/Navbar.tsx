@@ -94,8 +94,8 @@ const Navbar = () => {
               <Image
                 alt="Orzel Realty Logo"
                 src={urlFor(navbarData.logo).url()}
-                width={250}
-                height={250}
+                width={200}
+                height={200}
                 className={styles.logoImage}
               />
             </Link>

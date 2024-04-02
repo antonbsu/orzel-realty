@@ -1,5 +1,5 @@
 .card {
-  border-radius: 12px;
+  border-radius: 4px;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
   overflow: hidden;
   margin-bottom: 25px;
@@ -7,19 +7,39 @@
 }
 
 .link {
-  display: inline-block;
-  background-color: #48368d;
-  text-align: center;
+  // display: inline-block;
+  // background-color: #48368d;
+  // text-align: center;
+  // width: 100%;
+  // padding: 16px 0;
+  // border-radius: 10px;
+  // color: #fff;
+  // font-size: 22px;
+  // font-weight: 700;
+  // transition: all ease-in-out 0.2s;
+
+  // &:hover {
+  //   background-color: #351949;
+  // }
   width: 100%;
+  display: block;
+  margin: 0 auto;
   padding: 16px 0;
-  border-radius: 10px;
-  color: #fff;
+  color: #800080;
+  border-radius: 4px;
+  text-align: center;
+  text-transform: uppercase;
   font-size: 22px;
   font-weight: 700;
-  transition: all ease-in-out 0.2s;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  -webkit-box-shadow: 0px 6px 20px -5px rgba(0,0,0,0.28);
+  -moz-box-shadow: 0px 6px 20px -5px rgba(0, 0, 0, 0.28);
+  box-shadow: 0px 6px 20px -5px rgba(0,0,0,0.28);
 
   &:hover {
-    background-color: #351949;
+    background-color: #fff;
+    color: #800080;
   }
 }
 
