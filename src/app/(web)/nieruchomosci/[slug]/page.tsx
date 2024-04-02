@@ -62,12 +62,18 @@ const PropertyPage = async ({ params }: Props) => {
                   <div>
                     <div className='mb-11'>
                       <div className={styles.propertyFlexBlock}>
-                        <div className={styles.adressBlock}>
+                        {/* <div className={styles.adressBlock}>
                         <FaLocationDot fontSize="0.8rem" />
                         <p className={styles.adressText}>{property.address}, {property.district}, {property.city}&nbsp;</p>
                         </div>
                         <span>|</span>
-                        <ScrollToMapLink />
+                      <ScrollToMapLink /> */}
+                      <ScrollToMapLink>
+                        <div className={styles.adressBlock}>
+                          <FaLocationDot fontSize="0.8rem" />
+                          <p className={styles.adressText}>{property.address}, {property.district}, {property.city}&nbsp;</p>
+                        </div>
+                      </ScrollToMapLink>
                       </div>
                     <div className={styles.infoBlockWrapper}>
                       <div className={styles.infoBlock}>

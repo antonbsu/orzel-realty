@@ -11,7 +11,7 @@ interface Property {
   scrollToSectionMap: () => void; // Функция для скролла к секции карты
 }
 
-const ScrollToMapLink = () => {
+const ScrollToMapLink = ({ children }: any) => {
   const scrollToSectionMap = () => {
     const sectionElement = document.getElementById('map');
     if (sectionElement) {
@@ -24,7 +24,7 @@ const ScrollToMapLink = () => {
   };
 
   return (
-    <a className={styles.scrollToMap} onClick={scrollToSectionMap}>Mapa</a>
+    <a className={styles.scrollToMap} onClick={scrollToSectionMap}>{children}</a>
   );
 };
 
