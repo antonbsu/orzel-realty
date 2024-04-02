@@ -15,7 +15,7 @@ const ScrollToMapLink = ({ children }: any) => {
   const scrollToSectionMap = () => {
     const sectionElement = document.getElementById('map');
     if (sectionElement) {
-      const offset = sectionElement.offsetTop;
+      const offset = sectionElement.offsetTop - 100;
       window.scrollTo({
         top: offset,
         behavior: 'smooth',
