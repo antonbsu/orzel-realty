@@ -22,13 +22,13 @@ export async function POST(request: NextRequest) {
     },
   });
 
-  const mailBody = `Name: ${name}\nEmail: ${email}\nPhone: ${phone}`;
+  const mailBody = `Имя: ${name}\nEmail: ${email}\nТелефон: ${phone}`;
 
   const mailOptions: Mail.Options = {
     from: process.env.EMAIL_USER,
     to: process.env.EMAIL_USER,
     // cc: email, (uncomment this line if you want to send a copy to the sender)
-    subject: `Message from ${name} (${email})`,
+    subject: `Клиент с сайта Orzeł Realty`,
     text: mailBody,
   };
 
