@@ -65,10 +65,10 @@ const NewsComponent = () => {
           ))}
         </Swiper>
         <div className="navButtons">
-          <button className="prevBtnNews">
+          <button className="navButtonsBtn prevBtnNews">
             <FaChevronLeft color="#351949" fontSize="1.5em" />
           </button>
-          <button className="nextBtnNews">
+          <button className="navButtonsBtn nextBtnNews">
             <FaChevronRight color="#351949" fontSize="1.5em" />
           </button>
         </div>

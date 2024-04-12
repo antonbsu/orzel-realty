@@ -83,6 +83,22 @@ input[type="number"]::-webkit-outer-spin-button {
   text-align: center;
 }
 
+.navButtons {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.navButtonsBtn {
+  background-color: #fff;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
 .navButtonsGallery {
   position: absolute;
   bottom: 0;
