@@ -3,7 +3,7 @@ import nodemailer from 'nodemailer';
 import Mail from 'nodemailer/lib/mailer';
 
 export async function POST(request: NextRequest) {
-  const { email, name, phone, pathname } = await request.json();
+  const { email, name, phone } = await request.json();
 
   const transport = nodemailer.createTransport({
     service: 'gmail',
@@ -22,7 +22,7 @@ export async function POST(request: NextRequest) {
     },
   });
 
-  const mailBody = `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nPathname: ${pathname}`;
+  const mailBody = `Name: ${name}\nEmail: ${email}\nPhone: ${phone}`;
 
   const mailOptions: Mail.Options = {
     from: process.env.EMAIL_USER,
