@@ -1,5 +1,5 @@
 'use client';
-import { usePathname } from 'next/navigation';
+
 import { FC, useState, useEffect } from 'react';
 import { Formik, Form, Field, ErrorMessage, FormikHelpers } from 'formik';
 import * as Yup from 'yup';
@@ -19,8 +19,6 @@ export interface ContactFormProps {
 }
 
 const Contact: FC<ContactFormProps> = ({ onFormSubmitSuccess }) => {
-  const pathname = usePathname();
-  console.log("Current pathname: ", pathname);
   const [message, setMessage] = useState<string | null>(null);
   const [filled, setFilled] = useState({ name: false, phone: false, email: false });
 
@@ -107,9 +105,6 @@ const Contact: FC<ContactFormProps> = ({ onFormSubmitSuccess }) => {
               <label htmlFor='email' className={`${styles.label} ${filled.email ? styles.filled : ''}`}>E-mail</label>
               <Field id='email' name='email' type='email' className={`${styles.inputField} w-full rounded-md`} onBlur={handleBlur} />
               <ErrorMessage name='email' component='div' className={styles.error} />
-            </div>
-            <div className={styles.inputWrapper}>
-              <p>https://www.orzel-realty.pl{pathname}</p>
             </div>
             <div className={styles.customCheckbox}>
               <Field type="checkbox" name="agreedToPolicy" id="agreedToPolicy" />
