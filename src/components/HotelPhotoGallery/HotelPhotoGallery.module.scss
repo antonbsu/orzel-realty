@@ -58,7 +58,7 @@
 //   flex-wrap: wrap; // Позволяет элементам переноситься на новую строку
 // }
 
-.sectonRowPhoto {
+.sectionRowPhoto {
   cursor: pointer;
   width: 250px;
   border-radius: 10px;
@@ -96,6 +96,8 @@
   color: white;
   font-size: 2xl;
   border-radius: 10px;
+  text-align: center;
+  cursor: pointer;
 }
 
 .mainPhoto {
@@ -127,5 +129,13 @@
 
   @media (min-width: 768px) {
     display: none;
+  }
+}
+
+.swiperSlide {
+  aspect-ratio: 3/5;
+
+  @media (min-width: 768px) {
+    aspect-ratio: 5/3;
   }
 }

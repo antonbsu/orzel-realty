@@ -5,8 +5,13 @@ import Image from "next/image";
 import { FC, useState } from "react";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import { MdCancel } from "react-icons/md";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper/modules";
+import 'swiper/css';
+import 'swiper/css/navigation';
 
 import styles from "./HotelPhotoGallery.module.scss";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa6";
 
 // Обновляем тип ImageType для поддержки iframe
 type ExtendedImageType = ImageType | { _type: 'iframe', url: string };
@@ -19,11 +24,12 @@ type HotelPhotoGalleryProps = {
 const HotelPhotoGallery: FC<HotelPhotoGalleryProps> = ({
   photos: initialPhotos, iframeUrl
 }) => {
-  // const iframeSrc = "https://my.matterport.com/show/?m=i6uCTNPjBeq";
-  const iframe: ExtendedImageType = { _type: 'iframe', url: iframeUrl || "" };
-
-  // Вставляем iframe в начало массива фотографий
-  const photos = [iframe, ...initialPhotos] as ExtendedImageType[];
+  // Сначала создаем массив фотографий, затем, если есть iframeUrl, добавляем iframe в начало
+  let photos: ExtendedImageType[] = [...initialPhotos];
+  if (iframeUrl) {
+    const iframe: ExtendedImageType = { _type: 'iframe', url: iframeUrl };
+    photos.unshift(iframe);
+  }
 
   const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0);
   const [showModal, setShowModal] = useState(false);
@@ -57,22 +63,19 @@ const HotelPhotoGallery: FC<HotelPhotoGalleryProps> = ({
   return (
     <section className={styles.photoGallery}>
       <div className={styles.wrapper}>
-        {/* Первый элемент в своём ряду */}
         <div className={styles.firstRow}>
           {isIframe(photos[0]) ? (
             <div onClick={() => openModal(0)} className={styles.iframeContainer}>
-              {/* Здесь может быть ваше превью для iframe */}
               <div className={styles.iframeOverlay}></div>
               <iframe src={iframeUrl} allowFullScreen className={styles.iframeMini}></iframe>
-          </div>
+            </div>
           ) : (
             <Image src={urlFor(photos[0]).url()} alt="Photo 1" className={styles.imageMini} width={1000} height={1000} onClick={() => openModal(0)} />
           )}
         </div>
-        {/* Второй ряд для оставшихся фотографий */}
         <div className={styles.secondRow}>
           {photos.slice(1, maximumVisiblePhotos).map((photo, index) => (
-            <div key={index + 1} className={styles.sectonRowPhoto} onClick={() => openModal(index + 1)}>
+            <div key={index + 1} className={styles.sectionRowPhoto} onClick={() => openModal(index + 1)}>
               <Image src={urlFor(photo).url()} alt={`Photo ${index + 2}`} className={styles.photoImage} width={1000} height={1000} />
             </div>
           ))}
@@ -84,42 +87,42 @@ const HotelPhotoGallery: FC<HotelPhotoGalleryProps> = ({
             </div>
           )}
         </div>
-        {/* {displayPhotos.map((photo, index) => (
-          <div key={index} className="cursor-pointer h-[200px] rounded-2xl overflow-hidden" onClick={() => openModal(index)}>
-            {isIframe(photo) ? (
-              // Рендер превью для iframe, если нужно использовать кастомное изображение или иконку
-              <div style={{ position: 'relative', width: '100%', height: '100%' }}>
-                <img
-                  src="https://images.unsplash.com/photo-1682695795931-a546abdb6733?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHx8"
-                  alt="3D tour preview"
-                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                />
-              </div>
-            ) : (
-              <Image src={urlFor(photo).url()} alt={`Photo ${index + 1}`} className="img scale-animation" width={1000} height={1000} />
-            )}
-          </div>
-        ))}
-        {remainingPhotosCount > 0 && (
-          <div className="cursor-pointer relative h-[200px] rounded-2xl overflow-hidden" onClick={() => openModal(maximumVisiblePhotos)}>
-            <div className="absolute inset-0 bg-[rgba(0,0,0,0.5)] flex justify-center items-center text-white text-2xl">
-              +{remainingPhotosCount}
-            </div>
-          </div>
-        )} */}
         {showModal && (
           <div className="fixed top-0 left-0 w-full h-full flex justify-center items-center bg-black bg-opacity-90 z-[55]">
-            <div className="h-[75vh] w-[320px] md:w-[720px] relative">
-              {isIframe(photos[currentPhotoIndex]) ? (
-                <iframe src={photos[currentPhotoIndex].url} frameBorder="0" allowFullScreen className="w-full h-full"></iframe>
-              ) : (
-                <Image src={urlFor(photos[currentPhotoIndex]).url() || ""} alt={`Photo ${currentPhotoIndex + 1}`} className="img" width={1000} height={1000} />
-              )}
-              <div className="absolute -bottom-12 left-0 p-4 flex justify-between w-full">
-                <FaArrowLeft className="cursor-pointer text-white text-2xl" onClick={handlePrevious} />
-                <FaArrowRight className="cursor-pointer text-white text-2xl" onClick={handleNext} />
+            <div className="h-[75vh] w-[320px] md:w-[720px] relative overflow-hidden">
+              <Swiper
+                modules={[Navigation]}
+                navigation={{
+                  nextEl: '.nextBtnNews',
+                  prevEl: '.prevBtnNews',
+                }}
+                spaceBetween={50}
+                slidesPerView={1}
+                onSlideChange={(swiper) => setCurrentPhotoIndex(swiper.activeIndex)}
+                initialSlide={currentPhotoIndex}
+              >
+                {photos.map((photo, index) => (
+                  <SwiperSlide
+                    className={styles.swiperSlide}
+                    key={index}
+                  >
+                    {isIframe(photo) ? (
+                      <iframe src={photo.url} frameBorder="0" allowFullScreen className="w-full h-full"></iframe>
+                    ) : (
+                      <Image src={urlFor(photo).url()} alt={`Photo ${index + 1}`} className="img" width={1000} height={1000} />
+                    )}
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+              <div className="navButtonsGallery">
+                <button className="prevBtnNews">
+                  <FaChevronLeft color="#fff" fontSize="1.5em" />
+                </button>
+                <button className="nextBtnNews">
+                  <FaChevronRight color="#fff" fontSize="1.5em" />
+                </button>
               </div>
-              <button onClick={closeModal} className="absolute top-2 right-2 text-white text-lg">
+              <button onClick={closeModal} className="absolute top-2 right-2 text-white text-lg z-20">
                 <MdCancel className="text-2xl cursor-pointer" />
               </button>
             </div>
