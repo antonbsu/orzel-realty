@@ -127,7 +127,7 @@
   display: flex;
   align-items: center;
   // padding-inline: 10px;
-  margin-bottom: 5px;
+  margin-bottom: 15px;
 }
 
 .customCheckbox input[type="checkbox"] {
@@ -147,9 +147,9 @@
   content: '';
   position: absolute;
   left: 0;
-  top: 5px;
-  width: 20px;
-  height: 20px;
+  top: 0;
+  width: 15px;
+  height: 15px;
   border: 2px solid #ccc; /* Граница неотмеченного чекбокса */
   border-radius: 4px; /* Скругление углов для круглого чекбокса можно убрать */
   background-color: white; /* Фон неотмеченного чекбокса */
@@ -163,8 +163,8 @@
 .customCheckbox input[type="checkbox"]:checked + label::after {
   content: '✔';
   position: absolute;
-  left: 4px;
-  top: 5px;
+  left: 2px;
+  top: 0;
   color: white; /* Цвет галочки */
-  font-size: 18px;
+  font-size: 15px;
 }

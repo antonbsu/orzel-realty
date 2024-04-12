@@ -106,12 +106,12 @@ const Contact: FC<ContactFormProps> = ({ onFormSubmitSuccess }) => {
               <Field id='email' name='email' type='email' className={`${styles.inputField} w-full rounded-md`} onBlur={handleBlur} />
               <ErrorMessage name='email' component='div' className={styles.error} />
             </div>
-            {/* <div className={styles.customCheckbox}>
+            <div className={styles.customCheckbox}>
               <Field type="checkbox" name="agreedToPolicy" id="agreedToPolicy" />
               <label htmlFor="agreedToPolicy">Wyrażam zgodę na przetwarzanie danych osobowych</label>
-            </div> */}
+            </div>
             <div>
-              <button type='submit' className={styles.sentBtn}>Wyślij wiadomość</button>
+              <button type='submit' className={styles.sentBtn} disabled={isSubmitting}>Wyślij wiadomość</button>
             </div>
           </Form>
         )}
