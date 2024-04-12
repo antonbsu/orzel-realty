@@ -22,7 +22,7 @@ export async function POST(request: NextRequest) {
     },
   });
 
-  const mailBody = `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nMessage: ${message}`;
+  const mailBody = `Name: ${name}\nEmail: ${email}\nPhone: ${phone}`;
 
   const mailOptions: Mail.Options = {
     from: process.env.EMAIL_USER,
