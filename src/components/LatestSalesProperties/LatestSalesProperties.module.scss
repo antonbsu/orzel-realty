@@ -15,8 +15,8 @@
   flex: 0 1 100%;
 
   @media (min-width: 768px) {
-    // flex: 0 1 calc(33.3333% - 20px);
-    flex: 0 1 calc(50% - 10px);
+    flex: 0 1 calc(33.3333% - 20px);
+    // flex: 0 1 calc(50% - 10px);
   }
 }
 
